@@ -17,6 +17,7 @@ class SplashActivity : AppCompatActivity() {
         //Hold 3 Sec and go to Activity by get value from SharedPreferences
         Handler(Looper.getMainLooper()).postDelayed({
             finish()
+
         }, 3000)
     }
 }

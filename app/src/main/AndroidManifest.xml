@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ParkingManagementSystem">
         <activity
+            android:name=".ui.auth.LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.intro.SplashActivity"
             android:exported="true">
             <intent-filter>
