@@ -1,24 +1,27 @@
 package com.example.parkingmanagementsystem.ui.intro
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import com.example.parkingmanagementsystem.R
+import android.util.Log
 import com.example.parkingmanagementsystem.databinding.ActivitySplashBinding
+import com.example.parkingmanagementsystem.ui.AppBaseActivity
 import com.example.parkingmanagementsystem.ui.auth.LoginActivity
 import com.example.parkingmanagementsystem.utils.extentions.launchActivity
 import com.google.firebase.auth.FirebaseAuth
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : AppBaseActivity() {
+    companion object {
+        private const val TAG: String = "SplashActivity"
+    }
+
     private lateinit var binding: ActivitySplashBinding
-    private val TAG: String = "SplashActivity"
     private lateinit var mAuth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         //init
         mAuth = FirebaseAuth.getInstance()
@@ -26,9 +29,11 @@ class SplashActivity : AppCompatActivity() {
         //Hold 3 Sec and go to Activity
         Handler(Looper.getMainLooper()).postDelayed({
             if (mAuth.currentUser != null) {
+                Log.d(TAG, "onCreate: Current User Not Null.")
                 launchActivity<LoginActivity>()
                 finish()
             } else {
+                Log.d(TAG, "onCreate: Current User Null.")
                 launchActivity<LoginActivity>()
                 finish()
             }

@@ -1,12 +1,22 @@
 package com.example.parkingmanagementsystem.ui.auth
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.parkingmanagementsystem.R
+import com.example.parkingmanagementsystem.databinding.ActivityLoginBinding
+import com.example.parkingmanagementsystem.ui.AppBaseActivity
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppBaseActivity() {
+    companion object {
+        private const val TAG: String = "LoginActivity"
+    }
+
+    private lateinit var binding: ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+
+
+
     }
 }
