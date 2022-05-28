@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorFooter"
+    android:background="@color/edittext_color"
     tools:context=".ui.auth.LoginActivity">
 
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="45dp"
+        android:layout_marginBottom="100dp"
         android:background="@drawable/otp_verification_background" />
 
     <ScrollView
@@ -82,34 +82,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv_phone_number_heading" />
 
-            <EditText
-                android:id="@+id/et_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="32dp"
-                android:layout_marginTop="40dp"
-                android:autofillHints="name"
-                android:background="@drawable/background_edit_text"
-                android:hint="@string/enter_your_name"
-                android:inputType="textPersonName"
-                android:paddingHorizontal="14dp"
-                android:paddingVertical="10dp"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_phone_desc" />
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layout_constraint_verification"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="32dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/background_edit_text"
                 android:paddingVertical="2dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_name">
+                app:layout_constraintTop_toBottomOf="@id/tv_phone_desc">
 
                 <com.hbb20.CountryCodePicker
                     android:id="@+id/ccp_countryCode"
@@ -153,24 +136,22 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--            <com.google.android.material.button.MaterialButton-->
-<!--                android:id="@+id/btn_send_code"-->
-<!--                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="32dp"-->
-<!--                android:layout_marginTop="15dp"-->
-<!--                android:layout_marginEnd="32dp"-->
-<!--                android:layout_marginBottom="32dp"-->
-<!--                android:paddingVertical="10dp"-->
-<!--                android:text="@string/send_code"-->
-<!--                android:textSize="16sp"-->
-<!--                app:cornerRadius="10dp"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/layout_constraint_verification"-->
-<!--                app:layout_constraintVertical_bias="0.9" />-->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_send_code"
+                style="@style/Widget.Material3.Button.UnelevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="32dp"
+                android:paddingVertical="10dp"
+                android:text="@string/send_code"
+                android:textSize="16sp"
+                app:cornerRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/layout_constraint_verification"
+                app:layout_constraintVertical_bias="0.9" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -322,20 +303,6 @@
                     android:textSize="16sp" />
             </LinearLayout>
 
-<!--            <com.google.android.material.button.MaterialButton-->
-<!--                android:id="@+id/btn_verify"-->
-<!--                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="32dp"-->
-<!--                android:layout_marginEnd="32dp"-->
-<!--                android:paddingVertical="10dp"-->
-<!--                android:text="@string/submit"-->
-<!--                android:textSize="16sp"-->
-<!--                app:cornerRadius="10dp"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/layout_linear01" />-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -344,30 +311,49 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="100dp"
         android:gravity="center"
         android:orientation="horizontal"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:gravity="center"-->
-<!--            android:text="@string/powered_by"-->
-<!--            android:textColor="@color/colorTextLight"-->
-<!--            android:textSize="12sp" />-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/are_you_management"
+            android:textColor="@color/colorTextLight"
+            android:textSize="18sp" />
 
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="5dp"-->
-<!--            android:gravity="center"-->
-<!--            android:padding="2dp"-->
-<!--            android:text="@string/prime_it"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:textSize="12sp"-->
-<!--            android:textStyle="bold" />-->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_login_management"
+            style="@style/Widget.Material3.Button.UnelevatedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:paddingVertical="10dp"
+            android:text="@string/login"
+            android:textSize="16sp"
+            app:cornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_constraint_verification"
+            app:layout_constraintVertical_bias="0.9" />
+
     </LinearLayout>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_verify"
+        style="@style/Widget.Material3.Button.UnelevatedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:paddingVertical="10dp"
+        android:text="@string/submit"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
