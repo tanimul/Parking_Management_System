@@ -13,10 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ParkingManagementSystem">
         <activity
+            android:name=".ui.auth.RegistrationActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.main.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".ui.auth.LoginActivity"
+            android:windowSoftInputMode="adjustNothing"
             android:exported="false" />
         <activity
             android:name=".ui.intro.SplashActivity"
