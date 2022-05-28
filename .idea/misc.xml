@@ -3,8 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/background_edit_text.xml" value="0.1735" />
+        <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/ic_verification_background.xml" value="0.1735" />
+        <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/otp_verification_background.xml" value="0.1735" />
+        <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/splash_background.xml" value="0.1735" />
+        <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/activity_main.xml" value="0.225" />
-        <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/activity_splash.xml" value="0.1359375" />
+        <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/activity_splash.xml" value="0.2" />
+        <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/layout_toolbar.xml" value="0.27870370370370373" />
       </map>
     </option>
   </component>

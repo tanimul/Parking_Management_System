@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Parking Management System</string>
+    <string name="enter_your_mobile_number">Enter Your Mobile Number</string>
+    <string name="enter_your_phone_number_we_will_send_you_a_six_digit_otp_to_verify_your_phone_number">Enter your phone number we will send you a six-digit OTP to verify your phone number</string>
+    <string name="send_code">Send Code</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="enter_your_name">Enter Your Name</string>
+    <string name="tap_to_retry">Tap to Retry</string>
+    <string name="error_no_internet">No Internet Connection</string>
+    <string name="error_permission_required">Permission Required</string>
+    <string name="verification">Verification</string>
+    <string name="seconds">seconds</string>
+    <string name="enter_verification_code">Enter Verification code</string>
+    <string name="login">Login</string>
+    <string name="otp_verification">OTP Verification</string>
+    <string name="we_will_send_you_a_one_time_password_on_n_this_b_mobile_number_b">We will send you a one time password on\n this  <b>Mobile Number</b></string>
+    <string name="_00_30">00.30</string>
+    <string name="resend">Resend</string>
+    <string name="do_not_received_otp">Do not received OTP?</string>
+    <string name="submit">Submit</string>
+    <string name="_8801810620700">+8801810620700</string>
+    <string name="hi">Hi,</string>
+    <string name="find_your_nparking_space">Find your \nParking Space</string>
 </resources>
