@@ -7,6 +7,7 @@ import android.util.Log
 import com.example.parkingmanagementsystem.databinding.ActivitySplashBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
 import com.example.parkingmanagementsystem.ui.auth.LoginActivity
+import com.example.parkingmanagementsystem.ui.main.HomeActivity
 import com.example.parkingmanagementsystem.utils.extentions.launchActivity
 import com.google.firebase.auth.FirebaseAuth
 
@@ -30,7 +31,7 @@ class SplashActivity : AppBaseActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             if (mAuth.currentUser != null) {
                 Log.d(TAG, "onCreate: Current User Not Null.")
-                launchActivity<LoginActivity>()
+                launchActivity<HomeActivity>()
                 finish()
             } else {
                 Log.d(TAG, "onCreate: Current User Null.")
