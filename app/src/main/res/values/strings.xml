@@ -21,4 +21,10 @@
     <string name="_8801810620700">+8801810620700</string>
     <string name="hi">Hi,</string>
     <string name="find_your_nparking_space">Find your \nParking Space</string>
+    <string name="full_name">Full Name</string>
+    <string name="email">Email</string>
+    <string name="address">Address</string>
+    <string name="nid_number">NID Number</string>
+    <string name="vehicle_number">Vehicle Number</string>
+    <string name="register">Register</string>
 </resources>
