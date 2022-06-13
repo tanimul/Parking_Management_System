@@ -1,5 +1,6 @@
 package com.example.parkingmanagementsystem.ui.auth
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.TextUtils
@@ -195,7 +196,11 @@ class LoginActivity : AppBaseActivity() {
                     launchActivity<HomeActivity>()
                     finish()
                 } else {
-                    launchActivity<RegistrationActivity>()
+                    startActivity(
+                        Intent(this, RegistrationActivity::class.java).putExtra(
+                            "phone_number", phoneNumber
+                        )
+                    )
                     finish()
                 }
             }
@@ -221,7 +226,7 @@ class LoginActivity : AppBaseActivity() {
         binding.tvResend.setTextColor(
             ContextCompat.getColor(
                 this@LoginActivity,
-               R.color.color_primary
+                R.color.color_primary
             )
         )
 
