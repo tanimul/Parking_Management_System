@@ -9,3 +9,6 @@ fun isNetworkAvailable(): Boolean {
     val info = getInstance().getConnectivityManager().activeNetworkInfo
     return info != null && info.isConnected
 }
+
+fun String.checkIsEmpty(): Boolean =
+    isNullOrEmpty() || "" == this || this.equals("null", ignoreCase = true)

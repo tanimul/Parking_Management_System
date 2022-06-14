@@ -8,10 +8,12 @@ import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.example.parkingmanagementsystem.R
+import com.example.parkingmanagementsystem.data.model.response.User
 import com.example.parkingmanagementsystem.databinding.ActivityLoginBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
 import com.example.parkingmanagementsystem.ui.main.HomeActivity
 import com.example.parkingmanagementsystem.utils.Constants.FirebaseKeys.KEY_USERS_COLLECTION
+import com.example.parkingmanagementsystem.utils.Variables.user
 import com.example.parkingmanagementsystem.utils.extentions.*
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
@@ -189,7 +191,7 @@ class LoginActivity : AppBaseActivity() {
                 //to check user exists or not
                 if (snapshot.exists()) {
                     /*User Already Exists*/
-
+                    user = snapshot.toObject(User::class.java)!!
                     //hide progressbar
                     showProgress(false)
 

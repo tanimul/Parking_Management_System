@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_find_parking_space"
+            android:icon="@drawable/ic_arrow_drop_down"
+            android:title="@string/find_parking_space" />
+        <item
+            android:id="@+id/nav_bookings"
+            android:icon="@drawable/ic_arrow_drop_down"
+            android:title="@string/bookings" />
+        <item
+            android:id="@+id/nav_use_promo_code"
+            android:icon="@drawable/ic_arrow_drop_down"
+            android:title="@string/use_promo_code" />
+        <item
+            android:id="@+id/nav_monthly_parking"
+            android:icon="@drawable/ic_arrow_drop_down"
+            android:title="@string/monthly_parking" />
+
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_arrow_drop_down"
+            android:title="@string/profile" />
+
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_arrow_drop_down"
+            android:title="Log Out" />
+
+    </group>
+</menu>

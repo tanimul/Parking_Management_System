@@ -7,11 +7,14 @@ import android.webkit.MimeTypeMap
 import android.widget.ArrayAdapter
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.parkingmanagementsystem.R
+import com.example.parkingmanagementsystem.data.model.response.User
 import com.example.parkingmanagementsystem.databinding.ActivityRegistrationBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
+import com.example.parkingmanagementsystem.ui.main.HomeActivity
 import com.example.parkingmanagementsystem.utils.Constants
 import com.example.parkingmanagementsystem.utils.Variables.user
 import com.example.parkingmanagementsystem.utils.Variables.userId
+import com.example.parkingmanagementsystem.utils.extentions.launchActivity
 import com.example.parkingmanagementsystem.utils.extentions.toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -144,6 +147,7 @@ class RegistrationActivity : AppBaseActivity() {
                 showProgress(false)
                 Log.d(TAG, "Profile updated successfully ")
                 toast("Profile updated successfully")
+                launchActivity<HomeActivity>()
                 finish()
 
             }.addOnFailureListener {
