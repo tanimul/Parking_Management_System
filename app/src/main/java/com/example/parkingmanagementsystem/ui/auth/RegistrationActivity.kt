@@ -32,6 +32,7 @@ class RegistrationActivity : AppBaseActivity() {
     private lateinit var storageReference: StorageReference
     private var imageUrl: String? = ""
     private var gender: String? = null
+
     private var phone_number: String = ""
     private val db = Firebase.firestore
     private lateinit var mAuth: FirebaseAuth
@@ -57,12 +58,11 @@ class RegistrationActivity : AppBaseActivity() {
             mGetContent.launch("image/*")
         }
         binding.btnRegister.setOnClickListener {
-            if(registerValidation()){
+            if (registerValidation()) {
                 saveInfo()
-            }else{
+            } else {
                 toast("Please fill the all field Correctly")
             }
-
         }
         binding.ibDropdown.setOnClickListener {
             binding.spinnerGender.performClick()
@@ -163,7 +163,7 @@ class RegistrationActivity : AppBaseActivity() {
                 || binding.etAddress.text.toString().isNotEmpty()
                 || binding.etVehicleNumber.text.toString().isNotEmpty()
                 || binding.etNid.text.toString().isNotEmpty()
-                || imageUri!=null)
+                || imageUri != null)
     }
 
 }

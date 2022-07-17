@@ -3,6 +3,8 @@
     package="com.example.parkingmanagementsystem" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:name=".ParkingManagementApp"
@@ -13,13 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ParkingManagementSystem" >
         <activity
-            android:name=".NotificationActivity"
+            android:name=".ui.activities.NotificationActivity"
             android:exported="false" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".ui.main.ProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".UsePromoCodeActivity"
+            android:name=".ui.activities.UsePromoCodeActivity"
             android:exported="false" />
         <activity
             android:name=".ui.auth.RegistrationActivity"
@@ -40,6 +42,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/map_Api_key" />
     </application>
 
 </manifest>
