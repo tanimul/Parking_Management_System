@@ -18,8 +18,8 @@ import com.example.parkingmanagementsystem.data.model.response.User
 import com.example.parkingmanagementsystem.databinding.ActivityHomeBinding
 import com.example.parkingmanagementsystem.databinding.NavHeaderLayoutBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
+import com.example.parkingmanagementsystem.utils.Constants.FirebaseKeys.KEY_USERS_COLLECTION
 import com.example.parkingmanagementsystem.utils.Variables.user
-import com.example.parkingmanagementsystem.utils.extentions.getSharedPrefInstance
 import com.example.parkingmanagementsystem.utils.extentions.loadImageFromUrl
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -31,6 +31,9 @@ import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
 
 class HomeActivity : AppBaseActivity(), OnMapReadyCallback {
     companion object {
@@ -44,6 +47,7 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback {
     private val REQUEST_CODE = 101
     lateinit var cur_location: Location
     private lateinit var mMap: GoogleMap
+    val db = Firebase.firestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
@@ -66,8 +70,7 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback {
         navHeaderLayoutBinding =
             NavHeaderLayoutBinding.bind(binding.navBar.getHeaderView(0))
 
-        Log.d(TAG, "onCreate: $user")
-        setHeaderInformation(user)
+        mAuth.currentUser?.let { setHeaderInformation(it.uid) }
 
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
@@ -106,10 +109,17 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback {
         return true
     }
 
-    private fun setHeaderInformation(user: User) {
-        navHeaderLayoutBinding.tvHeaderName.text = user.name
-        navHeaderLayoutBinding.tvHeaderPhoneNumber.text = user.phoneNumber
-        navHeaderLayoutBinding.ivHeaderUser.loadImageFromUrl(user.imageUrl)
+    private fun setHeaderInformation(uid: String) {
+        db.collection(KEY_USERS_COLLECTION)
+            .document(uid).get().addOnSuccessListener { snapshot ->
+                val user_info = snapshot.toObject<User>()
+                Log.d(TAG, "setHeaderInformation: $user_info")
+                navHeaderLayoutBinding.tvHeaderName.text = user_info?.name
+                navHeaderLayoutBinding.tvHeaderPhoneNumber.text = user_info?.phoneNumber
+                user_info?.let { navHeaderLayoutBinding.ivHeaderUser.loadImageFromUrl(it.imageUrl) }
+
+            }
+
 
     }
 
@@ -148,5 +158,6 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback {
                 .fillColor(Color.argb(70, 150, 50, 50))
         )
     }
+
 
 }
