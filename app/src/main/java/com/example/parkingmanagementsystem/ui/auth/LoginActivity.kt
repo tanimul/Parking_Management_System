@@ -88,6 +88,9 @@ class LoginActivity : AppBaseActivity() {
         binding.tvResend.setOnClickListener {
             sendVerificationCode(phoneNumber)
         }
+        binding.btnManagement.setOnClickListener {
+            launchActivity<LoginManagementActivity>()
+        }
     }
 
     private fun sendVerificationCode(number: String) {

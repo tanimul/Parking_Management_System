@@ -10,11 +10,14 @@
         android:name=".ParkingManagementApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:requestLegacyExternalStorage="true"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ParkingManagementSystem">
+        <activity
+            android:name=".ui.auth.LoginManagementActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.auth.RegistrationCarOwnerActivity"
             android:exported="false" />

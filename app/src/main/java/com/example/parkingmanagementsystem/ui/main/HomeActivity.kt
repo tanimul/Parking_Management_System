@@ -4,15 +4,20 @@ package com.example.parkingmanagementsystem.ui.main
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.ActivityNotFoundException
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.location.Location
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.core.app.ActivityCompat
+import androidx.core.view.GravityCompat
 import com.example.parkingmanagementsystem.R
 import com.example.parkingmanagementsystem.data.model.response.User
 import com.example.parkingmanagementsystem.databinding.ActivityHomeBinding
@@ -20,6 +25,7 @@ import com.example.parkingmanagementsystem.databinding.NavHeaderLayoutBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
 import com.example.parkingmanagementsystem.utils.Constants.FirebaseKeys.KEY_USERS_COLLECTION
 import com.example.parkingmanagementsystem.utils.Variables.user
+import com.example.parkingmanagementsystem.utils.extentions.launchActivity
 import com.example.parkingmanagementsystem.utils.extentions.loadImageFromUrl
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -30,12 +36,16 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.navigation.NavigationBarView
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 
-class HomeActivity : AppBaseActivity(), OnMapReadyCallback {
+class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
+    NavigationView.OnNavigationItemSelectedListener,
+    NavigationBarView.OnItemSelectedListener {
     companion object {
         private const val TAG: String = "HomeActivity"
     }
@@ -97,6 +107,8 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback {
                     .findFragmentById(R.id.map_fragment) as? SupportMapFragment
                 mapFragment?.getMapAsync(this)
             }
+
+        binding.navBar.setNavigationItemSelectedListener(this)
     }
 
     @SuppressLint("RestrictedApi")
@@ -157,6 +169,23 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback {
                 .strokeColor(Color.RED)
                 .fillColor(Color.argb(70, 150, 50, 50))
         )
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+
+            //Navigation Drawer Select
+
+            R.id.nav_profile -> {
+                launchActivity<ProfileActivity>()
+            }
+            R.id.nav_logout -> {
+                logOut()
+            }
+
+        }
+        binding.layoutDrawer.closeDrawer(GravityCompat.START)
+        return true
     }
 
 
