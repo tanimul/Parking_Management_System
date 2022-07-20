@@ -47,4 +47,6 @@
     <string name="dhaka_bangladesh">Dhaka, Bangladesh</string>
     <string name="username">User Name</string>
     <string name="password">Password</string>
+    <string name="con_password">Confirm Password</string>
+    <string name="need_to_registration_as_a_parking_owner">Need to Registration as a Parking Owner?</string>
 </resources>

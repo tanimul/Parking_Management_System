@@ -15,3 +15,17 @@ data class User(
     val addedAt: Long = System.currentTimeMillis(),
     var updatedAt: Long = System.currentTimeMillis()
 ) : Serializable
+
+data class CarOwner(
+    var _id: String = "",
+    var name: String = "",
+    var phoneNumber: String = "",
+    var address: String = "",
+    var imageUrl: String = "",
+    var email: String = "",
+    var gender: String = "",
+    var password: String = "",
+    var con_password: String = "",
+    val addedAt: Long = System.currentTimeMillis(),
+    var updatedAt: Long = System.currentTimeMillis()
+) : Serializable
