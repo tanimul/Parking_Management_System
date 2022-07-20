@@ -9,6 +9,7 @@
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/background_edit_text_gray.xml" value="0.1155" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/ic_back_arrow.xml" value="0.1785" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/ic_outline_location.xml" value="0.115" />
+        <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/ic_promo_code.xml" value="0.15" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/ic_user.xml" value="0.1155" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/ic_verification_background.xml" value="0.1735" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/ic_verification_image.xml" value="0.1735" />
@@ -16,12 +17,14 @@
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/otp_header_background.xml" value="0.1735" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/otp_verification_background.xml" value="0.1735" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/splash_background.xml" value="0.1735" />
+        <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/activity_add_new_card.xml" value="0.225" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/activity_home.xml" value="0.1390625" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/activity_login.xml" value="0.18" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/activity_login_management.xml" value="0.25" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/activity_login_managemet.xml" value="0.1" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/activity_main.xml" value="0.225" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/activity_notification.xml" value="0.10520833333333333" />
+        <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/activity_payment_add.xml" value="0.225" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/activity_profile.xml" value="0.14" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/activity_registration.xml" value="0.2" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/activity_registration_car_owner.xml" value="0.225" />
@@ -31,7 +34,7 @@
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/layout_toolbar.xml" value="0.27870370370370373" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/nav_header_layout.xml" value="0.12" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
-        <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/menu/nav_drawer_menu.xml" value="0.16" />
+        <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/menu/nav_drawer_menu.xml" value="0.5" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/menu/top_menu.xml" value="0.12604166666666666" />
       </map>
     </option>

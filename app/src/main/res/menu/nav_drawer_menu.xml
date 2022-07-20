@@ -5,29 +5,29 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_find_parking_space"
-            android:icon="@drawable/ic_arrow_drop_down"
+            android:icon="@drawable/ic_home"
             android:title="@string/find_parking_space" />
         <item
             android:id="@+id/nav_bookings"
-            android:icon="@drawable/ic_arrow_drop_down"
+            android:icon="@drawable/ic_booking"
             android:title="@string/bookings" />
         <item
             android:id="@+id/nav_use_promo_code"
-            android:icon="@drawable/ic_arrow_drop_down"
+            android:icon="@drawable/ic_promo_code"
             android:title="@string/use_promo_code" />
         <item
             android:id="@+id/nav_monthly_parking"
-            android:icon="@drawable/ic_arrow_drop_down"
+            android:icon="@drawable/ic_monthly_parking"
             android:title="@string/monthly_parking" />
 
         <item
             android:id="@+id/nav_profile"
-            android:icon="@drawable/ic_arrow_drop_down"
+            android:icon="@drawable/ic_profile"
             android:title="@string/profile" />
 
         <item
             android:id="@+id/nav_logout"
-            android:icon="@drawable/ic_arrow_drop_down"
+            android:icon="@drawable/ic_logout"
             android:title="Log Out" />
 
     </group>

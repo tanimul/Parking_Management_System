@@ -23,6 +23,7 @@ import com.example.parkingmanagementsystem.data.model.response.User
 import com.example.parkingmanagementsystem.databinding.ActivityHomeBinding
 import com.example.parkingmanagementsystem.databinding.NavHeaderLayoutBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
+import com.example.parkingmanagementsystem.ui.activities.NotificationActivity
 import com.example.parkingmanagementsystem.utils.Constants.FirebaseKeys.KEY_USERS_COLLECTION
 import com.example.parkingmanagementsystem.utils.Variables.user
 import com.example.parkingmanagementsystem.utils.extentions.launchActivity
@@ -171,6 +172,16 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
         )
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_notification -> {
+                launchActivity<NotificationActivity>()
+            }
+
+
+        }
+        return true
+    }
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
 

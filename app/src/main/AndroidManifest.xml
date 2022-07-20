@@ -15,6 +15,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ParkingManagementSystem">
+
+        <activity
+            android:name=".ui.transaction.PaymentAddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.transaction.AddNewCardActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.auth.LoginManagementActivity"
             android:exported="false" />
