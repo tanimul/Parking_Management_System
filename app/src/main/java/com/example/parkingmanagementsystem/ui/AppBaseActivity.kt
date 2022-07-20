@@ -59,13 +59,4 @@ open class AppBaseActivity : AppCompatActivity() {
         }
     }
 
-    override fun onStart() {
-        Log.d("onStart", "called")
-        super.onStart()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d("onResume", "called")
-    }
 }
