@@ -16,7 +16,7 @@ data class User(
     var updatedAt: Long = System.currentTimeMillis()
 ) : Serializable
 
-data class CarOwner(
+data class ParkingOwner(
     var _id: String = "",
     var name: String = "",
     var phoneNumber: String = "",

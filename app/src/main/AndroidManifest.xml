@@ -15,7 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ParkingManagementSystem">
-
+        <activity
+            android:name=".HomeManagementActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.transaction.PaymentAddActivity"
             android:exported="false" />
@@ -26,7 +28,7 @@
             android:name=".ui.auth.LoginManagementActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.auth.RegistrationCarOwnerActivity"
+            android:name=".ui.auth.RegistrationParkingOwnerActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activities.NotificationActivity"

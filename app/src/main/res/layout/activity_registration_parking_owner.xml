@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.auth.RegistrationCarOwnerActivity">
+    tools:context=".ui.auth.RegistrationParkingOwnerActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
             android:id="@+id/civ_user_image"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_marginTop="-80dp"
+            android:layout_marginTop="-90dp"
             android:src="@drawable/user_images_new"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -82,7 +82,21 @@
             android:src="@drawable/ic_arrow_drop_down"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/et_full_name" />
-
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/background_edit_text"
+            android:hint="@string/phone_number"
+            android:inputType="textEmailAddress"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="8dp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinner_gender" />
         <EditText
             android:id="@+id/et_email"
             android:layout_width="0dp"
@@ -97,7 +111,7 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/spinner_gender" />
+            app:layout_constraintTop_toBottomOf="@id/et_phone" />
 
         <EditText
             android:id="@+id/et_address"
@@ -131,21 +145,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/et_address" />
 
-        <EditText
-            android:id="@+id/et_con_password"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/background_edit_text"
-            android:hint="@string/con_password"
-            android:inputType="text"
-            android:paddingHorizontal="8dp"
-            android:paddingVertical="8dp"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_password" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_register"
@@ -162,7 +161,7 @@
             app:cornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_con_password"
+            app:layout_constraintTop_toBottomOf="@+id/et_password"
             app:layout_constraintVertical_bias="0.9" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

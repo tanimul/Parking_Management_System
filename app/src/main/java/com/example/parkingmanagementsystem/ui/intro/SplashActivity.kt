@@ -8,6 +8,9 @@ import com.example.parkingmanagementsystem.databinding.ActivitySplashBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
 import com.example.parkingmanagementsystem.ui.auth.LoginActivity
 import com.example.parkingmanagementsystem.ui.main.HomeActivity
+import com.example.parkingmanagementsystem.ui.main.HomeManagementActivity
+import com.example.parkingmanagementsystem.utils.Constants
+import com.example.parkingmanagementsystem.utils.SharedPrefUtils
 import com.example.parkingmanagementsystem.utils.extentions.launchActivity
 import com.google.firebase.auth.FirebaseAuth
 
@@ -32,6 +35,10 @@ class SplashActivity : AppBaseActivity() {
             if (mAuth.currentUser != null) {
                 Log.d(TAG, "onCreate: Current User Not Null.")
                 launchActivity<HomeActivity>()
+                finish()
+            } else if (SharedPrefUtils().getBooleanValue(Constants.SharedPref.IS_LOGGIN, false)) {
+                Log.d(TAG, "onCreate: Current Management Not Null.")
+                launchActivity<HomeManagementActivity>()
                 finish()
             } else {
                 Log.d(TAG, "onCreate: Current User Null.")

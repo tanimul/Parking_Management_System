@@ -1,6 +1,5 @@
 package com.example.parkingmanagementsystem.ui.auth
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.parkingmanagementsystem.databinding.ActivityLoginManagementBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
@@ -19,7 +18,7 @@ class LoginManagementActivity : AppBaseActivity() {
 
 
         binding.btnRegisterParkingOwner.setOnClickListener {
-            launchActivity<RegistrationCarOwnerActivity>()
+            launchActivity<RegistrationParkingOwnerActivity>()
         }
     }
 }
