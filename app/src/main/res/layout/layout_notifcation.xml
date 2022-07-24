@@ -19,17 +19,16 @@
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/ratingBar_rating"
+            app:layout_constraintEnd_toStartOf="@+id/tv_time"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <RatingBar
-            android:id="@+id/ratingBar_rating"
+        <TextView
+            android:id="@+id/tv_time"
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:clickable="false"
+            android:text="@string/time"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

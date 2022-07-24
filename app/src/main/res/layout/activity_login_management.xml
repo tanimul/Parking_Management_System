@@ -33,7 +33,7 @@
         android:id="@+id/layout_tie01"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="4dp"
@@ -43,10 +43,10 @@
         app:passwordToggleEnabled="false">
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/et_full_name"
+            android:id="@+id/et_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/full_name"
+            android:hint="@string/phone_number"
             android:maxLines="1"
             android:textSize="20sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -55,7 +55,7 @@
         android:id="@+id/layout_tie"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="4dp"

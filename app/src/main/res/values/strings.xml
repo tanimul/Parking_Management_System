@@ -50,4 +50,7 @@
     <string name="con_password">Confirm Password</string>
     <string name="need_to_registration_as_a_parking_owner">Need to Registration as a Parking Owner?</string>
     <string name="purpose">Purpose</string>
+    <string name="time">Time</string>
+    <string name="add_parking_space">Add Parking Space</string>
+    <string name="transaction">Transaction</string>
 </resources>

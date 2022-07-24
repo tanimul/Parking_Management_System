@@ -49,7 +49,7 @@ class RegistrationParkingOwnerActivity : AppBaseActivity() {
 
         mAuth = FirebaseAuth.getInstance()
         storageReference =
-            FirebaseStorage.getInstance().reference.child("userImages").child(Variables.userId)
+            FirebaseStorage.getInstance().reference.child("managementImages")
 
 
         binding.civUserImage.setOnClickListener {
@@ -74,7 +74,7 @@ class RegistrationParkingOwnerActivity : AppBaseActivity() {
             R.layout.simple_spinner_item,
             resources.getStringArray(com.example.parkingmanagementsystem.R.array.gender)
         )
-        gender_types.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        gender_types.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
         binding.spinnerGender.adapter = gender_types
 
     }
@@ -147,6 +147,9 @@ class RegistrationParkingOwnerActivity : AppBaseActivity() {
                 Log.d(TAG, "Profile updated successfully ")
                 toast("Registration successfully")
                 SharedPrefUtils().setValue(Constants.SharedPref.IS_LOGGIN, true)
+                SharedPrefUtils().setValue(Constants.SharedPref.FULL_NAME, name)
+                SharedPrefUtils().setValue(Constants.SharedPref.PHONE_NUMBER, phone)
+                SharedPrefUtils().setValue(Constants.SharedPref.IMAGE_URL, imageUrl!!)
                 launchActivity<HomeManagementActivity>()
                 finish()
 
