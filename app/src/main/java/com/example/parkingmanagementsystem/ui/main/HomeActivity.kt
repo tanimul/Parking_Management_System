@@ -133,7 +133,6 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
 
             }
 
-
     }
 
     private fun logOut() {
