@@ -127,7 +127,8 @@ class RegistrationParkingOwnerActivity : AppBaseActivity() {
 
 
         //set user data
-        Variables.parkingOwner._id = ""+System.currentTimeMillis()
+        val id=""+System.currentTimeMillis()
+        Variables.parkingOwner._id = id
         Variables.parkingOwner.name = name
         Variables.parkingOwner.email = email
         Variables.parkingOwner.address = address
@@ -140,7 +141,7 @@ class RegistrationParkingOwnerActivity : AppBaseActivity() {
 
 
         db.collection(Constants.FirebaseKeys.KEY_PARKING_OWNER_COLLECTION)
-            .document(""+System.currentTimeMillis())
+            .document(id)
             .set(Variables.parkingOwner).addOnSuccessListener {
                 //hide progressbar
                 showProgress(false)

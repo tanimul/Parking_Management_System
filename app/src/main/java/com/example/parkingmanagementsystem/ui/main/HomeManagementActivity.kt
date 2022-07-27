@@ -39,6 +39,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -52,15 +53,15 @@ class HomeManagementActivity : AppBaseActivity(), OnMapReadyCallback,
     private lateinit var binding: ActivityHomeManagementBinding
     private lateinit var navHeaderLayoutBinding: NavHeaderLayoutBinding
 
-    //private lateinit var mAuth: FirebaseAuth
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var mAuth: FirebaseAuth
+     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private val REQUEST_CODE = 101
+
     lateinit var cur_location: Location
     private lateinit var mMap: GoogleMap
     val db = Firebase.firestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityHomeManagementBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -68,7 +69,7 @@ class HomeManagementActivity : AppBaseActivity(), OnMapReadyCallback,
         title = getString(R.string.home)
 
         //init
-        //mAuth = FirebaseAuth.getInstance()
+        mAuth = FirebaseAuth.getInstance()
 
         val actionBarDrawerToggle = ActionBarDrawerToggle(
             this, binding.layoutDrawer,
@@ -84,8 +85,6 @@ class HomeManagementActivity : AppBaseActivity(), OnMapReadyCallback,
 
 
         setHeaderInformation()
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-
         if (ActivityCompat.checkSelfPermission(
                 this,
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -98,6 +97,10 @@ class HomeManagementActivity : AppBaseActivity(), OnMapReadyCallback,
             )
             return
         }
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
+
         fusedLocationClient.lastLocation
             .addOnSuccessListener {
                 // Got last known location. In some rare situations this can be null.
@@ -105,7 +108,7 @@ class HomeManagementActivity : AppBaseActivity(), OnMapReadyCallback,
                     cur_location = it
                 }
                 val mapFragment = supportFragmentManager
-                    .findFragmentById(R.id.map_fragment) as? SupportMapFragment
+                    .findFragmentById(R.id.map_fragment_2) as? SupportMapFragment
                 mapFragment?.getMapAsync(this)
             }
 
@@ -123,10 +126,16 @@ class HomeManagementActivity : AppBaseActivity(), OnMapReadyCallback,
     }
 
     private fun setHeaderInformation() {
-//
-//        navHeaderLayoutBinding.tvHeaderName.text = SharedPrefUtils().getStringValue(FULL_NAME,"")
-//        navHeaderLayoutBinding.tvHeaderPhoneNumber.text = SharedPrefUtils().getStringValue(PHONE_NUMBER,"")
-//        navHeaderLayoutBinding.ivHeaderUser.loadImageFromUrl(SharedPrefUtils().getStringValue(IMAGE_URL,""))
+
+        navHeaderLayoutBinding.tvHeaderName.text = SharedPrefUtils().getStringValue(FULL_NAME, "")
+        navHeaderLayoutBinding.tvHeaderPhoneNumber.text =
+            SharedPrefUtils().getStringValue(PHONE_NUMBER, "")
+        navHeaderLayoutBinding.ivHeaderUser.loadImageFromUrl(
+            SharedPrefUtils().getStringValue(
+                IMAGE_URL,
+                ""
+            )
+        )
 
     }
 
