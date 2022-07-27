@@ -59,12 +59,12 @@ class LoginManagementActivity : AppBaseActivity() {
                     showProgress(false)
                     val parking_owner = snapshot.toObject(ParkingOwner::class.java)!!
                     if (parking_owner.password == binding.etPassword.text.toString()) {
-                        SharedPrefUtils().setValue(IS_LOGGIN, true)
-                        SharedPrefUtils().setValue(FULL_NAME, parking_owner.name)
-                        SharedPrefUtils().setValue(PHONE_NUMBER, parking_owner.phoneNumber)
-                        SharedPrefUtils().setValue(IMAGE_URL, parking_owner.imageUrl)
+//                        SharedPrefUtils().setValue(IS_LOGGIN, true)
+//                        SharedPrefUtils().setValue(FULL_NAME, parking_owner.name)
+//                        SharedPrefUtils().setValue(PHONE_NUMBER, parking_owner.phoneNumber)
+//                        SharedPrefUtils().setValue(IMAGE_URL, parking_owner.imageUrl)
                         toast("Login Successfully")
-                        launchActivity<HomeManagementActivity>()
+               //         launchActivity<HomeManagementActivity>()
                     }
                     else{
                         showProgress(false)

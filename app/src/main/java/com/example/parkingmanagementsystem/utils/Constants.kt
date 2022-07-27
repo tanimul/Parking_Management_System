@@ -6,6 +6,7 @@ object Constants {
         const val myPreferences = "MyPreferences"
         const val KEY_AUTH_TOKEN = "authToken"
         const val IS_LOGGIN = "isLogin"
+        const val IS_MANAGEMENT = "isManagement"
         const val PHONE_NUMBER = "phoneNumber"
         const val FULL_NAME = "fullName"
         const val IMAGE_URL = "imageUrl"
@@ -13,6 +14,7 @@ object Constants {
     object FirebaseKeys {
         const val KEY_USERS_COLLECTION = "Users"
         const val KEY_MANAGEMENT_COLLECTION = "Managements"
+        const val KEY_PARKING_OWNER_COLLECTION = "ParkingOwner"
     }
 
 }

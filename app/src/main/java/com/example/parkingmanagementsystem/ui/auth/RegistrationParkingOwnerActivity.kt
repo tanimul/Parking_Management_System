@@ -127,7 +127,7 @@ class RegistrationParkingOwnerActivity : AppBaseActivity() {
 
 
         //set user data
-        Variables.parkingOwner._id = phone
+        Variables.parkingOwner._id = ""+System.currentTimeMillis()
         Variables.parkingOwner.name = name
         Variables.parkingOwner.email = email
         Variables.parkingOwner.address = address
@@ -139,14 +139,15 @@ class RegistrationParkingOwnerActivity : AppBaseActivity() {
 
 
 
-        db.collection(Constants.FirebaseKeys.KEY_MANAGEMENT_COLLECTION)
-            .document(phone)
+        db.collection(Constants.FirebaseKeys.KEY_PARKING_OWNER_COLLECTION)
+            .document(""+System.currentTimeMillis())
             .set(Variables.parkingOwner).addOnSuccessListener {
                 //hide progressbar
                 showProgress(false)
                 Log.d(TAG, "Profile updated successfully ")
                 toast("Registration successfully")
                 SharedPrefUtils().setValue(Constants.SharedPref.IS_LOGGIN, true)
+                SharedPrefUtils().setValue(Constants.SharedPref.IS_MANAGEMENT, false)
                 SharedPrefUtils().setValue(Constants.SharedPref.FULL_NAME, name)
                 SharedPrefUtils().setValue(Constants.SharedPref.PHONE_NUMBER, phone)
                 SharedPrefUtils().setValue(Constants.SharedPref.IMAGE_URL, imageUrl!!)
