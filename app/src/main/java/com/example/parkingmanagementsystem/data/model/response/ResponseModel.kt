@@ -29,3 +29,5 @@ data class ParkingOwner(
     val addedAt: Long = System.currentTimeMillis(),
     var updatedAt: Long = System.currentTimeMillis()
 ) : Serializable
+
+
