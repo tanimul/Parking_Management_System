@@ -7,6 +7,7 @@ import com.example.parkingmanagementsystem.databinding.ActivityLoginManagementBi
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
 import com.example.parkingmanagementsystem.ui.main.HomeManagementActivity
 import com.example.parkingmanagementsystem.utils.Constants.FirebaseKeys.KEY_MANAGEMENT_COLLECTION
+import com.example.parkingmanagementsystem.utils.Constants.FirebaseKeys.KEY_PARKING_OWNER_COLLECTION
 import com.example.parkingmanagementsystem.utils.Constants.SharedPref.FULL_NAME
 import com.example.parkingmanagementsystem.utils.Constants.SharedPref.IMAGE_URL
 import com.example.parkingmanagementsystem.utils.Constants.SharedPref.IS_LOGGIN
@@ -37,7 +38,12 @@ class LoginManagementActivity : AppBaseActivity() {
 
         binding.btnLogin.setOnClickListener {
             if (checkValidation()) {
-                checkInfo()
+                if(binding.radio1.isChecked){
+                    checkAdminInfo()
+                }else{
+                    checkParkingOwnerInfo()
+                }
+
             } else {
                 toast("Please fill the all field Correctly")
             }
@@ -50,32 +56,65 @@ class LoginManagementActivity : AppBaseActivity() {
                 || binding.etPassword.text.toString().isNotEmpty())
     }
 
-    private fun checkInfo() {
+    private fun checkAdminInfo() {
 
         showProgress(true)
-        db.collection(KEY_MANAGEMENT_COLLECTION).document(binding.etPhone.text.toString()).get()
+        db.collection(KEY_MANAGEMENT_COLLECTION).document().get()
             .addOnSuccessListener { snapshot ->
+
                 if (snapshot.exists()) {
                     showProgress(false)
-                    val parking_owner = snapshot.toObject(ParkingOwner::class.java)!!
-                    if (parking_owner.password == binding.etPassword.text.toString()) {
-//                        SharedPrefUtils().setValue(IS_LOGGIN, true)
-//                        SharedPrefUtils().setValue(FULL_NAME, parking_owner.name)
-//                        SharedPrefUtils().setValue(PHONE_NUMBER, parking_owner.phoneNumber)
-//                        SharedPrefUtils().setValue(IMAGE_URL, parking_owner.imageUrl)
-                        toast("Login Successfully")
-               //         launchActivity<HomeManagementActivity>()
-                    }
-                    else{
-                        showProgress(false)
-                        toast("Wrong Phone number or Password")
-                    }
+                    Log.d(TAG, "checkInfo: ")
+//                    val parking_owner = snapshot.toObject(ParkingOwner::class.java)!!
+//                    if (parking_owner.password == binding.etPassword.text.toString()) {
+////                        SharedPrefUtils().setValue(IS_LOGGIN, true)
+////                        SharedPrefUtils().setValue(FULL_NAME, parking_owner.name)
+////                        SharedPrefUtils().setValue(PHONE_NUMBER, parking_owner.phoneNumber)
+////                        SharedPrefUtils().setValue(IMAGE_URL, parking_owner.imageUrl)
+//                        toast("Login Successfully")
+//                        //         launchActivity<HomeManagementActivity>()
+//                    } else {
+//                        showProgress(false)
+//                        toast("Wrong Phone number or Password")
+//                    }
 
-                }else{
+                } else {
                     showProgress(false)
                     toast("User Not Found")
                 }
-            }.addOnFailureListener{
+            }.addOnFailureListener {
+                showProgress(false)
+                toast(it.localizedMessage!!)
+            }
+    }
+
+    private fun checkParkingOwnerInfo() {
+
+        showProgress(true)
+        db.collection(KEY_PARKING_OWNER_COLLECTION).document().get()
+            .addOnSuccessListener { snapshot ->
+
+                if (snapshot.exists()) {
+                    showProgress(false)
+                    Log.d(TAG, "checkInfo: ")
+//                    val parking_owner = snapshot.toObject(ParkingOwner::class.java)!!
+//                    if (parking_owner.password == binding.etPassword.text.toString()) {
+////                        SharedPrefUtils().setValue(IS_LOGGIN, true)
+////                        SharedPrefUtils().setValue(FULL_NAME, parking_owner.name)
+////                        SharedPrefUtils().setValue(PHONE_NUMBER, parking_owner.phoneNumber)
+////                        SharedPrefUtils().setValue(IMAGE_URL, parking_owner.imageUrl)
+//                        toast("Login Successfully")
+//                        //         launchActivity<HomeManagementActivity>()
+//                    } else {
+//                        showProgress(false)
+//                        toast("Wrong Phone number or Password")
+//                    }
+
+                } else {
+                    showProgress(false)
+                    toast("User Not Found")
+                }
+            }.addOnFailureListener {
                 showProgress(false)
                 toast(it.localizedMessage!!)
             }
