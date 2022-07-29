@@ -1,5 +1,6 @@
 package com.example.parkingmanagementsystem.ui.intro
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -14,6 +15,7 @@ import com.example.parkingmanagementsystem.utils.SharedPrefUtils
 import com.example.parkingmanagementsystem.utils.extentions.launchActivity
 import com.google.firebase.auth.FirebaseAuth
 
+@SuppressLint("CustomSplashScreen")
 class SplashActivity : AppBaseActivity() {
     companion object {
         private const val TAG: String = "SplashActivity"

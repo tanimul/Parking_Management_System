@@ -13,6 +13,7 @@ import com.example.parkingmanagementsystem.ui.AppBaseActivity
 import com.example.parkingmanagementsystem.ui.main.HomeActivity
 import com.example.parkingmanagementsystem.ui.main.HomeManagementActivity
 import com.example.parkingmanagementsystem.utils.Constants
+import com.example.parkingmanagementsystem.utils.Constants.SharedPref.MANAGEMENT_ID
 import com.example.parkingmanagementsystem.utils.SharedPrefUtils
 import com.example.parkingmanagementsystem.utils.Variables
 import com.example.parkingmanagementsystem.utils.extentions.launchActivity
@@ -151,6 +152,8 @@ class RegistrationParkingOwnerActivity : AppBaseActivity() {
                 SharedPrefUtils().setValue(Constants.SharedPref.IS_MANAGEMENT, false)
                 SharedPrefUtils().setValue(Constants.SharedPref.FULL_NAME, name)
                 SharedPrefUtils().setValue(Constants.SharedPref.PHONE_NUMBER, phone)
+                SharedPrefUtils().setValue(Constants.SharedPref.PARKING_OWNER_ID, id)
+                SharedPrefUtils().setValue(MANAGEMENT_ID, "")
                 SharedPrefUtils().setValue(Constants.SharedPref.IMAGE_URL, imageUrl!!)
                 launchActivity<HomeManagementActivity>()
                 finish()

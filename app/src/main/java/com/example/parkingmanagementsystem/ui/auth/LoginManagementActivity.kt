@@ -13,6 +13,8 @@ import com.example.parkingmanagementsystem.utils.Constants.SharedPref.FULL_NAME
 import com.example.parkingmanagementsystem.utils.Constants.SharedPref.IMAGE_URL
 import com.example.parkingmanagementsystem.utils.Constants.SharedPref.IS_LOGGIN
 import com.example.parkingmanagementsystem.utils.Constants.SharedPref.IS_MANAGEMENT
+import com.example.parkingmanagementsystem.utils.Constants.SharedPref.MANAGEMENT_ID
+import com.example.parkingmanagementsystem.utils.Constants.SharedPref.PARKING_OWNER_ID
 import com.example.parkingmanagementsystem.utils.Constants.SharedPref.PHONE_NUMBER
 import com.example.parkingmanagementsystem.utils.SharedPrefUtils
 import com.example.parkingmanagementsystem.utils.extentions.launchActivity
@@ -72,6 +74,8 @@ class LoginManagementActivity : AppBaseActivity() {
                             SharedPrefUtils().setValue(IS_MANAGEMENT, true)
                             SharedPrefUtils().setValue(FULL_NAME, parking_owner.name)
                             SharedPrefUtils().setValue(PHONE_NUMBER, parking_owner.phoneNumber)
+                            SharedPrefUtils().setValue(MANAGEMENT_ID, parking_owner._id)
+                            SharedPrefUtils().setValue(PARKING_OWNER_ID, "")
                             SharedPrefUtils().setValue(IMAGE_URL, parking_owner.imageUrl)
                             toast("Login Successfully")
                             launchActivity<HomeManagementActivity>()
@@ -107,6 +111,8 @@ class LoginManagementActivity : AppBaseActivity() {
                             SharedPrefUtils().setValue(IS_MANAGEMENT, false)
                             SharedPrefUtils().setValue(FULL_NAME, parking_owner.name)
                             SharedPrefUtils().setValue(PHONE_NUMBER, parking_owner.phoneNumber)
+                            SharedPrefUtils().setValue(PARKING_OWNER_ID, parking_owner._id)
+                            SharedPrefUtils().setValue(MANAGEMENT_ID, "")
                             SharedPrefUtils().setValue(IMAGE_URL, parking_owner.imageUrl)
                             toast("Login Successfully")
                             launchActivity<HomeManagementActivity>()
