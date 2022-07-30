@@ -31,3 +31,8 @@ data class ParkingOwner(
 ) : Serializable
 
 
+data class NotificationInfo(
+    val purpose: String = "",
+    val id: String = "",
+    val time: Long = 0L,
+) : Serializable

@@ -53,4 +53,5 @@
     <string name="time">Time</string>
     <string name="add_parking_space">Add Parking Space</string>
     <string name="transaction">Transaction</string>
+    <string name="notification">Notification</string>
 </resources>
