@@ -24,6 +24,7 @@
     <string name="full_name">Full Name</string>
     <string name="email">Email</string>
     <string name="address">Address</string>
+    <string name="cost_per_hour">Ultimate cost per hour</string>
     <string name="nid_number">NID Number</string>
     <string name="vehicle_number">Vehicle Number</string>
     <string name="register">Register</string>
@@ -54,4 +55,6 @@
     <string name="add_parking_space">Add Parking Space</string>
     <string name="transaction">Transaction</string>
     <string name="notification">Notification</string>
+    <string name="place_name">Place name</string>
+    <string name="total_space">Total Parking Space</string>
 </resources>

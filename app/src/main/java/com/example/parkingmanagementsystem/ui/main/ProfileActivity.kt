@@ -41,13 +41,17 @@ class ProfileActivity : AppBaseActivity() {
         mAuth.currentUser?.let { setUserHeaderInformation(it.uid) }
 
 
+
         if (SharedPrefUtils().getBooleanValue(Constants.SharedPref.IS_LOGGIN) && SharedPrefUtils().getStringValue(
                 Constants.SharedPref.PARKING_OWNER_ID
             ) == ""
         ) {
             setManagementInformation()
         } else {
-            setParkingInformation()
+            setParkingOwnerInformation()
+        }
+        binding.ibBack.setOnClickListener {
+            onBackPressed()
         }
 
     }
@@ -69,7 +73,7 @@ class ProfileActivity : AppBaseActivity() {
 
     }
 
-    private fun setParkingInformation() {
+    private fun setParkingOwnerInformation() {
         db.collection(KEY_PARKING_OWNER_COLLECTION)
             .document(SharedPrefUtils().getStringValue(Constants.SharedPref.PARKING_OWNER_ID)).get()
             .addOnSuccessListener { snapshot ->
@@ -80,6 +84,7 @@ class ProfileActivity : AppBaseActivity() {
                 binding.tvLocation.text = parking_owner?.address
                 binding.tvEmail.text = parking_owner?.email
                 binding.tvPhoneNumber.text = parking_owner?.phoneNumber
+                binding.tvVehicleNumber.visibility = View.GONE
                 binding.tvVehicleNumber.visibility = View.GONE
                 parking_owner?.let { binding.civUserImage.loadImageFromUrl(it.imageUrl) }
             }
