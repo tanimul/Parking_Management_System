@@ -36,3 +36,18 @@ data class NotificationInfo(
     val id: String = "",
     val time: Long = 0L,
 ) : Serializable
+
+data class ParkingInfo(
+    val uploaderId: String = "",
+    val key: String = "",
+    val placeName: String = "",
+    val placeAddress: String = "",
+    val placeLatitude: Double = 0.0,
+    val placeLongitude: Double = 0.0,
+    val priority: String = "",
+    val ultimateCostPerHour: String = "",
+    val totalParkingSpace: String = "",
+    val placeUrl: String = "",
+    val addedAt: Long = System.currentTimeMillis(),
+    var updatedAt: Long = System.currentTimeMillis()
+):Serializable

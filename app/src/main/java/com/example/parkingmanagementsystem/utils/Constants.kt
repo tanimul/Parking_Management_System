@@ -18,6 +18,7 @@ object Constants {
         const val KEY_MANAGEMENT_COLLECTION = "Managements"
         const val KEY_PARKING_OWNER_COLLECTION = "ParkingOwner"
         const val KEY_NOTIFICATION_INFO = "notification_info"
+        const val KEY_PARKING_INFO = "parking_info"
     }
 
 }
