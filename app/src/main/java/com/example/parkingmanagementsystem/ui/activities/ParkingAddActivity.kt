@@ -3,7 +3,6 @@ package com.example.parkingmanagementsystem.ui.activities
 import android.Manifest
 import android.content.pm.PackageManager
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,7 +10,6 @@ import android.webkit.MimeTypeMap
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.parkingmanagementsystem.R
 import com.example.parkingmanagementsystem.data.model.response.ParkingInfo
 import com.example.parkingmanagementsystem.databinding.ActivityParkingAddBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
@@ -24,6 +22,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import java.util.*
 
 class ParkingAddActivity : AppBaseActivity() {
     private lateinit var binding: ActivityParkingAddBinding
@@ -45,24 +44,19 @@ class ParkingAddActivity : AppBaseActivity() {
 
         storageReference = FirebaseStorage.getInstance().getReference("parking_images")
 
-        binding.btnAddParking.setOnClickListener {
-            if (image_uri != null && binding.etPlace.text.toString()
-                    .isNotEmpty() && binding.tvAddress.text == null
-                && binding.etTotalSpace.text.toString()
-                    .isNotEmpty() && latitude != 0.0 && longitude != 0.0
-            ) {
-                placeStore()
-            }else {
-                toast("Please fill the all filed correctly.")
-            }
-        }
-        binding.tvAddress.setOnClickListener {
 
-        }
-        binding.radio2.setOnClickListener {
-            binding.etCostPerHour.visibility=View.VISIBLE
 
+        binding.radioGroup.setOnCheckedChangeListener { p0, p1 ->
+            val radioButton: View = binding.radioGroup.findViewById(p1)
+            val index: Int = binding.radioGroup.indexOfChild(radioButton)
+
+              if(index == 0) {
+                  binding.layoutTie.visibility = View.GONE
+            }else{
+                  binding.layoutTie.visibility = View.VISIBLE
+              }
         }
+
 
         binding.ivParking.setOnClickListener {
             if (ContextCompat.checkSelfPermission(
@@ -80,6 +74,25 @@ class ParkingAddActivity : AppBaseActivity() {
                 )
             }
 
+        }
+
+        binding.btnAddParking.setOnClickListener {
+//            if (image_uri != null && binding.etPlace.text.toString()
+//                    .isNotEmpty() && binding.tvAddress.text == null
+//                && binding.etTotalSpace.text.toString()
+//                    .isNotEmpty() && latitude != 0.0 && longitude != 0.0
+//            ) {
+            placeStore()
+//            } else {
+//                toast("Please fill the all filed correctly.")
+//            }
+        }
+        binding.tvAddress.setOnClickListener {
+
+        }
+
+        binding.ibBack.setOnClickListener {
+            onBackPressed()
         }
     }
 
@@ -140,7 +153,7 @@ class ParkingAddActivity : AppBaseActivity() {
                             latitude,
                             longitude,
                             priority,
-                            ""+binding.etCostPerHour.text.toString(),
+                            "" + binding.etCostPerHour.text.toString(),
                             binding.etTotalSpace.text.toString(),
                             url,
                         )
