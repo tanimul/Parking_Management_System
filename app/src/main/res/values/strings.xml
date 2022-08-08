@@ -57,4 +57,6 @@
     <string name="notification">Notification</string>
     <string name="place_name">Place name</string>
     <string name="total_space">Total Parking Space</string>
+    <string name="amount">Amount</string>
+    <string name="date_time">Date and time</string>
 </resources>
