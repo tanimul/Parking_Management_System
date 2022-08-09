@@ -37,7 +37,8 @@ data class NotificationInfo(
     val time: Long = 0L,
 ) : Serializable
 
-data class ParkingInfo(
+data class ParkingInfo
+    (
     val uploaderId: String = "",
     val key: String = "",
     val placeName: String = "",

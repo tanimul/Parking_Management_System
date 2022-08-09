@@ -17,7 +17,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ParkingManagementSystem">
-
+        <activity
+            android:name=".MonthlyParkingAddActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddressPickupActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.activities.MonthlyParkingActivity"
             android:exported="false" />
@@ -67,10 +72,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_Api_key" />
-
     </application>
 
 </manifest>

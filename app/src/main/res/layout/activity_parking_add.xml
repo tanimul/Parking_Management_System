@@ -108,6 +108,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/cost_per_hour"
+            android:inputType="number"
             android:maxLines="1"
             android:textSize="20sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -128,6 +129,7 @@
             android:id="@+id/et_totalSpace"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="number"
             android:hint="@string/total_space"
             android:maxLines="1"
             android:textSize="20sp" />
