@@ -18,10 +18,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ParkingManagementSystem">
         <activity
-            android:name=".MonthlyParkingAddActivity"
+            android:name=".ui.MonthlyParkingAddActivity"
             android:exported="false" />
         <activity
-            android:name=".AddressPickupActivity"
+            android:name=".ui.AddressPickupActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activities.MonthlyParkingActivity"
