@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ParkingManagementSystem">
         <activity
+            android:name=".BookingActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.MonthlyParkingAddActivity"
             android:exported="false" />
         <activity
