@@ -61,4 +61,5 @@
     <string name="date_time">Date and time</string>
     <string name="promo_code_title">Do you have promo code? Use Promo Code to get Discount.</string>
     <string name="promo_code">Promo Code</string>
+    <string name="ok">OK</string>
 </resources>

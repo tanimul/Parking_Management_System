@@ -46,7 +46,7 @@ class NotificationActivity : AppBaseActivity() {
             .get().addOnSuccessListener { snapshot ->
                 Log.d(TAG, "load Notification: ${snapshot.size()}")
                 for (snapshot1 in snapshot) {
-                    val notification_item = snapshot1.toObject(NotificationInfo::class.java)!!
+                    val notification_item = snapshot1.toObject(NotificationInfo::class.java)
                     Log.d(TAG, "loadNotication: $notification_item")
 
 

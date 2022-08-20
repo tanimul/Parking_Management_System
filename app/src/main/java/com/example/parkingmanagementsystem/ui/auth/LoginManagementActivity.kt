@@ -68,7 +68,7 @@ class LoginManagementActivity : AppBaseActivity() {
                 if (snapshot.size() != 0) {
                     showProgress(false)
                     for (snapshot1 in snapshot) {
-                        val parking_owner = snapshot1.toObject(ParkingOwner::class.java)!!
+                        val parking_owner = snapshot1.toObject(ParkingOwner::class.java)
                         if (parking_owner.phoneNumber == binding.etPhone.text.toString() && parking_owner.password == binding.etPassword.text.toString()) {
                             SharedPrefUtils().setValue(IS_LOGGIN, true)
                             SharedPrefUtils().setValue(IS_MANAGEMENT, true)
@@ -105,7 +105,7 @@ class LoginManagementActivity : AppBaseActivity() {
                 if (snapshot.size() != 0) {
                     showProgress(false)
                     for (snapshot1 in snapshot) {
-                        val parking_owner = snapshot1.toObject(ParkingOwner::class.java)!!
+                        val parking_owner = snapshot1.toObject(ParkingOwner::class.java)
                         if (parking_owner.phoneNumber == binding.etPhone.text.toString() && parking_owner.password == binding.etPassword.text.toString()) {
                             SharedPrefUtils().setValue(IS_LOGGIN, true)
                             SharedPrefUtils().setValue(IS_MANAGEMENT, false)
