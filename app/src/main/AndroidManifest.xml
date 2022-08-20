@@ -24,13 +24,13 @@
             android:name=".ui.MonthlyParkingAddActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.AddressPickupActivity"
+            android:name=".ui.parking_add.AddressPickupActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activities.MonthlyParkingActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activities.ParkingAddActivity"
+            android:name=".ui.parking_add.ParkingAddActivity"
             android:exported="false" />
         <activity
             android:name=".ui.main.HomeManagementActivity"

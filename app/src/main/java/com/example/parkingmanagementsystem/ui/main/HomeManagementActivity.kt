@@ -6,7 +6,6 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Color
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
@@ -23,7 +22,7 @@ import com.example.parkingmanagementsystem.databinding.ActivityHomeManagementBin
 import com.example.parkingmanagementsystem.databinding.NavHeaderLayoutBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
 import com.example.parkingmanagementsystem.ui.activities.NotificationActivity
-import com.example.parkingmanagementsystem.ui.activities.ParkingAddActivity
+import com.example.parkingmanagementsystem.ui.parking_add.ParkingAddActivity
 import com.example.parkingmanagementsystem.utils.Constants
 import com.example.parkingmanagementsystem.utils.Constants.SharedPref.FULL_NAME
 import com.example.parkingmanagementsystem.utils.Constants.SharedPref.IMAGE_URL
@@ -31,14 +30,12 @@ import com.example.parkingmanagementsystem.utils.Constants.SharedPref.PHONE_NUMB
 import com.example.parkingmanagementsystem.utils.SharedPrefUtils
 import com.example.parkingmanagementsystem.utils.extentions.launchActivity
 import com.example.parkingmanagementsystem.utils.extentions.loadImageFromUrl
-import com.example.parkingmanagementsystem.utils.extentions.toast
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
@@ -87,7 +84,7 @@ class HomeManagementActivity : AppBaseActivity(), OnMapReadyCallback,
         mAuth = FirebaseAuth.getInstance()
 
         //PLaces API Declare
-        initPlacesAPI();
+        initPlacesAPI()
 
         val actionBarDrawerToggle = ActionBarDrawerToggle(
             this, binding.layoutDrawer,

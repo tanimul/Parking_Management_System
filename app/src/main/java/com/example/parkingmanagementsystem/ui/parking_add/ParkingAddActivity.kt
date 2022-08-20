@@ -1,6 +1,7 @@
-package com.example.parkingmanagementsystem.ui.activities
+package com.example.parkingmanagementsystem.ui.parking_add
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
@@ -22,7 +23,6 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import java.util.*
 
 class ParkingAddActivity : AppBaseActivity() {
     private lateinit var binding: ActivityParkingAddBinding
@@ -88,13 +88,22 @@ class ParkingAddActivity : AppBaseActivity() {
 //            }
         }
         binding.tvAddress.setOnClickListener {
-
+            val intent = Intent(this, AddressPickupActivity::class.java)
+            addressPickupActResult.launch(intent)
         }
 
         binding.ibBack.setOnClickListener {
             onBackPressed()
         }
     }
+
+    private val addressPickupActResult =
+        registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) {
+
+
+        }
 
 
     //Get image extention
