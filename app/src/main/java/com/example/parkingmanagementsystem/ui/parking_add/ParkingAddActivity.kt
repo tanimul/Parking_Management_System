@@ -50,11 +50,11 @@ class ParkingAddActivity : AppBaseActivity() {
             val radioButton: View = binding.radioGroup.findViewById(p1)
             val index: Int = binding.radioGroup.indexOfChild(radioButton)
 
-              if(index == 0) {
-                  binding.layoutTie.visibility = View.GONE
-            }else{
-                  binding.layoutTie.visibility = View.VISIBLE
-              }
+            if (index == 0) {
+                binding.layoutTie.visibility = View.GONE
+            } else {
+                binding.layoutTie.visibility = View.VISIBLE
+            }
         }
 
 
@@ -95,6 +95,8 @@ class ParkingAddActivity : AppBaseActivity() {
         binding.ibBack.setOnClickListener {
             onBackPressed()
         }
+
+
     }
 
     private val addressPickupActResult =
@@ -102,7 +104,11 @@ class ParkingAddActivity : AppBaseActivity() {
             ActivityResultContracts.StartActivityForResult()
         ) {
 
-
+            if (it.resultCode == RESULT_OK) {
+                binding.tvAddress.text = it.data?.getStringExtra("addressName")
+                latitude = it.data!!.getDoubleExtra("lat", 0.0)
+                longitude = it.data!!.getDoubleExtra("long", 0.0)
+            }
         }
 
 

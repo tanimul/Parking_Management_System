@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Geocoder
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,6 +15,7 @@ import com.example.parkingmanagementsystem.R
 import com.example.parkingmanagementsystem.databinding.ActivityAddressPickupBinding
 import com.example.parkingmanagementsystem.databinding.NavHeaderLayoutBinding
 import com.example.parkingmanagementsystem.ui.main.HomeManagementActivity
+import com.example.parkingmanagementsystem.utils.extentions.toast
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -115,6 +117,18 @@ class AddressPickupActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
         mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
 
+        mMap.setOnMapClickListener {
+            val latLng = LatLng(it.latitude, it.longitude)
+            moveCamera(latLng)
+            val geocoder =
+                Geocoder(this, Locale.getDefault())
+            val addressList =
+                geocoder.getFromLocation(it.latitude, it.longitude, 1)
+            addressName=addressList[0].getAddressLine(0)
+
+            binding.tvAddress.text=addressName
+
+        }
     }
 
     private fun moveCamera(latLng: LatLng) {
@@ -172,7 +186,7 @@ class AddressPickupActivity : AppCompatActivity(), OnMapReadyCallback {
                 val data: Intent? = result.data
                 val place: Place = Autocomplete.getPlaceFromIntent(data)
                 Log.d(TAG, "place address: " + place.address)
-                addressName = place.name
+                addressName = place.address
                 lat = place.latLng.latitude
                 long = place.latLng.longitude
                 binding.tvAddress.text = addressName
