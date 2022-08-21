@@ -21,7 +21,7 @@
             android:name=".BookingActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.MonthlyParkingAddActivity"
+            android:name=".ui.parking_add.MonthlyParkingAddActivity"
             android:exported="false" />
         <activity
             android:name=".ui.parking_add.AddressPickupActivity"
