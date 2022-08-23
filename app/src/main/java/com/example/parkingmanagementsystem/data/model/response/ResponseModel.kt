@@ -52,3 +52,20 @@ data class ParkingInfo
     val addedAt: Long = System.currentTimeMillis(),
     var updatedAt: Long = System.currentTimeMillis()
 ):Serializable
+
+data class MonthlyParkingInfo
+    (
+    val uploaderId: String = "",
+    val key: String = "",
+    val placeName: String = "",
+    val placeAddress: String = "",
+    val placeLatitude: Double = 0.0,
+    val placeLongitude: Double = 0.0,
+    val month: String = "",
+    val time: String = "",
+    val ultimateCost: String = "",
+    val totalParkingSpace: String = "",
+    val placeUrl: String = "",
+    val addedAt: Long = System.currentTimeMillis(),
+    var updatedAt: Long = System.currentTimeMillis()
+):Serializable

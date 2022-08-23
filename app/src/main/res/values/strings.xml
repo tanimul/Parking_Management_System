@@ -63,4 +63,33 @@
     <string name="promo_code_title">Do you have promo code? Use Promo Code to get Discount.</string>
     <string name="promo_code">Promo Code</string>
     <string name="ok">OK</string>
+
+    <string-array name="month">
+        <item>Jan</item>
+        <item>Feb</item>
+        <item>Mar</item>
+        <item>Apr</item>
+        <item>Jun</item>
+        <item>Jul</item>
+        <item>Aug</item>
+        <item>Sep</item>
+        <item>Oct</item>
+        <item>Nov</item>
+        <item>Dec</item>
+    </string-array>
+
+    <string-array name="slot">
+        <item>12.00 am - 02.00 am</item>
+        <item>02.00 am - 04.00 am</item>
+        <item>04.00 am - 06.00 am</item>
+        <item>06.00 am - 08.00 am</item>
+        <item>08.00 am - 10.00 am</item>
+        <item>10.00 am - 12.00 pm</item>
+        <item>12.00 pm - 02.00 pm</item>
+        <item>02.00 pm - 04.00 pm</item>
+        <item>04.00 pm - 06.00 pm</item>
+        <item>06.00 pm - 08.00 pm</item>
+        <item>08.00 pm - 10.00 pm</item>
+        <item>10.00 pm - 12.00 am</item>
+    </string-array>
 </resources>

@@ -23,6 +23,7 @@ import com.example.parkingmanagementsystem.databinding.ActivityHomeManagementBin
 import com.example.parkingmanagementsystem.databinding.NavHeaderLayoutBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
 import com.example.parkingmanagementsystem.ui.activities.NotificationActivity
+import com.example.parkingmanagementsystem.ui.parking_add.MonthlyParkingAddActivity
 import com.example.parkingmanagementsystem.ui.parking_add.ParkingAddActivity
 import com.example.parkingmanagementsystem.utils.Constants
 import com.example.parkingmanagementsystem.utils.Constants.SharedPref.FULL_NAME
@@ -287,6 +288,9 @@ class HomeManagementActivity : AppBaseActivity(), OnMapReadyCallback,
 
             R.id.nav_add_parking_space -> {
                 launchActivity<ParkingAddActivity>()
+            }
+            R.id.nav_monthly_parking -> {
+                launchActivity<MonthlyParkingAddActivity>()
             }
             R.id.nav_logout -> {
                 logOut()

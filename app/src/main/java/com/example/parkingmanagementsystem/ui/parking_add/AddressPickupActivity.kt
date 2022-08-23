@@ -78,6 +78,7 @@ class AddressPickupActivity : AppCompatActivity(), OnMapReadyCallback {
             resultIntent.putExtra("addressName", addressName)
             resultIntent.putExtra("lat", lat)
             resultIntent.putExtra("long", long)
+            Log.d(TAG, "onCreate: $lat - $long")
             setResult(RESULT_OK, resultIntent)
             finish()
         }
@@ -127,6 +128,9 @@ class AddressPickupActivity : AppCompatActivity(), OnMapReadyCallback {
             addressName=addressList[0].getAddressLine(0)
 
             binding.tvAddress.text=addressName
+
+            lat = it.latitude
+            long = it.longitude
 
         }
     }

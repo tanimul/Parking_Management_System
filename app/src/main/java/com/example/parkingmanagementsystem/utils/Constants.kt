@@ -19,6 +19,7 @@ object Constants {
         const val KEY_PARKING_OWNER_COLLECTION = "ParkingOwner"
         const val KEY_NOTIFICATION_INFO = "notification_info"
         const val KEY_PARKING_INFO = "parking_info"
+        const val KEY_MONTHLY_PARKING_INFO = "monthly_parking_info"
     }
 
 }
