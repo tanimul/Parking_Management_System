@@ -12,6 +12,7 @@ object Constants {
         const val IMAGE_URL = "imageUrl"
         const val PARKING_OWNER_ID = "parkingOwnerId"
         const val MANAGEMENT_ID = "managementId"
+        const val PROMO_CODE = "promoCode"
     }
     object FirebaseKeys {
         const val KEY_USERS_COLLECTION = "Users"

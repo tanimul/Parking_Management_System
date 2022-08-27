@@ -263,7 +263,9 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
             R.id.menu_notification -> {
                 launchActivity<NotificationActivity>()
             }
-
+            R.id.menu_search -> {
+              searchPlaces()
+            }
 
         }
         return true
