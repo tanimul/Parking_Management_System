@@ -5,9 +5,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.activities.NotificationActivity">
+
     <include
         android:id="@+id/toolbar_layout"
         layout="@layout/layout_toolbar" />
+
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_view_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical"
+        app:duration="800"
+        tools:ignore="MissingConstraints">
+
+        <!-- Adding 7 rows of placeholders -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/shimmer_layout" />
+
+            <include layout="@layout/shimmer_layout" />
+
+            <include layout="@layout/shimmer_layout" />
+
+            <include layout="@layout/shimmer_layout" />
+
+            <include layout="@layout/shimmer_layout" />
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_notification"
         android:layout_width="match_parent"
@@ -15,4 +48,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar_layout"
         tools:listitem="@layout/layout_notification" />
+
+    <include
+        android:id="@+id/empty_layout"
+        layout="@layout/layout_empty"
+        android:visibility="gone" />
 </androidx.constraintlayout.widget.ConstraintLayout>
