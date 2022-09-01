@@ -19,12 +19,14 @@ import androidx.appcompat.view.menu.MenuBuilder
 import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
 import com.example.parkingmanagementsystem.R
+import com.example.parkingmanagementsystem.data.model.response.ParkingInfo
 import com.example.parkingmanagementsystem.data.model.response.User
 import com.example.parkingmanagementsystem.databinding.ActivityHomeBinding
 import com.example.parkingmanagementsystem.databinding.NavHeaderLayoutBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
 import com.example.parkingmanagementsystem.ui.activities.NotificationActivity
 import com.example.parkingmanagementsystem.ui.activities.UsePromoCodeActivity
+import com.example.parkingmanagementsystem.utils.Constants.FirebaseKeys.KEY_PARKING_INFO
 import com.example.parkingmanagementsystem.utils.Constants.FirebaseKeys.KEY_USERS_COLLECTION
 import com.example.parkingmanagementsystem.utils.extentions.launchActivity
 import com.example.parkingmanagementsystem.utils.extentions.loadImageFromUrl
@@ -106,10 +108,32 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
         mapFragment?.getMapAsync(this@HomeActivity)
         fetchLastLocation()
 
+        getParkingSpace()
 
 
         binding.navBar.setNavigationItemSelectedListener(this)
     }
+
+    private fun getParkingSpace() {
+        db.collection(KEY_PARKING_INFO)
+            .get().addOnSuccessListener { snapshot ->
+                Log.d(TAG, "getParkingSpace: ${snapshot.size()}")
+                for (parking_space in snapshot) {
+                    val parkingInfo = parking_space.toObject<ParkingInfo>()
+                    setParkingInfo(parkingInfo)
+                }
+            }
+    }
+
+    private fun setParkingInfo(parkingInfo: ParkingInfo) {
+        val latLng=LatLng(parkingInfo.placeLatitude,parkingInfo.placeLongitude)
+        marker = mMap.addMarker(
+            MarkerOptions()
+                .position(latLng)
+                .title("" + parkingInfo.placeName)
+        )!!
+    }
+
 
     private fun fetchLastLocation() {
         if (ActivityCompat.checkSelfPermission(
@@ -198,7 +222,7 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
     }
 
     private fun moveCamera(latLng: LatLng) {
-        marker?.remove()
+        //marker?.remove()
         marker = mMap.addMarker(
             MarkerOptions()
                 .position(latLng)
@@ -212,7 +236,7 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
         mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
 
-        marker?.remove()
+       // marker?.remove()
         marker = mMap.addMarker(
             MarkerOptions()
                 .position(latLng)
@@ -264,7 +288,7 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
                 launchActivity<NotificationActivity>()
             }
             R.id.menu_search -> {
-              searchPlaces()
+                searchPlaces()
             }
 
         }
