@@ -12,7 +12,7 @@
         android:padding="6dp">
 
         <TextView
-            android:id="@+id/tv_name"
+            android:id="@+id/tv_purpose"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/purpose"
