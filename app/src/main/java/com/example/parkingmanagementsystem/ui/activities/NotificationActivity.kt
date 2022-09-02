@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.parkingmanagementsystem.R
+import com.example.parkingmanagementsystem.adapter.NotificationListAdapter
 import com.example.parkingmanagementsystem.data.model.response.NotificationInfo
 import com.example.parkingmanagementsystem.databinding.ActivityNotificationBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
@@ -19,7 +20,7 @@ class NotificationActivity : AppBaseActivity() {
     private lateinit var binding: ActivityNotificationBinding
     private lateinit var notification_List: ArrayList<NotificationInfo>
 
-    //    private lateinit var notificationListAdapter: NotificationListAdapter
+    private lateinit var notificationListAdapter: NotificationListAdapter
     val db = Firebase.firestore
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,8 +32,8 @@ class NotificationActivity : AppBaseActivity() {
 
         notification_List = ArrayList<NotificationInfo>()
 
-//        notificationListAdapter = NotificationListAdapter(notification_List, this)
-//        binding.rvNotification.adapter = notificationListAdapter
+        notificationListAdapter = NotificationListAdapter(notification_List)
+        binding.rvNotification.adapter = notificationListAdapter
 
         val notificationListLayoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -50,17 +51,34 @@ class NotificationActivity : AppBaseActivity() {
                     Log.d(TAG, "loadNotication: $notification_item")
 
 
-                        notification_List.add(notification_item)
-
+                    notification_List.add(notification_item)
 
 
                 }
                 notification_List.reverse()
-//                notificationListAdapter.notifyDataSetChanged()
+                notificationListAdapter.notifyDataSetChanged()
                 binding.rvNotification.visibility = View.VISIBLE
+
+                binding.shimmerViewContainer.stopShimmerAnimation()
+                binding.shimmerViewContainer.visibility = View.GONE
+                if (snapshot.isEmpty) {
+                    binding.emptyLayout.root.visibility = View.VISIBLE
+                }
             }.addOnFailureListener {
                 Log.d(TAG, "addOnFailureListener: " + it.message)
                 toast("" + it.message)
             }
     }
+
+    override fun onStart() {
+        super.onStart()
+        binding.shimmerViewContainer.startShimmerAnimation()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        binding.shimmerViewContainer.stopShimmerAnimation()
+        binding.shimmerViewContainer.visibility = View.GONE
+    }
+
 }

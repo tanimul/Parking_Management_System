@@ -63,6 +63,7 @@
     <string name="promo_code_title">Do you have promo code? Use Promo Code to get Discount.</string>
     <string name="promo_code">Promo Code</string>
     <string name="ok">OK</string>
+    <string name="no_item">No resources found.\n Please use the Service first.</string>
 
     <string-array name="month">
         <item>Jan</item>

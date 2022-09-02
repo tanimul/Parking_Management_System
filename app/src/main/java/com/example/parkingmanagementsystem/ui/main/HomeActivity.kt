@@ -69,6 +69,7 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
     private lateinit var mMap: GoogleMap
 
     private var marker: Marker? = null
+    private var marker_places: Marker? = null
     val db = Firebase.firestore
     private var addressName: String = "Current Location"
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -115,6 +116,7 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
     }
 
     private fun getParkingSpace() {
+        marker_places?.remove()
         db.collection(KEY_PARKING_INFO)
             .get().addOnSuccessListener { snapshot ->
                 Log.d(TAG, "getParkingSpace: ${snapshot.size()}")
@@ -126,8 +128,9 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
     }
 
     private fun setParkingInfo(parkingInfo: ParkingInfo) {
+
         val latLng=LatLng(parkingInfo.placeLatitude,parkingInfo.placeLongitude)
-        marker = mMap.addMarker(
+        marker_places = mMap.addMarker(
             MarkerOptions()
                 .position(latLng)
                 .title("" + parkingInfo.placeName)
@@ -222,7 +225,7 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
     }
 
     private fun moveCamera(latLng: LatLng) {
-        //marker?.remove()
+        marker?.remove()
         marker = mMap.addMarker(
             MarkerOptions()
                 .position(latLng)
@@ -236,7 +239,7 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
         mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
 
-       // marker?.remove()
+       marker?.remove()
         marker = mMap.addMarker(
             MarkerOptions()
                 .position(latLng)
