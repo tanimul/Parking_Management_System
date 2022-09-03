@@ -5,8 +5,11 @@ import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
@@ -14,9 +17,11 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.DrawableRes
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import com.example.parkingmanagementsystem.R
 import com.example.parkingmanagementsystem.data.model.response.ParkingInfo
@@ -37,9 +42,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.Autocomplete
@@ -50,6 +53,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import java.security.AccessController.getContext
 import java.util.*
 
 class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
@@ -127,13 +131,23 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
                 }
             }
     }
+    private fun getBitmapDescriptorFromVector(context: Context, @DrawableRes vectorDrawableResourceId: Int): BitmapDescriptor? {
 
+        val vectorDrawable = ContextCompat.getDrawable(context, vectorDrawableResourceId)
+        val bitmap = Bitmap.createBitmap(vectorDrawable!!.intrinsicWidth, vectorDrawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bitmap)
+        vectorDrawable.setBounds(0, 0, canvas.width, canvas.height)
+        vectorDrawable.draw(canvas)
+
+        return BitmapDescriptorFactory.fromBitmap(bitmap)
+    }
     private fun setParkingInfo(parkingInfo: ParkingInfo) {
 
         val latLng=LatLng(parkingInfo.placeLatitude,parkingInfo.placeLongitude)
         marker_places = mMap.addMarker(
             MarkerOptions()
                 .position(latLng)
+                .icon(getBitmapDescriptorFromVector(this, R.drawable.ic_parking))
                 .title("" + parkingInfo.placeName)
         )!!
     }
