@@ -24,6 +24,7 @@ import com.example.parkingmanagementsystem.data.model.response.User
 import com.example.parkingmanagementsystem.databinding.ActivityHomeBinding
 import com.example.parkingmanagementsystem.databinding.NavHeaderLayoutBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
+import com.example.parkingmanagementsystem.ui.activities.MonthlyParkingActivity
 import com.example.parkingmanagementsystem.ui.activities.NotificationActivity
 import com.example.parkingmanagementsystem.ui.activities.UsePromoCodeActivity
 import com.example.parkingmanagementsystem.utils.Constants.FirebaseKeys.KEY_PARKING_INFO
@@ -309,6 +310,9 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
 
             R.id.nav_use_promo_code -> {
                 launchActivity<UsePromoCodeActivity>()
+            }
+            R.id.nav_monthly_parking -> {
+                launchActivity<MonthlyParkingActivity>()
             }
             R.id.nav_logout -> {
                 logOut()
