@@ -65,6 +65,7 @@
     <string name="ok">OK</string>
     <string name="no_item">No resources found.\n Please use the Service first.</string>
     <string name="distance">Distance</string>
+    <string name="date">Date</string>
 
     <string-array name="month">
         <item>Jan</item>
