@@ -42,7 +42,9 @@
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/activity_registration_car_owner.xml" value="0.225" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/activity_registration_parking_owner.xml" value="0.22" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/activity_splash.xml" value="0.2" />
+        <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/activity_transaction.xml" value="0.2630208333333333" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/activity_use_promo_code.xml" value="0.22" />
+        <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/layout_booking.xml" value="0.2640625" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/layout_empty.xml" value="0.221875" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/layout_monthly_parking.xml" value="0.2" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/layout_notifcation.xml" value="0.18" />
