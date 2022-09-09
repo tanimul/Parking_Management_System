@@ -34,13 +34,11 @@ class MonthlyParkingListAdapter(
     override fun onBindViewHolder(holder: FoodListViewHolder, position: Int) {
         with(holder.binding) {
             with(mMonthlyParkingItems[position]) {
-
-                tvAddress.text=placeAddress
-                tvAmount.text=ultimateCost
+                tvAddress.text = placeAddress
+                tvAmount.text = ultimateCost
                 ivPlace.loadImageFromUrl(placeUrl)
             }
         }
-
 
 
     }
