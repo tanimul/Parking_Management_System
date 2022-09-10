@@ -89,4 +89,7 @@ dependencies {
 
     //Shimmer Effect
     implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
+
+
+    implementation 'com.google.maps.android:android-maps-utils:0.4+'
 }

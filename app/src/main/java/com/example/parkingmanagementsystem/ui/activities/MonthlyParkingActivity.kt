@@ -1,16 +1,12 @@
 package com.example.parkingmanagementsystem.ui.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.parkingmanagementsystem.R
 import com.example.parkingmanagementsystem.adapter.MonthlyParkingListAdapter
-import com.example.parkingmanagementsystem.adapter.NotificationListAdapter
 import com.example.parkingmanagementsystem.data.model.response.MonthlyParkingInfo
-import com.example.parkingmanagementsystem.data.model.response.NotificationInfo
-import com.example.parkingmanagementsystem.databinding.ActivityHomeBinding
 import com.example.parkingmanagementsystem.databinding.ActivityMonthlyParkingBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
 import com.example.parkingmanagementsystem.utils.Constants
@@ -39,15 +35,25 @@ class MonthlyParkingActivity : AppBaseActivity() {
 
         monthlyParking_List = ArrayList<MonthlyParkingInfo>()
 
-        monthlyParkingListAdapter = MonthlyParkingListAdapter(monthlyParking_List)
+        val bundle = intent.extras
+        val lat = bundle!!.getDouble("cur_latitude")
+        val lon = bundle!!.getDouble("cur_longitude")
+        Log.d(TAG, "onCreate: $lat")
+        Log.d(TAG, "onCreate: $lon")
+
+        loadMonthlyParkingList()
+
+
+        monthlyParkingListAdapter = MonthlyParkingListAdapter(monthlyParking_List,lat,lon)
         binding.rvMonthlyParking.adapter = monthlyParkingListAdapter
 
         val monthlyParkingListLayoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.rvMonthlyParking.layoutManager = monthlyParkingListLayoutManager
 
-        loadMonthlyParkingList()
+
     }
+
 
     private fun loadMonthlyParkingList() {
         db.collection(Constants.FirebaseKeys.KEY_MONTHLY_PARKING_INFO)

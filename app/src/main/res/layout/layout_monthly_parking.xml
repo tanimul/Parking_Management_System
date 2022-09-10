@@ -26,26 +26,30 @@
 
         <TextView
             android:id="@+id/tv_address"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:gravity="center"
+            android:layout_marginStart="10dp"
+            android:gravity="center_vertical"
             android:text="@string/address"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_place"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_distance"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:text="@string/distance"
             android:textColor="@color/black"
             android:textSize="20sp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_amount"
             app:layout_constraintStart_toEndOf="@id/iv_place"
             app:layout_constraintTop_toBottomOf="@id/tv_address" />
 

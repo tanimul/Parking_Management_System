@@ -105,8 +105,6 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
         mAuth.currentUser?.let { setHeaderInformation(it.uid) }
 
 
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-
         //current location face
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         val mapFragment =
@@ -131,19 +129,28 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
                 }
             }
     }
-    private fun getBitmapDescriptorFromVector(context: Context, @DrawableRes vectorDrawableResourceId: Int): BitmapDescriptor? {
+
+    private fun getBitmapDescriptorFromVector(
+        context: Context,
+        @DrawableRes vectorDrawableResourceId: Int
+    ): BitmapDescriptor? {
 
         val vectorDrawable = ContextCompat.getDrawable(context, vectorDrawableResourceId)
-        val bitmap = Bitmap.createBitmap(vectorDrawable!!.intrinsicWidth, vectorDrawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
+        val bitmap = Bitmap.createBitmap(
+            vectorDrawable!!.intrinsicWidth,
+            vectorDrawable.intrinsicHeight,
+            Bitmap.Config.ARGB_8888
+        )
         val canvas = Canvas(bitmap)
         vectorDrawable.setBounds(0, 0, canvas.width, canvas.height)
         vectorDrawable.draw(canvas)
 
         return BitmapDescriptorFactory.fromBitmap(bitmap)
     }
+
     private fun setParkingInfo(parkingInfo: ParkingInfo) {
 
-        val latLng=LatLng(parkingInfo.placeLatitude,parkingInfo.placeLongitude)
+        val latLng = LatLng(parkingInfo.placeLatitude, parkingInfo.placeLongitude)
         marker_places = mMap.addMarker(
             MarkerOptions()
                 .position(latLng)
@@ -254,7 +261,7 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
         mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
 
-       marker?.remove()
+        marker?.remove()
         marker = mMap.addMarker(
             MarkerOptions()
                 .position(latLng)
@@ -326,7 +333,15 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
                 launchActivity<UsePromoCodeActivity>()
             }
             R.id.nav_monthly_parking -> {
-                launchActivity<MonthlyParkingActivity>()
+                startActivity(
+                    Intent(this, MonthlyParkingActivity::class.java).putExtra(
+                        "cur_latitude",
+                        cur_location.latitude
+                    ).putExtra(
+                        "cur_longitude",
+                        cur_location.longitude
+                    )
+                )
             }
             R.id.nav_logout -> {
                 logOut()
