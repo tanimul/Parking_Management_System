@@ -66,6 +66,12 @@
     <string name="no_item">No resources found.\n Please use the Service first.</string>
     <string name="distance">Distance</string>
     <string name="date">Date</string>
+    <string name="description">Description</string>
+    <string name="start_time">Start Time</string>
+    <string name="end_time">End Time</string>
+    <string name="available_slot">Available Slot</string>
+    <string name="price">Price</string>
+    <string name="confirm_booking">Confirm Booking</string>
 
     <string-array name="month">
         <item>Jan</item>

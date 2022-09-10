@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable-v24/rectangle_background_simple.xml" value="0.2095" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/background_button.xml" value="0.1735" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/background_button_white.xml" value="0.1595" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/background_circular.xml" value="0.1155" />
@@ -12,6 +13,7 @@
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/ic_add.xml" value="0.1975" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/ic_back.xml" value="0.162" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/ic_back_arrow.xml" value="0.1785" />
+        <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/ic_back_white.xml" value="0.2085" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/ic_empty.xml" value="0.187" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/ic_outline_location.xml" value="0.115" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/ic_parking.xml" value="0.1975" />
@@ -23,6 +25,7 @@
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/otp_header_background.xml" value="0.1735" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/otp_verification_background.xml" value="0.1735" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/drawable/splash_background.xml" value="0.1735" />
+        <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/activity_add_booking.xml" value="0.22" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/activity_add_new_card.xml" value="0.225" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/activity_address_pickup.xml" value="0.22" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/activity_booking.xml" value="0.21354166666666666" />
@@ -50,6 +53,7 @@
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/layout_notifcation.xml" value="0.18" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/layout_notification.xml" value="0.30462962962962964" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/layout_progress_dialog.xml" value="0.26197916666666665" />
+        <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/layout_slot.xml" value="0.25" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/layout_test.xml" value="0.2640625" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/layout_toolbar.xml" value="0.27870370370370373" />
         <entry key="..\:/ClientProject/ParkingManagementSystem/app/src/main/res/layout/layout_transaction.xml" value="0.221875" />
