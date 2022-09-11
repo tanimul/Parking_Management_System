@@ -87,8 +87,11 @@ class MonthlyParkingAddActivity : AppBaseActivity() {
             val intent = Intent(this, AddressPickupActivity::class.java)
             addressPickupActResult.launch(intent)
         }
-
+        binding.ibBack.setOnClickListener {
+            onBackPressed()
+        }
     }
+
     private val addressPickupActResult =
         registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
@@ -101,6 +104,7 @@ class MonthlyParkingAddActivity : AppBaseActivity() {
                 Log.d(TAG, "$latitude - $longitude: ")
             }
         }
+
     //Get image extention
     fun GetFileExtention(uri: Uri?): String? {
         val contentResolver = contentResolver
@@ -162,8 +166,8 @@ class MonthlyParkingAddActivity : AppBaseActivity() {
                     storageReference.downloadUrl.addOnSuccessListener { uri ->
                         val url = uri.toString()
                         key = System.currentTimeMillis().toString()
-                        month=binding.spinnerMonth.selectedItem.toString()
-                        time=binding.spinnerSlot.selectedItem.toString()
+                        month = binding.spinnerMonth.selectedItem.toString()
+                        time = binding.spinnerSlot.selectedItem.toString()
 
                         val place_info = MonthlyParkingInfo(
                             u_id,

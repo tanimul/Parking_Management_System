@@ -79,6 +79,7 @@ class LoginManagementActivity : AppBaseActivity() {
                             SharedPrefUtils().setValue(IMAGE_URL, parking_owner.imageUrl)
                             toast("Login Successfully")
                             launchActivity<HomeManagementActivity>()
+                            finish()
                         } else {
                             showProgress(false)
                             toast("Wrong Phone number or Password")

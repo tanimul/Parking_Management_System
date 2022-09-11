@@ -52,6 +52,8 @@ class MonthlyParkingActivity : AppBaseActivity() {
         binding.rvMonthlyParking.layoutManager = monthlyParkingListLayoutManager
 
 
+
+
     }
 
 
