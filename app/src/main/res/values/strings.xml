@@ -72,6 +72,7 @@
     <string name="available_slot">Available Slot</string>
     <string name="price">Price</string>
     <string name="confirm_booking">Confirm Booking</string>
+    <string name="month">Month</string>
 
     <string-array name="month">
         <item>Jan</item>
