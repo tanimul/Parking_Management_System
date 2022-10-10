@@ -2,6 +2,7 @@ package com.example.parkingmanagementsystem.ui.booking
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.parkingmanagementsystem.R
 
 class AddMonthlyBookingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

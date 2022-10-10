@@ -243,16 +243,17 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
                 geocoder.getFromLocation(it.latitude, it.longitude, 1)
             addressName = addressList[0].getAddressLine(0)
 
+
         }
     }
 
     private fun moveCamera(latLng: LatLng) {
-        marker?.remove()
-        marker = mMap.addMarker(
-            MarkerOptions()
-                .position(latLng)
-                .title("" + addressName)
-        )!!
+//        marker?.remove()
+//        marker = mMap.addMarker(
+//            MarkerOptions()
+//                .position(latLng)
+//                .title("" + addressName)
+//        )!!
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng))
     }
 

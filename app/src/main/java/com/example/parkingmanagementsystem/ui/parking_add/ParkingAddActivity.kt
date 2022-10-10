@@ -27,7 +27,7 @@ import com.google.firebase.storage.StorageReference
 class ParkingAddActivity : AppBaseActivity() {
     private lateinit var binding: ActivityParkingAddBinding
     private val TAG: String = "ParkingAddActivity"
-    private lateinit var mAuth: FirebaseAuth
+//    private lateinit var mAuth: FirebaseAuth
     private lateinit var storageReference: StorageReference
     val db = Firebase.firestore
     private lateinit var image_uri: Uri
@@ -185,7 +185,6 @@ class ParkingAddActivity : AppBaseActivity() {
                                 Log.d(TAG, "imageStore: ${it.localizedMessage}")
                                 toast(it.localizedMessage!!)
                             }
-
                     }
                 }.addOnFailureListener { e ->
                     showProgress(false)
