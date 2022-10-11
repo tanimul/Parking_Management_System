@@ -182,7 +182,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_addParking"
-        style="@style/Widget.Material3.Button.UnelevatedButton"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginHorizontal="16dp"
