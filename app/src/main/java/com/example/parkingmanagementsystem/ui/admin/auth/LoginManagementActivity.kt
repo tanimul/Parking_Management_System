@@ -1,4 +1,4 @@
-package com.example.parkingmanagementsystem.ui.auth
+package com.example.parkingmanagementsystem.ui.admin.auth
 
 import android.os.Bundle
 import android.util.Log

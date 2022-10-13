@@ -1,4 +1,4 @@
-package com.example.parkingmanagementsystem.ui.auth
+package com.example.parkingmanagementsystem.ui.user.auth
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +11,7 @@ import com.example.parkingmanagementsystem.R
 import com.example.parkingmanagementsystem.data.model.response.User
 import com.example.parkingmanagementsystem.databinding.ActivityLoginBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
+import com.example.parkingmanagementsystem.ui.admin.auth.LoginManagementActivity
 import com.example.parkingmanagementsystem.ui.main.HomeActivity
 import com.example.parkingmanagementsystem.utils.Constants.FirebaseKeys.KEY_USERS_COLLECTION
 import com.example.parkingmanagementsystem.utils.Variables.user

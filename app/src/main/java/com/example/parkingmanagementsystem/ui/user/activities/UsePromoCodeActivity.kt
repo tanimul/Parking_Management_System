@@ -1,4 +1,4 @@
-package com.example.parkingmanagementsystem.ui.activities
+package com.example.parkingmanagementsystem.ui.user.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

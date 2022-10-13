@@ -1,6 +1,5 @@
-package com.example.parkingmanagementsystem.ui.activities
+package com.example.parkingmanagementsystem.ui.user.notification
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
