@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.user.activities.MonthlyParkingActivity">
+    tools:context=".ui.user.monthly_parking.MonthlyParkingActivity">
 
     <include
         android:id="@+id/toolbar_layout"

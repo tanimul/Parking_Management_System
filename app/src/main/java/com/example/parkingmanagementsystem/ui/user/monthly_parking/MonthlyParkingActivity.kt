@@ -1,4 +1,4 @@
-package com.example.parkingmanagementsystem.ui.user.activities
+package com.example.parkingmanagementsystem.ui.user.monthly_parking
 
 import android.os.Bundle
 import android.util.Log

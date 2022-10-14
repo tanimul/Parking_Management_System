@@ -49,9 +49,7 @@ class NotificationActivity : AppBaseActivity() {
                     val notification_item = snapshot1.toObject(NotificationInfo::class.java)
                     Log.d(TAG, "loadNotication: $notification_item")
 
-
                     notification_List.add(notification_item)
-
 
                 }
                 notification_List.reverse()

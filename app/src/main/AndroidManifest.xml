@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.parkingmanagementsystem">
+    package="com.example.parkingmanagementsystem" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -16,9 +16,12 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ParkingManagementSystem">
+        android:theme="@style/Theme.ParkingManagementSystem" >
         <activity
-            android:name=".ui.booking.AddMonthlyBookingActivity"
+            android:name=".ui.user.monthly_parking.MonthlyParkingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.user.monthly_parking.AddMonthlyBookingActivity"
             android:exported="false" />
         <activity
             android:name=".ui.booking.AddBookingActivity"
@@ -36,7 +39,7 @@
             android:name=".ui.parking_add.AddressPickupActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.user.activities.MonthlyParkingActivity"
+            android:name=".ui.user.monthly_parking.MonthlyParkingActivity"
             android:exported="false" />
         <activity
             android:name=".ui.parking_add.ParkingAddActivity"
@@ -77,7 +80,7 @@
             android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".ui.intro.SplashActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

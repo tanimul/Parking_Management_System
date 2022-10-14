@@ -29,7 +29,7 @@ import com.example.parkingmanagementsystem.data.model.response.User
 import com.example.parkingmanagementsystem.databinding.ActivityHomeBinding
 import com.example.parkingmanagementsystem.databinding.NavHeaderLayoutBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
-import com.example.parkingmanagementsystem.ui.user.activities.MonthlyParkingActivity
+import com.example.parkingmanagementsystem.ui.user.monthly_parking.MonthlyParkingActivity
 import com.example.parkingmanagementsystem.ui.user.notification.NotificationActivity
 import com.example.parkingmanagementsystem.ui.user.activities.UsePromoCodeActivity
 import com.example.parkingmanagementsystem.utils.Constants.FirebaseKeys.KEY_PARKING_INFO
