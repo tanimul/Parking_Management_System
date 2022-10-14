@@ -22,7 +22,7 @@ import com.example.parkingmanagementsystem.R
 import com.example.parkingmanagementsystem.databinding.ActivityHomeManagementBinding
 import com.example.parkingmanagementsystem.databinding.NavHeaderLayoutBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
-import com.example.parkingmanagementsystem.ui.activities.NotificationActivity
+import com.example.parkingmanagementsystem.ui.user.notification.NotificationActivity
 import com.example.parkingmanagementsystem.ui.parking_add.MonthlyParkingAddActivity
 import com.example.parkingmanagementsystem.ui.parking_add.ParkingAddActivity
 import com.example.parkingmanagementsystem.utils.Constants
@@ -32,7 +32,6 @@ import com.example.parkingmanagementsystem.utils.Constants.SharedPref.PHONE_NUMB
 import com.example.parkingmanagementsystem.utils.SharedPrefUtils
 import com.example.parkingmanagementsystem.utils.extentions.launchActivity
 import com.example.parkingmanagementsystem.utils.extentions.loadImageFromUrl
-import com.example.parkingmanagementsystem.utils.extentions.toast
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory

@@ -29,9 +29,9 @@ import com.example.parkingmanagementsystem.data.model.response.User
 import com.example.parkingmanagementsystem.databinding.ActivityHomeBinding
 import com.example.parkingmanagementsystem.databinding.NavHeaderLayoutBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
-import com.example.parkingmanagementsystem.ui.activities.MonthlyParkingActivity
-import com.example.parkingmanagementsystem.ui.activities.NotificationActivity
-import com.example.parkingmanagementsystem.ui.activities.UsePromoCodeActivity
+import com.example.parkingmanagementsystem.ui.user.activities.MonthlyParkingActivity
+import com.example.parkingmanagementsystem.ui.user.notification.NotificationActivity
+import com.example.parkingmanagementsystem.ui.user.activities.UsePromoCodeActivity
 import com.example.parkingmanagementsystem.utils.Constants.FirebaseKeys.KEY_PARKING_INFO
 import com.example.parkingmanagementsystem.utils.Constants.FirebaseKeys.KEY_USERS_COLLECTION
 import com.example.parkingmanagementsystem.utils.extentions.launchActivity
@@ -53,7 +53,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
-import java.security.AccessController.getContext
 import java.util.*
 
 class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
