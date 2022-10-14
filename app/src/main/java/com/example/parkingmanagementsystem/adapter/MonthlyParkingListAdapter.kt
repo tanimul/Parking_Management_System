@@ -5,6 +5,7 @@ import android.location.Location
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.parkingmanagementsystem.data.listener.MonthlyParkingOnClickListener
 import com.example.parkingmanagementsystem.data.model.response.MonthlyParkingInfo
 import com.example.parkingmanagementsystem.data.model.response.NotificationInfo
 import com.example.parkingmanagementsystem.databinding.LayoutMonthlyParkingBinding
@@ -18,6 +19,7 @@ class MonthlyParkingListAdapter(
     private val mMonthlyParkingItems: List<MonthlyParkingInfo>,
     private val lat: Double,
     private val lon: Double,
+    private val monthlyParkingOnClickListener: MonthlyParkingOnClickListener
 ) :
     RecyclerView.Adapter<MonthlyParkingListAdapter.FoodListViewHolder>() {
     private val TAG = "MonthlyParkingListAdapter"
@@ -51,6 +53,10 @@ class MonthlyParkingListAdapter(
                         ) / 1000
                     ) + " km"
             }
+        }
+
+        holder.itemView.setOnClickListener {
+            monthlyParkingOnClickListener.onItemClick(mMonthlyParkingItems[position], position)
         }
 
 

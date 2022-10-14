@@ -1,11 +1,13 @@
 package com.example.parkingmanagementsystem.ui.user.monthly_parking
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.parkingmanagementsystem.R
 import com.example.parkingmanagementsystem.adapter.MonthlyParkingListAdapter
+import com.example.parkingmanagementsystem.data.listener.MonthlyParkingOnClickListener
 import com.example.parkingmanagementsystem.data.model.response.MonthlyParkingInfo
 import com.example.parkingmanagementsystem.databinding.ActivityMonthlyParkingBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
@@ -14,7 +16,7 @@ import com.example.parkingmanagementsystem.utils.extentions.toast
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
-class MonthlyParkingActivity : AppBaseActivity() {
+class MonthlyParkingActivity : AppBaseActivity(), MonthlyParkingOnClickListener  {
     companion object {
         private const val TAG: String = "MonthlyParkingActivity"
     }
@@ -44,7 +46,7 @@ class MonthlyParkingActivity : AppBaseActivity() {
         loadMonthlyParkingList()
 
 
-        monthlyParkingListAdapter = MonthlyParkingListAdapter(monthlyParking_List,lat,lon)
+        monthlyParkingListAdapter = MonthlyParkingListAdapter(monthlyParking_List,lat,lon,this)
         binding.rvMonthlyParking.adapter = monthlyParkingListAdapter
 
         val monthlyParkingListLayoutManager =
@@ -94,5 +96,15 @@ class MonthlyParkingActivity : AppBaseActivity() {
         super.onPause()
         binding.shimmerViewContainer.stopShimmerAnimation()
         binding.shimmerViewContainer.visibility = View.GONE
+    }
+
+    override fun onItemClick(monthlyParkingInfo: MonthlyParkingInfo, position: Int) {
+        Log.d(TAG, "onClick: $monthlyParkingInfo")
+        startActivity(
+            Intent(this, AddMonthlyBookingActivity::class.java).putExtra(
+                "monthlyParkingInfo",
+                monthlyParkingInfo
+            )
+        )
     }
 }
