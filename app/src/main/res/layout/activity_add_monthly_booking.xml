@@ -57,6 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="@string/description"
+        android:visibility="gone"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,14 +75,14 @@
 
         <TextView
             android:id="@+id/tv_month"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/background_edit_text"
-            android:drawableEnd="@drawable/ic_arrow_drop_down"
             android:gravity="start"
-            android:padding="5dp"
+            android:padding="10dp"
             android:text="@string/month"
+            android:textSize="20sp"
             android:textColor="@color/black" />
 
     </LinearLayout>
@@ -104,9 +105,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_booking"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_availableSlot"
+        app:layout_constraintBottom_toTopOf="@id/btn_booking"
         tools:listitem="@layout/layout_slot" />
 
     <com.google.android.material.button.MaterialButton
