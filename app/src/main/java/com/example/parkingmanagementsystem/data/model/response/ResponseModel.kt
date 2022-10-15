@@ -69,3 +69,16 @@ data class MonthlyParkingInfo
     val addedAt: Long = System.currentTimeMillis(),
     var updatedAt: Long = System.currentTimeMillis()
 ):Serializable
+
+
+data class MonthlyParkingBookingInfo
+    (
+    val key: String = "",
+    val bookingId: String = "",
+    val userId: String = "",
+    val monthlyParkingId: String = "",
+    val ultimateCost: String = "",
+    val totalParkingSpace: String = "",
+    val addedAt: Long = System.currentTimeMillis(),
+    var updatedAt: Long = System.currentTimeMillis()
+):Serializable
