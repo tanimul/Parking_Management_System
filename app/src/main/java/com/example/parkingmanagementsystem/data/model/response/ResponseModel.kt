@@ -1,5 +1,7 @@
 package com.example.parkingmanagementsystem.data.model.response
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.io.Serializable
 
 data class User(
@@ -77,8 +79,29 @@ data class MonthlyParkingBookingInfo
     val bookingId: String = "",
     val userId: String = "",
     val monthlyParkingId: String = "",
-    val ultimateCost: String = "",
     val totalParkingSpace: String = "",
     val addedAt: Long = System.currentTimeMillis(),
     var updatedAt: Long = System.currentTimeMillis()
 ):Serializable
+
+@Entity(tableName = "Card")
+data class CardModel(
+    val cardName: String,
+    val cardNumber: String,
+    val cvv: String,
+    val addedAt: Long=System.currentTimeMillis(),
+    var updatedAt: Long=System.currentTimeMillis()
+) : Serializable {
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
+}
+
+data class PaymentInfo(
+    var id: String = "",
+    var uid: String = "",
+    var bookingId: String = "",
+    var cardNumber: String = "",
+    var cardName: String = "",
+    var amount: String = "",
+    val time: Long = System.currentTimeMillis(),
+) : Serializable
