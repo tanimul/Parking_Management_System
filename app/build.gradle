@@ -4,6 +4,7 @@ plugins {
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -92,4 +93,11 @@ dependencies {
 
 
     implementation 'com.google.maps.android:android-maps-utils:0.4+'
+
+    // Room components
+    implementation "androidx.room:room-ktx:$rootProject.roomVersion"
+    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
+    androidTestImplementation "androidx.room:room-testing:$rootProject.roomVersion"
+
+    implementation 'com.github.xabaras:RecyclerViewSwipeDecorator:1.4'
 }

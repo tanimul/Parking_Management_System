@@ -77,6 +77,8 @@
     <string name="card_number">Card Number</string>
     <string name="cvv">CVV</string>
     <string name="add_card">Add Card</string>
+    <string name="add_new_card">Add New Card</string>
+    <string name="payment">Payement</string>
 
     <string-array name="month">
         <item>Jan</item>
