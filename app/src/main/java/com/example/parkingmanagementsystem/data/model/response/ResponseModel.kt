@@ -80,6 +80,9 @@ data class MonthlyParkingBookingInfo
     val userId: String = "",
     val monthlyParkingId: String = "",
     val totalParkingSpace: String = "",
+    val ultimateCost: String = "",
+    val placeName: String = "",
+    val placeUrl: String = "",
     val addedAt: Long = System.currentTimeMillis(),
     var updatedAt: Long = System.currentTimeMillis()
 ):Serializable
@@ -99,6 +102,7 @@ data class CardModel(
 data class PaymentInfo(
     var id: String = "",
     var uid: String = "",
+    var receiverId: String = "",
     var bookingId: String = "",
     var cardNumber: String = "",
     var cardName: String = "",

@@ -30,7 +30,7 @@
             android:name=".ui.transaction.TransactionActivity"
             android:exported="false" />
         <activity
-            android:name=".BookingActivity"
+            android:name=".ui.admin.booking.BookingActivity"
             android:exported="false" />
         <activity
             android:name=".ui.parking_add.MonthlyParkingAddActivity"
@@ -38,14 +38,14 @@
         <activity
             android:name=".ui.parking_add.AddressPickupActivity"
             android:exported="false" />
-        <activity
-            android:name=".ui.user.monthly_parking.MonthlyParkingActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".ui.user.monthly_parking.MonthlyParkingActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".ui.parking_add.ParkingAddActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.main.HomeManagementActivity"
+            android:name=".ui.admin.HomeManagementActivity"
             android:exported="false" />
         <activity
             android:name=".ui.transaction.PaymentAddActivity"
