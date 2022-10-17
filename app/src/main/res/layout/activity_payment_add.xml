@@ -4,7 +4,73 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.transaction.PaymentAddActivity"
-  >
+    tools:context=".ui.transaction.PaymentAddActivity">
 
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@drawable/ic_verification_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_addCard"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="20dp"
+        android:drawableStart="@drawable/ic_plus"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:maxLines="1"
+        android:paddingStart="15dp"
+        android:text="@string/add_new_card"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_card"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_addCard"
+        tools:listitem="@layout/layout_selection_card" />
+
+    <TextView
+        android:id="@+id/tv_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="20dp"
+        android:paddingStart="20dp"
+        android:hint="@string/amount"
+        android:inputType="number"
+        android:background="@drawable/background_edit_text_gray_address"
+        android:maxLines="1"
+        android:paddingVertical="10dp"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@id/btn_payment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_payment"
+        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="20dp"
+        android:paddingVertical="10dp"
+        android:text="@string/payment"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
