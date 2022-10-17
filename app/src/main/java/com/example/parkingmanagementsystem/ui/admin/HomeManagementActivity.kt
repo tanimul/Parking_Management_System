@@ -1,4 +1,4 @@
-package com.example.parkingmanagementsystem.ui.main
+package com.example.parkingmanagementsystem.ui.admin
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -22,9 +22,12 @@ import com.example.parkingmanagementsystem.R
 import com.example.parkingmanagementsystem.databinding.ActivityHomeManagementBinding
 import com.example.parkingmanagementsystem.databinding.NavHeaderLayoutBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
+import com.example.parkingmanagementsystem.ui.admin.booking.BookingActivity
+import com.example.parkingmanagementsystem.ui.main.ProfileActivity
 import com.example.parkingmanagementsystem.ui.user.notification.NotificationActivity
 import com.example.parkingmanagementsystem.ui.parking_add.MonthlyParkingAddActivity
 import com.example.parkingmanagementsystem.ui.parking_add.ParkingAddActivity
+import com.example.parkingmanagementsystem.ui.transaction.TransactionActivity
 import com.example.parkingmanagementsystem.utils.Constants
 import com.example.parkingmanagementsystem.utils.Constants.SharedPref.FULL_NAME
 import com.example.parkingmanagementsystem.utils.Constants.SharedPref.IMAGE_URL
@@ -278,13 +281,17 @@ class HomeManagementActivity : AppBaseActivity(), OnMapReadyCallback,
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-
             //Navigation Drawer Select
 
             R.id.nav_profile -> {
                 launchActivity<ProfileActivity>()
             }
-
+            R.id.nav_transaction -> {
+                launchActivity<TransactionActivity>()
+            }
+            R.id.nav_bookings -> {
+                launchActivity<BookingActivity>()
+            }
             R.id.nav_add_parking_space -> {
                 launchActivity<ParkingAddActivity>()
             }
@@ -294,7 +301,6 @@ class HomeManagementActivity : AppBaseActivity(), OnMapReadyCallback,
             R.id.nav_logout -> {
                 logOut()
             }
-
 
         }
         binding.layoutDrawer.closeDrawer(GravityCompat.START)

@@ -5,7 +5,7 @@
     android:id="@+id/layout_drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.HomeManagementActivity">
+    tools:context=".ui.admin.HomeManagementActivity">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_homeAct_const1"
         android:layout_width="match_parent"

@@ -2,7 +2,6 @@ package com.example.parkingmanagementsystem.ui.admin.auth
 
 import android.R
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.webkit.MimeTypeMap
@@ -10,8 +9,7 @@ import android.widget.ArrayAdapter
 import androidx.activity.result.contract.ActivityResultContracts
 import com.example.parkingmanagementsystem.databinding.ActivityRegistrationParkingOwnerBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
-import com.example.parkingmanagementsystem.ui.main.HomeActivity
-import com.example.parkingmanagementsystem.ui.main.HomeManagementActivity
+import com.example.parkingmanagementsystem.ui.admin.HomeManagementActivity
 import com.example.parkingmanagementsystem.utils.Constants
 import com.example.parkingmanagementsystem.utils.Constants.SharedPref.MANAGEMENT_ID
 import com.example.parkingmanagementsystem.utils.SharedPrefUtils

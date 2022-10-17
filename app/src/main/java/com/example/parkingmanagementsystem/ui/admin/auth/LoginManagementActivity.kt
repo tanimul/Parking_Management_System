@@ -5,8 +5,7 @@ import android.util.Log
 import com.example.parkingmanagementsystem.data.model.response.ParkingOwner
 import com.example.parkingmanagementsystem.databinding.ActivityLoginManagementBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
-import com.example.parkingmanagementsystem.ui.main.HomeManagementActivity
-import com.example.parkingmanagementsystem.utils.Constants
+import com.example.parkingmanagementsystem.ui.admin.HomeManagementActivity
 import com.example.parkingmanagementsystem.utils.Constants.FirebaseKeys.KEY_MANAGEMENT_COLLECTION
 import com.example.parkingmanagementsystem.utils.Constants.FirebaseKeys.KEY_PARKING_OWNER_COLLECTION
 import com.example.parkingmanagementsystem.utils.Constants.SharedPref.FULL_NAME
