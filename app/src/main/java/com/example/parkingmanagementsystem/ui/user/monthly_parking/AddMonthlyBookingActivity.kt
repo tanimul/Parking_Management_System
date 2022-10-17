@@ -1,16 +1,24 @@
 package com.example.parkingmanagementsystem.ui.user.monthly_parking
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.parkingmanagementsystem.R
 import com.example.parkingmanagementsystem.adapter.MonthlyParkingSlotAdapter
 import com.example.parkingmanagementsystem.data.listener.MonthlyParkingSlotOnClickListener
+import com.example.parkingmanagementsystem.data.model.response.MonthlyParkingBookingInfo
 import com.example.parkingmanagementsystem.data.model.response.MonthlyParkingInfo
 import com.example.parkingmanagementsystem.databinding.ActivityAddMonthlyBookingBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
+import com.example.parkingmanagementsystem.ui.transaction.PaymentAddActivity
+import com.example.parkingmanagementsystem.utils.Constants
+import com.example.parkingmanagementsystem.utils.SharedPrefUtils
+import com.example.parkingmanagementsystem.utils.Variables
 import com.example.parkingmanagementsystem.utils.extentions.loadImageFromUrl
 import com.example.parkingmanagementsystem.utils.extentions.toast
+import java.io.Serializable
 
 class AddMonthlyBookingActivity : AppBaseActivity(), MonthlyParkingSlotOnClickListener {
     companion object {
@@ -50,7 +58,6 @@ class AddMonthlyBookingActivity : AppBaseActivity(), MonthlyParkingSlotOnClickLi
 
         }
 
-
         monthlyParkingSlotAdapter = MonthlyParkingSlotAdapter(
             itemResponse.time,
             itemResponse.ultimateCost,
@@ -63,10 +70,21 @@ class AddMonthlyBookingActivity : AppBaseActivity(), MonthlyParkingSlotOnClickLi
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.rvBooking.layoutManager = monthlyParkingSlotListLayoutManager
 
-
         binding.btnBooking.setOnClickListener {
             if(slot.isNotEmpty()){
-
+                val monthlyParkingBookingInfo= MonthlyParkingBookingInfo(
+                    key=System.currentTimeMillis().toString(),
+                    bookingId=System.currentTimeMillis().toString(),
+                    userId=SharedPrefUtils().getStringValue(Constants.SharedPref.USERS_ID),
+                    monthlyParkingId=itemResponse.key,
+                    totalParkingSpace=slot.size.toString(),
+                )
+                startActivity(
+                    Intent(this, PaymentAddActivity::class.java).putExtra(
+                        "monthlyParkingBookingInfo",
+                        monthlyParkingBookingInfo
+                    ).putExtra("ultimateCost",itemResponse.ultimateCost).putExtra("totalSpace",itemResponse.totalParkingSpace).putExtra("uploaderId",itemResponse.uploaderId)
+                )
             }else{
                 toast("Please add minimum one slot")
             }
