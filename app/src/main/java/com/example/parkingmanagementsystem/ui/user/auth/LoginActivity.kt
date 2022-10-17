@@ -14,6 +14,8 @@ import com.example.parkingmanagementsystem.ui.AppBaseActivity
 import com.example.parkingmanagementsystem.ui.admin.auth.LoginManagementActivity
 import com.example.parkingmanagementsystem.ui.main.HomeActivity
 import com.example.parkingmanagementsystem.utils.Constants.FirebaseKeys.KEY_USERS_COLLECTION
+import com.example.parkingmanagementsystem.utils.Constants.SharedPref.USERS_ID
+import com.example.parkingmanagementsystem.utils.SharedPrefUtils
 import com.example.parkingmanagementsystem.utils.Variables.user
 import com.example.parkingmanagementsystem.utils.extentions.*
 import com.google.firebase.FirebaseException
@@ -198,7 +200,7 @@ class LoginActivity : AppBaseActivity() {
                     user = snapshot.toObject(User::class.java)!!
                     //hide progressbar
                     showProgress(false)
-
+                    SharedPrefUtils().setValue(USERS_ID, user._id)
                     launchActivity<HomeActivity>()
                     finish()
                 } else {

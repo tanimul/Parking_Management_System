@@ -11,6 +11,7 @@ import com.example.parkingmanagementsystem.databinding.ActivityRegistrationBindi
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
 import com.example.parkingmanagementsystem.ui.main.HomeActivity
 import com.example.parkingmanagementsystem.utils.Constants
+import com.example.parkingmanagementsystem.utils.SharedPrefUtils
 import com.example.parkingmanagementsystem.utils.Variables.user
 import com.example.parkingmanagementsystem.utils.Variables.userId
 import com.example.parkingmanagementsystem.utils.extentions.launchActivity
@@ -146,6 +147,7 @@ class RegistrationActivity : AppBaseActivity() {
                 showProgress(false)
                 Log.d(TAG, "Profile updated successfully ")
                 toast("Profile updated successfully")
+                SharedPrefUtils().setValue(Constants.SharedPref.USERS_ID, user._id)
                 launchActivity<HomeActivity>()
                 finish()
 
