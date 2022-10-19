@@ -1,19 +1,16 @@
-package com.example.parkingmanagementsystem.ui.main
+package com.example.parkingmanagementsystem.ui.profile
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.appcompat.app.ActionBarDrawerToggle
-import com.example.parkingmanagementsystem.R
 import com.example.parkingmanagementsystem.data.model.response.ParkingOwner
 import com.example.parkingmanagementsystem.data.model.response.User
 import com.example.parkingmanagementsystem.databinding.ActivityProfileBinding
-import com.example.parkingmanagementsystem.databinding.NavHeaderLayoutBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
 import com.example.parkingmanagementsystem.utils.Constants
 import com.example.parkingmanagementsystem.utils.Constants.FirebaseKeys.KEY_MANAGEMENT_COLLECTION
 import com.example.parkingmanagementsystem.utils.Constants.FirebaseKeys.KEY_PARKING_OWNER_COLLECTION
+import com.example.parkingmanagementsystem.utils.Constants.FirebaseKeys.KEY_USERS_COLLECTION
 import com.example.parkingmanagementsystem.utils.SharedPrefUtils
 import com.example.parkingmanagementsystem.utils.extentions.loadImageFromUrl
 import com.google.firebase.auth.FirebaseAuth
@@ -38,11 +35,13 @@ class ProfileActivity : AppBaseActivity() {
         //init
         mAuth = FirebaseAuth.getInstance()
 
-        mAuth.currentUser?.let { setUserHeaderInformation(it.uid) }
+       // mAuth.currentUser?.let { setUserHeaderInformation(it.uid) }
 
 
-
-        if (SharedPrefUtils().getBooleanValue(Constants.SharedPref.IS_LOGGIN) && SharedPrefUtils().getStringValue(
+        if (mAuth.currentUser != null) {
+            setUserHeaderInformation(SharedPrefUtils().getStringValue(Constants.SharedPref.USERS_ID))
+        }
+        else if (SharedPrefUtils().getBooleanValue(Constants.SharedPref.IS_LOGGIN) && SharedPrefUtils().getStringValue(
                 Constants.SharedPref.PARKING_OWNER_ID
             ) == ""
         ) {
@@ -55,7 +54,6 @@ class ProfileActivity : AppBaseActivity() {
         }
 
     }
-
     private fun setManagementInformation() {
         db.collection(KEY_MANAGEMENT_COLLECTION)
             .document(SharedPrefUtils().getStringValue(Constants.SharedPref.MANAGEMENT_ID)).get()
