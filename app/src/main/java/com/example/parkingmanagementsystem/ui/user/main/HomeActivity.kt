@@ -1,4 +1,4 @@
-package com.example.parkingmanagementsystem.ui.main
+package com.example.parkingmanagementsystem.ui.user.main
 
 
 import android.Manifest
@@ -29,6 +29,7 @@ import com.example.parkingmanagementsystem.data.model.response.User
 import com.example.parkingmanagementsystem.databinding.ActivityHomeBinding
 import com.example.parkingmanagementsystem.databinding.NavHeaderLayoutBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
+import com.example.parkingmanagementsystem.ui.profile.ProfileActivity
 import com.example.parkingmanagementsystem.ui.user.monthly_parking.MonthlyParkingActivity
 import com.example.parkingmanagementsystem.ui.user.notification.NotificationActivity
 import com.example.parkingmanagementsystem.ui.user.activities.UsePromoCodeActivity

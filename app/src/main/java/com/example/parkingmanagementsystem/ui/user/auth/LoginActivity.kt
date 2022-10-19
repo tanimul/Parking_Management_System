@@ -12,7 +12,7 @@ import com.example.parkingmanagementsystem.data.model.response.User
 import com.example.parkingmanagementsystem.databinding.ActivityLoginBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
 import com.example.parkingmanagementsystem.ui.admin.auth.LoginManagementActivity
-import com.example.parkingmanagementsystem.ui.main.HomeActivity
+import com.example.parkingmanagementsystem.ui.user.main.HomeActivity
 import com.example.parkingmanagementsystem.utils.Constants.FirebaseKeys.KEY_USERS_COLLECTION
 import com.example.parkingmanagementsystem.utils.Constants.SharedPref.USERS_ID
 import com.example.parkingmanagementsystem.utils.SharedPrefUtils

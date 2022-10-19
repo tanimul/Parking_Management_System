@@ -9,7 +9,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.example.parkingmanagementsystem.R
 import com.example.parkingmanagementsystem.databinding.ActivityRegistrationBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
-import com.example.parkingmanagementsystem.ui.main.HomeActivity
+import com.example.parkingmanagementsystem.ui.user.main.HomeActivity
 import com.example.parkingmanagementsystem.utils.Constants
 import com.example.parkingmanagementsystem.utils.SharedPrefUtils
 import com.example.parkingmanagementsystem.utils.Variables.user

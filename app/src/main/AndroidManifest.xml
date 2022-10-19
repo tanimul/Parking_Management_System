@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.parkingmanagementsystem" >
+    package="com.example.parkingmanagementsystem">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -16,7 +16,14 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ParkingManagementSystem" >
+        android:theme="@style/Theme.ParkingManagementSystem">
+        <activity
+            android:name=".ui.user.profile.UserProfileActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".ui.user.monthly_parking.MonthlyParkingActivity"
             android:exported="false" />
@@ -37,10 +44,9 @@
             android:exported="false" />
         <activity
             android:name=".ui.parking_add.AddressPickupActivity"
-            android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".ui.user.monthly_parking.MonthlyParkingActivity"-->
-<!--            android:exported="false" />-->
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".ui.user.monthly_parking.MonthlyParkingActivity" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".ui.parking_add.ParkingAddActivity"
             android:exported="false" />
@@ -63,7 +69,7 @@
             android:name=".ui.user.notification.NotificationActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.main.ProfileActivity"
+            android:name=".ui.profile.ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".ui.user.activities.UsePromoCodeActivity"
@@ -72,7 +78,7 @@
             android:name=".ui.user.auth.RegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.main.HomeActivity"
+            android:name=".ui.user.main.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".ui.user.auth.LoginActivity"
@@ -80,7 +86,7 @@
             android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".ui.intro.SplashActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

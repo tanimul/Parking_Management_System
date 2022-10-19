@@ -8,7 +8,7 @@ import android.util.Log
 import com.example.parkingmanagementsystem.databinding.ActivitySplashBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
 import com.example.parkingmanagementsystem.ui.user.auth.LoginActivity
-import com.example.parkingmanagementsystem.ui.main.HomeActivity
+import com.example.parkingmanagementsystem.ui.user.main.HomeActivity
 import com.example.parkingmanagementsystem.ui.admin.HomeManagementActivity
 import com.example.parkingmanagementsystem.utils.Constants
 import com.example.parkingmanagementsystem.utils.SharedPrefUtils

@@ -23,7 +23,7 @@ import com.example.parkingmanagementsystem.databinding.ActivityHomeManagementBin
 import com.example.parkingmanagementsystem.databinding.NavHeaderLayoutBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
 import com.example.parkingmanagementsystem.ui.admin.booking.BookingActivity
-import com.example.parkingmanagementsystem.ui.main.ProfileActivity
+import com.example.parkingmanagementsystem.ui.profile.ProfileActivity
 import com.example.parkingmanagementsystem.ui.user.notification.NotificationActivity
 import com.example.parkingmanagementsystem.ui.parking_add.MonthlyParkingAddActivity
 import com.example.parkingmanagementsystem.ui.parking_add.ParkingAddActivity
