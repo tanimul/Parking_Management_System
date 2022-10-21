@@ -37,7 +37,6 @@ class ProfileActivity : AppBaseActivity() {
 
        // mAuth.currentUser?.let { setUserHeaderInformation(it.uid) }
 
-
         if (mAuth.currentUser != null) {
             setUserHeaderInformation(SharedPrefUtils().getStringValue(Constants.SharedPref.USERS_ID))
         }
