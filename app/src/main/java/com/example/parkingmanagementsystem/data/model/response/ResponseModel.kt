@@ -73,18 +73,20 @@ data class MonthlyParkingInfo
 ):Serializable
 
 
-data class MonthlyParkingBookingInfo
+data class BookingInfo
     (
     val key: String = "",
     val bookingId: String = "",
     val userId: String = "",
-    val monthlyParkingId: String = "",
+    val parkingId: String = "",
     val totalParkingSpace: String = "",
     val ultimateCost: String = "",
     val placeName: String = "",
     val placeUrl: String = "",
     val addedAt: Long = System.currentTimeMillis(),
-    var updatedAt: Long = System.currentTimeMillis()
+    var updatedAt: Long = System.currentTimeMillis(),
+    val bookingDate: String = "",
+    val bookingTime: String = "",
 ):Serializable
 
 @Entity(tableName = "Card")
