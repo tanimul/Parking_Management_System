@@ -31,7 +31,7 @@
             android:name=".ui.user.monthly_parking.AddMonthlyBookingActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.booking.AddBookingActivity"
+            android:name=".ui.user.booking.AddBookingActivity"
             android:exported="false" />
         <activity
             android:name=".ui.transaction.TransactionActivity"
