@@ -2,7 +2,7 @@ package com.example.parkingmanagementsystem.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.parkingmanagementsystem.data.model.response.MonthlyParkingBookingInfo
+import com.example.parkingmanagementsystem.data.model.response.BookingInfo
 import com.example.parkingmanagementsystem.data.model.response.PaymentInfo
 import com.example.parkingmanagementsystem.databinding.LayoutBookingBinding
 import com.example.parkingmanagementsystem.databinding.LayoutTransactionsBinding
@@ -10,7 +10,7 @@ import com.example.parkingmanagementsystem.utils.extentions.loadImageFromUrl
 import java.text.SimpleDateFormat
 
 class BookingListAdapter(
-    private val bookingItems: List<MonthlyParkingBookingInfo>,
+    private val bookingItems: List<BookingInfo>,
 ) :
     RecyclerView.Adapter<BookingListAdapter.TransactionListViewHolder>() {
     private val TAG = "BookingListAdapter"
