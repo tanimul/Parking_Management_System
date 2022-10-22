@@ -35,7 +35,7 @@ class MonthlyParkingSlotAdapter(
     override fun onBindViewHolder(holder: FoodListViewHolder, position: Int) {
         with(holder.binding) {
          tvTime.text=mMonthlyParkingTime
-         tvPrice.text=mMonthlyParkingCost
+         tvPrice.text=mMonthlyParkingCost +" BDT"
         }
 
         holder.binding.checkboxMeat.setOnClickListener {
