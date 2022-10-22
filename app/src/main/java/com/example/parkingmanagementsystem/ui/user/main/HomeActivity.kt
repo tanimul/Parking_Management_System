@@ -29,14 +29,18 @@ import com.example.parkingmanagementsystem.data.model.response.User
 import com.example.parkingmanagementsystem.databinding.ActivityHomeBinding
 import com.example.parkingmanagementsystem.databinding.NavHeaderLayoutBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
+import com.example.parkingmanagementsystem.ui.admin.booking.BookingActivity
 import com.example.parkingmanagementsystem.ui.profile.ProfileActivity
+import com.example.parkingmanagementsystem.ui.user.activities.UsePromoCodeActivity
+import com.example.parkingmanagementsystem.ui.user.booking.AddBookingActivity
+import com.example.parkingmanagementsystem.ui.user.monthly_parking.AddMonthlyBookingActivity
 import com.example.parkingmanagementsystem.ui.user.monthly_parking.MonthlyParkingActivity
 import com.example.parkingmanagementsystem.ui.user.notification.NotificationActivity
-import com.example.parkingmanagementsystem.ui.user.activities.UsePromoCodeActivity
 import com.example.parkingmanagementsystem.utils.Constants.FirebaseKeys.KEY_PARKING_INFO
 import com.example.parkingmanagementsystem.utils.Constants.FirebaseKeys.KEY_USERS_COLLECTION
 import com.example.parkingmanagementsystem.utils.extentions.launchActivity
 import com.example.parkingmanagementsystem.utils.extentions.loadImageFromUrl
+import com.example.parkingmanagementsystem.utils.extentions.toast
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -55,6 +59,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import java.util.*
+
 
 class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
     NavigationView.OnNavigationItemSelectedListener,
@@ -152,11 +157,13 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
 
         val latLng = LatLng(parkingInfo.placeLatitude, parkingInfo.placeLongitude)
         marker_places = mMap.addMarker(
-            MarkerOptions()
-                .position(latLng)
+            MarkerOptions().position(latLng)
                 .icon(getBitmapDescriptorFromVector(this, R.drawable.ic_parking))
                 .title("" + parkingInfo.placeName)
         )!!
+        marker_places!!.tag = parkingInfo
+
+
     }
 
 
@@ -245,6 +252,24 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
 
 
         }
+
+        mMap.setOnMarkerClickListener { marker: Marker ->
+
+            if(marker.title!="Current Location"){
+                val parkingInfo: ParkingInfo? = marker.tag as ParkingInfo?
+                Log.d(TAG, "onClick: $parkingInfo")
+                startActivity(
+                    Intent(this, AddBookingActivity::class.java).putExtra(
+                        "parkingInfo",
+                        parkingInfo
+                    )
+                )
+
+            }
+            false
+        }
+
+
     }
 
     private fun moveCamera(latLng: LatLng) {
@@ -329,7 +354,9 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
             R.id.nav_profile -> {
                 launchActivity<ProfileActivity>()
             }
-
+            R.id.nav_bookings -> {
+                launchActivity<BookingActivity>()
+            }
             R.id.nav_use_promo_code -> {
                 launchActivity<UsePromoCodeActivity>()
             }

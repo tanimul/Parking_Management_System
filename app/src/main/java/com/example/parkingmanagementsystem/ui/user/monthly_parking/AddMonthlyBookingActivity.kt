@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.parkingmanagementsystem.R
 import com.example.parkingmanagementsystem.adapter.MonthlyParkingSlotAdapter
 import com.example.parkingmanagementsystem.data.listener.MonthlyParkingSlotOnClickListener
-import com.example.parkingmanagementsystem.data.model.response.MonthlyParkingBookingInfo
+import com.example.parkingmanagementsystem.data.model.response.BookingInfo
 import com.example.parkingmanagementsystem.data.model.response.MonthlyParkingInfo
 import com.example.parkingmanagementsystem.databinding.ActivityAddMonthlyBookingBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
@@ -72,12 +72,14 @@ class AddMonthlyBookingActivity : AppBaseActivity(), MonthlyParkingSlotOnClickLi
 
         binding.btnBooking.setOnClickListener {
             if(slot.isNotEmpty()){
-                val monthlyParkingBookingInfo= MonthlyParkingBookingInfo(
+                val monthlyParkingBookingInfo= BookingInfo(
                     key=System.currentTimeMillis().toString(),
                     bookingId=System.currentTimeMillis().toString(),
                     userId=SharedPrefUtils().getStringValue(Constants.SharedPref.USERS_ID),
-                    monthlyParkingId=itemResponse.key,
+                    parkingId=itemResponse.key,
                     totalParkingSpace=slot.size.toString(),
+                    placeName = itemResponse.placeName,
+                    placeUrl = itemResponse.placeUrl,
                 )
                 startActivity(
                     Intent(this, PaymentAddActivity::class.java).putExtra(
