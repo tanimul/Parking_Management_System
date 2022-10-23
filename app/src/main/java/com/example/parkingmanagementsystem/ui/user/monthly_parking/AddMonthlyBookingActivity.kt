@@ -2,10 +2,7 @@ package com.example.parkingmanagementsystem.ui.user.monthly_parking
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.parkingmanagementsystem.R
 import com.example.parkingmanagementsystem.adapter.MonthlyParkingSlotAdapter
 import com.example.parkingmanagementsystem.data.listener.MonthlyParkingSlotOnClickListener
 import com.example.parkingmanagementsystem.data.model.response.BookingInfo
@@ -15,10 +12,8 @@ import com.example.parkingmanagementsystem.ui.AppBaseActivity
 import com.example.parkingmanagementsystem.ui.transaction.PaymentAddActivity
 import com.example.parkingmanagementsystem.utils.Constants
 import com.example.parkingmanagementsystem.utils.SharedPrefUtils
-import com.example.parkingmanagementsystem.utils.Variables
 import com.example.parkingmanagementsystem.utils.extentions.loadImageFromUrl
 import com.example.parkingmanagementsystem.utils.extentions.toast
-import java.io.Serializable
 
 class AddMonthlyBookingActivity : AppBaseActivity(), MonthlyParkingSlotOnClickListener {
     companion object {
@@ -61,7 +56,7 @@ class AddMonthlyBookingActivity : AppBaseActivity(), MonthlyParkingSlotOnClickLi
         monthlyParkingSlotAdapter = MonthlyParkingSlotAdapter(
             itemResponse.time,
             itemResponse.ultimateCost,
-            itemResponse.totalParkingSpace,
+            itemResponse.totalParkingSpace.toInt(),
             this
         )
         binding.rvBooking.adapter = monthlyParkingSlotAdapter
