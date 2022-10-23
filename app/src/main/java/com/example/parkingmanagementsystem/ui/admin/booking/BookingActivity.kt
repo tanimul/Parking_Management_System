@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.parkingmanagementsystem.R
 import com.example.parkingmanagementsystem.adapter.BookingListAdapter
 import com.example.parkingmanagementsystem.adapter.TransactionListAdapter
-import com.example.parkingmanagementsystem.data.model.response.MonthlyParkingBookingInfo
+import com.example.parkingmanagementsystem.data.model.response.BookingInfo
 import com.example.parkingmanagementsystem.data.model.response.PaymentInfo
 import com.example.parkingmanagementsystem.databinding.ActivityBookingBinding
 import com.example.parkingmanagementsystem.databinding.ActivityTransactionBinding
@@ -27,7 +27,7 @@ class BookingActivity : AppBaseActivity() {
 
     private lateinit var binding: ActivityBookingBinding
 
-    private lateinit var bookingList: ArrayList<MonthlyParkingBookingInfo>
+    private lateinit var bookingList: ArrayList<BookingInfo>
 
     private lateinit var bookingListAdapter: BookingListAdapter
     val db = Firebase.firestore
@@ -42,7 +42,7 @@ class BookingActivity : AppBaseActivity() {
 
         //init
         mAuth = FirebaseAuth.getInstance()
-        bookingList = ArrayList<MonthlyParkingBookingInfo>()
+        bookingList = ArrayList<BookingInfo>()
 
         bookingListAdapter = BookingListAdapter(bookingList)
         binding.rvBooking.adapter = bookingListAdapter
@@ -59,7 +59,7 @@ class BookingActivity : AppBaseActivity() {
             .get().addOnSuccessListener { snapshot ->
                 Log.d(TAG, "loadBooking: ${snapshot.size()}")
                 for (snapshot1 in snapshot) {
-                    val bookingItem = snapshot1.toObject(MonthlyParkingBookingInfo::class.java)
+                    val bookingItem = snapshot1.toObject(BookingInfo::class.java)
                     Log.d(TAG, "loadBooking: $bookingItem")
 
                     bookingList.add(bookingItem)
