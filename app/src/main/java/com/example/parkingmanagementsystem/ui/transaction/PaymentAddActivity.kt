@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.parkingmanagementsystem.R
 import com.example.parkingmanagementsystem.adapter.CardListAdapter
 import com.example.parkingmanagementsystem.data.database.CardClickListener
+import com.example.parkingmanagementsystem.data.model.response.BookingInfo
 import com.example.parkingmanagementsystem.data.model.response.CardModel
-import com.example.parkingmanagementsystem.data.model.response.MonthlyParkingBookingInfo
 import com.example.parkingmanagementsystem.databinding.ActivityPaymentAddBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
 import com.example.parkingmanagementsystem.utils.Constants
@@ -33,7 +33,7 @@ class PaymentAddActivity : AppBaseActivity(), CardClickListener {
     }
 
     private lateinit var binding: ActivityPaymentAddBinding
-    lateinit var itemResponse: MonthlyParkingBookingInfo
+    lateinit var itemResponse: BookingInfo
 
     private val db = Firebase.firestore
     private lateinit var cardViewModel: CardViewModel
@@ -52,12 +52,12 @@ class PaymentAddActivity : AppBaseActivity(), CardClickListener {
         setContentView(binding.root)
 
         intent.getSerializableExtra("monthlyParkingBookingInfo")?.let {
-            val monthlyParkingBookingInfo = it as MonthlyParkingBookingInfo
-            itemResponse = MonthlyParkingBookingInfo(
+            val monthlyParkingBookingInfo = it as BookingInfo
+            itemResponse = BookingInfo(
                 key = monthlyParkingBookingInfo.key,
                 bookingId = monthlyParkingBookingInfo.bookingId,
                 userId = monthlyParkingBookingInfo.userId,
-                monthlyParkingId = monthlyParkingBookingInfo.monthlyParkingId,
+                parkingId = monthlyParkingBookingInfo.parkingId,
                 totalParkingSpace = monthlyParkingBookingInfo.totalParkingSpace,
                 ultimateCost = monthlyParkingBookingInfo.ultimateCost,
                 placeName = monthlyParkingBookingInfo.placeName,
@@ -66,8 +66,32 @@ class PaymentAddActivity : AppBaseActivity(), CardClickListener {
                 updatedAt = monthlyParkingBookingInfo.updatedAt
             )
         }
+
+        intent.getSerializableExtra("bookingInfo")?.let {
+            val bookingInfo = it as BookingInfo
+            itemResponse = BookingInfo(
+                key = bookingInfo.key,
+                bookingId = bookingInfo.bookingId,
+                bookingDate = bookingInfo.bookingDate,
+                bookingTime = bookingInfo.bookingTime,
+                userId = bookingInfo.userId,
+                parkingId = bookingInfo.parkingId,
+                totalParkingSpace = bookingInfo.totalParkingSpace,
+                ultimateCost = bookingInfo.ultimateCost,
+                placeName = bookingInfo.placeName,
+                placeUrl = bookingInfo.placeUrl,
+                addedAt = bookingInfo.addedAt,
+                updatedAt = bookingInfo.updatedAt
+
+            )
+        }
+
         intent.getStringExtra("ultimateCost")?.let {
-            binding.tvAmount.text = (itemResponse.totalParkingSpace.toInt() * it.toInt()).toString()
+            if(it.toInt()!=0){
+                binding.tvAmount.text = (itemResponse.totalParkingSpace.toInt() * it.toInt()).toString()
+            }else{
+                binding.tvAmount.text= "0"
+            }
         }
 
         intent.getStringExtra("totalSpace")?.let {
@@ -98,7 +122,9 @@ class PaymentAddActivity : AppBaseActivity(), CardClickListener {
         }
         binding.btnPayment.setOnClickListener {
             if (binding.tvAmount.text.toString().isNotEmpty() && selection) {
-                setMonthlyParking()
+
+                  setParking()
+
             } else {
                 toast("Please Select Payment Method and type Amount")
             }
@@ -107,7 +133,7 @@ class PaymentAddActivity : AppBaseActivity(), CardClickListener {
 
     }
 
-    private fun setMonthlyParking() {
+    private fun setParking() {
         showProgress(true)
         //get data
         val name = cardName
@@ -128,7 +154,12 @@ class PaymentAddActivity : AppBaseActivity(), CardClickListener {
         db.collection(Constants.FirebaseKeys.KEY_TRANSACTION_INFO).document(id)
             .set(Variables.paymentInfo).addOnSuccessListener {
                 showProgress(false)
-                setBooking()
+                if(itemResponse.bookingDate==""){
+                    setMonthlyBooking()
+                }else{
+                    setBooking()
+                }
+
 
             }.addOnFailureListener {
                 showProgress(false)
@@ -138,13 +169,25 @@ class PaymentAddActivity : AppBaseActivity(), CardClickListener {
 
 
     }
-
     private fun setBooking() {
+        db.collection(Constants.FirebaseKeys.KEY_BOOKING_INFO).document(itemResponse.key)
+            .set(itemResponse).addOnSuccessListener {
+                showProgress(false)
+                Log.d(TAG, "Booking Successfully")
+                toast("Booking Successfully")
+                finish()
+            }.addOnFailureListener {
+                showProgress(false)
+                Log.d(TAG, "${it.localizedMessage!!} ")
+                toast(it.localizedMessage!!)
+            }
+
+    }
+    private fun setMonthlyBooking() {
         db.collection(Constants.FirebaseKeys.KEY_MONTHLY_BOOKING_INFO).document(itemResponse.key)
             .set(itemResponse).addOnSuccessListener {
                 showProgress(false)
                 updateMonthlyParking()
-
             }.addOnFailureListener {
                 showProgress(false)
                 Log.d(TAG, "${it.localizedMessage!!} ")
@@ -157,9 +200,8 @@ class PaymentAddActivity : AppBaseActivity(), CardClickListener {
 
         val availableSpace = totalSpace - itemResponse.totalParkingSpace.toInt()
         db.collection(Constants.FirebaseKeys.KEY_MONTHLY_PARKING_INFO)
-            .document(itemResponse.monthlyParkingId)
-            .update("totalParkingSpace", availableSpace.toString())
-            .addOnSuccessListener {
+            .document(itemResponse.parkingId)
+            .update("totalParkingSpace", availableSpace.toString()).addOnSuccessListener {
                 showProgress(false)
                 Log.d(TAG, "Booking Successfully")
                 toast("Booking Successfully")

@@ -1,6 +1,7 @@
 package com.example.parkingmanagementsystem.adapter
 
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +13,7 @@ import com.google.maps.android.SphericalUtil
 class MonthlyParkingSlotAdapter(
     private val mMonthlyParkingTime: String,
     private val mMonthlyParkingCost: String,
-    private val mMonthlyParkingSlot: String,
+    private val mMonthlyParkingSlot: Int,
     private val monthlyParkingSlotOnClickListener: MonthlyParkingSlotOnClickListener
 ) :
     RecyclerView.Adapter<MonthlyParkingSlotAdapter.FoodListViewHolder>() {
@@ -47,6 +48,6 @@ class MonthlyParkingSlotAdapter(
 
 
     override fun getItemCount(): Int {
-        return mMonthlyParkingSlot.toInt()
+        return mMonthlyParkingSlot
     }
 }
