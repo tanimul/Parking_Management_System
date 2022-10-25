@@ -1,4 +1,5 @@
 package com.example.parkingmanagementsystem.adapter
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -31,6 +32,7 @@ class BookingListAdapter(
     }
 
     override fun onBindViewHolder(holder: TransactionListViewHolder, position: Int) {
+        Log.d(TAG, "onBindViewHolder: ${bookingItems[position]}")
         with(holder.binding) {
             with(bookingItems[position]) {
                 tvPlaceName.text=placeName
@@ -40,8 +42,6 @@ class BookingListAdapter(
 
             }
         }
-
-
 
     }
 
