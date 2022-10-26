@@ -160,6 +160,11 @@ class ParkingAddActivity : AppBaseActivity() {
                     storageReference.downloadUrl.addOnSuccessListener { uri ->
                         val url = uri.toString()
                         key = System.currentTimeMillis().toString()
+                        var etCostPerHour="0"
+                        if (binding.etCostPerHour.text.toString().isNotEmpty()) {
+                            etCostPerHour = binding.etCostPerHour.text.toString()
+                        }
+
                         val place_info = ParkingInfo(
                             u_id,
                             key,
@@ -168,7 +173,7 @@ class ParkingAddActivity : AppBaseActivity() {
                             latitude,
                             longitude,
                             priority,
-                            "" + binding.etCostPerHour.text.toString(),
+                            etCostPerHour,
                             binding.etTotalSpace.text.toString(),
                             url,
                         )
