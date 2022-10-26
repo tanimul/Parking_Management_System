@@ -122,7 +122,7 @@ class PaymentAddActivity : AppBaseActivity(), CardClickListener {
         }
         binding.btnPayment.setOnClickListener {
             if (binding.tvAmount.text.toString().isNotEmpty() && selection) {
-
+//toast(itemResponse.toString())
                   setParking()
 
             } else {
