@@ -48,7 +48,7 @@ data class ParkingInfo
     val placeLatitude: Double = 0.0,
     val placeLongitude: Double = 0.0,
     val priority: String = "",
-    val ultimateCostPerHour: String = "",
+    val ultimateCostPerHour: String = "0",
     val totalParkingSpace: String = "",
     val placeUrl: String = "",
     val addedAt: Long = System.currentTimeMillis(),
