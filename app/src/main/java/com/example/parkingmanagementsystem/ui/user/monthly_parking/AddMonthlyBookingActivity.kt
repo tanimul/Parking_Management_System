@@ -75,7 +75,8 @@ class AddMonthlyBookingActivity : AppBaseActivity(), MonthlyParkingSlotOnClickLi
                     totalParkingSpace=slot.size.toString(),
                     placeName = itemResponse.placeName,
                     placeUrl = itemResponse.placeUrl,
-                    ultimateCost = itemResponse.ultimateCost
+                    ultimateCost = itemResponse.ultimateCost,
+                    bookingDate = itemResponse.month
                 )
                 startActivity(
                     Intent(this, PaymentAddActivity::class.java).putExtra(
