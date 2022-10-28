@@ -56,6 +56,7 @@ class PaymentAddActivity : AppBaseActivity(), CardClickListener {
             itemResponse = BookingInfo(
                 key = monthlyParkingBookingInfo.key,
                 bookingId = monthlyParkingBookingInfo.bookingId,
+                bookingDate = monthlyParkingBookingInfo.bookingDate,
                 userId = monthlyParkingBookingInfo.userId,
                 parkingId = monthlyParkingBookingInfo.parkingId,
                 totalParkingSpace = monthlyParkingBookingInfo.totalParkingSpace,
@@ -154,7 +155,7 @@ class PaymentAddActivity : AppBaseActivity(), CardClickListener {
         db.collection(Constants.FirebaseKeys.KEY_TRANSACTION_INFO).document(id)
             .set(Variables.paymentInfo).addOnSuccessListener {
                 showProgress(false)
-                if(itemResponse.bookingDate==""){
+                if(itemResponse.bookingTime==""){
                     setMonthlyBooking()
                 }else{
                     setBooking()
