@@ -37,7 +37,8 @@ class BookingListAdapter(
             with(bookingItems[position]) {
                 tvPlaceName.text=placeName
                 tvAmount.text= "${ultimateCost.toInt()*totalParkingSpace.toInt()} BDT"
-                tvDate.text=formater.format(updatedAt)
+                //tvDate.text=formater.format(updatedAt)
+                tvDate.text=bookingDate
                 ivPlace.loadImageFromUrl(placeUrl)
 
             }
