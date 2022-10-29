@@ -46,6 +46,7 @@ class PaymentAddActivity : AppBaseActivity(), CardClickListener {
     var selection = false
     var totalSpace = 0
     var uploaderId = ""
+    var discount = 50
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPaymentAddBinding.inflate(layoutInflater)
@@ -89,7 +90,12 @@ class PaymentAddActivity : AppBaseActivity(), CardClickListener {
 
         intent.getStringExtra("ultimateCost")?.let {
             if(it.toInt()!=0){
-                binding.tvAmount.text = (itemResponse.totalParkingSpace.toInt() * it.toInt()).toString()
+                if(SharedPrefUtils().getStringValue(Constants.SharedPref.PROMO_CODE)!="" || SharedPrefUtils().getStringValue(Constants.SharedPref.PROMO_CODE)!=null){
+                    binding.tvAmount.text = ((itemResponse.totalParkingSpace.toInt() * it.toInt()) - discount ) .toString()
+                }else{
+                    binding.tvAmount.text = ((itemResponse.totalParkingSpace.toInt() * it.toInt()) ) .toString()
+                }
+
             }else{
                 binding.tvAmount.text= "0"
             }
