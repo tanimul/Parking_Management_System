@@ -8,6 +8,7 @@ import com.example.parkingmanagementsystem.ui.AppBaseActivity
 import com.example.parkingmanagementsystem.utils.Constants
 import com.example.parkingmanagementsystem.utils.SharedPrefUtils
 import com.example.parkingmanagementsystem.utils.extentions.toast
+import java.util.HashMap
 
 class UsePromoCodeActivity : AppBaseActivity() {
     companion object {
@@ -15,6 +16,7 @@ class UsePromoCodeActivity : AppBaseActivity() {
     }
 
     private lateinit var binding: ActivityUsePromoCodeBinding
+    var map_month: HashMap<String, Int> = hashMapOf("Jan" to 0, "Feb" to 1, "Mar" to 2, "Apr" to 3, "May" to 4, "Jun" to 5)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUsePromoCodeBinding.inflate(layoutInflater)
@@ -26,13 +28,18 @@ class UsePromoCodeActivity : AppBaseActivity() {
 
 
         binding.btnSubmit.setOnClickListener {
-            SharedPrefUtils().setValue(
-                Constants.SharedPref.PROMO_CODE,
-                binding.etPromoCode.text.toString()
-            )
+            if(map_month.containsKey(binding.etPromoCode.text.toString())){
+                SharedPrefUtils().setValue(
+                    Constants.SharedPref.PROMO_CODE,
+                    binding.etPromoCode.text.toString()
+                )
 
-            toast("Promo Code Save Successfully")
-            finish()
+                toast("Promo Code Save Successfully")
+                finish()
+            }else{
+                toast("Promo Code Invalid")
+            }
+
         }
     }
 }
