@@ -64,8 +64,8 @@ class AddBookingActivity : AppBaseActivity(), MonthlyParkingSlotOnClickListener 
             val dpd = DatePickerDialog(this, { view, year, monthOfYear, dayOfMonth ->
 
                 // Display Selected date in textbox
-                binding.tvDate.text = "" + dayOfMonth + "/" + (monthOfYear - 1) + "/" + year
-                date = "" + dayOfMonth + "/" + (monthOfYear - 1) + "/" + year
+                binding.tvDate.text = "" + dayOfMonth + "/" + (monthOfYear + 1) + "/" + year
+                date = "" + dayOfMonth + "/" + (monthOfYear + 1) + "/" + year
                 availableSpace = itemResponse.totalParkingSpace.toInt()
                 getAvailableSlot(itemResponse.totalParkingSpace)
             }, year, month, day)
@@ -179,7 +179,7 @@ class AddBookingActivity : AppBaseActivity(), MonthlyParkingSlotOnClickListener 
         binding.tvDescription.text = itemResponse.placeName
 
         val c = Calendar.getInstance()
-        date = "" + c.get(Calendar.DAY_OF_MONTH) + "/" + (c.get(Calendar.MONTH) - 1) + "/" + c.get(
+        date = "" + c.get(Calendar.DAY_OF_MONTH) + "/" + (c.get(Calendar.MONTH) + 1) + "/" + c.get(
             Calendar.YEAR
         )
         binding.tvDate.text = date

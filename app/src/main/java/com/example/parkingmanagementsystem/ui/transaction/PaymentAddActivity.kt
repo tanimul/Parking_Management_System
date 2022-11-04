@@ -161,6 +161,7 @@ class PaymentAddActivity : AppBaseActivity(), CardClickListener {
         db.collection(Constants.FirebaseKeys.KEY_TRANSACTION_INFO).document(id)
             .set(Variables.paymentInfo).addOnSuccessListener {
                 showProgress(false)
+                SharedPrefUtils().setValue(Constants.SharedPref.PROMO_CODE,"")
                 if(itemResponse.bookingTime==""){
                     setMonthlyBooking()
                 }else{
