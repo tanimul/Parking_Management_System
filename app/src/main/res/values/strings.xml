@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Parking Management System</string>
+    <string name="app_name">Park In</string>
     <string name="enter_your_mobile_number">Enter Your Mobile Number</string>
     <string name="enter_your_phone_number_we_will_send_you_a_six_digit_otp_to_verify_your_phone_number">Enter your phone number we will send you a six-digit OTP to verify your phone number</string>
     <string name="send_code">Send Code</string>
