@@ -89,7 +89,7 @@ class ProfileActivity : AppBaseActivity() {
     }
 
     private fun setUserHeaderInformation(uid: String) {
-        db.collection(Constants.FirebaseKeys.KEY_USERS_COLLECTION)
+        db.collection(KEY_USERS_COLLECTION)
             .document(uid).get().addOnSuccessListener { snapshot ->
                 val user_info = snapshot.toObject<User>()
                 Log.d(TAG, "User Information: $user_info")
@@ -99,6 +99,9 @@ class ProfileActivity : AppBaseActivity() {
                 binding.tvEmail.text = user_info?.email
                 binding.tvPhoneNumber.text = user_info?.phoneNumber
                 binding.tvVehicleNumber.text = user_info?.vehicle_number
+                binding.tvNid.text = user_info?.nid_number
+                binding.tvVehicleNumber.visibility=View.VISIBLE
+                binding.tvNid.visibility=View.VISIBLE
                 user_info?.let { binding.civUserImage.loadImageFromUrl(it.imageUrl) }
             }
 
