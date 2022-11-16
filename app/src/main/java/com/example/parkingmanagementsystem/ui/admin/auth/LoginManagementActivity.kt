@@ -28,6 +28,7 @@ class LoginManagementActivity : AppBaseActivity() {
 
     val db = Firebase.firestore
     private lateinit var binding: ActivityLoginManagementBinding
+    var loginStatus=false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginManagementBinding.inflate(layoutInflater)
@@ -76,15 +77,23 @@ class LoginManagementActivity : AppBaseActivity() {
                             SharedPrefUtils().setValue(MANAGEMENT_ID, parking_owner._id)
                             SharedPrefUtils().setValue(PARKING_OWNER_ID, "")
                             SharedPrefUtils().setValue(IMAGE_URL, parking_owner.imageUrl)
-                            toast("Login Successfully")
-                            launchActivity<HomeManagementActivity>()
-                            finish()
+                            loginStatus=true
+                            break
                         } else {
-                            showProgress(false)
-                            toast("Wrong Phone number or Password")
+                            loginStatus=false
+
                         }
                     }
 
+
+                    if(loginStatus){
+                        toast("Login Successfully")
+                        launchActivity<HomeManagementActivity>()
+                        finish()
+                    }else{
+                        showProgress(false)
+                        toast("Wrong Phone number or Password")
+                    }
 
                 } else {
                     showProgress(false)
@@ -114,14 +123,20 @@ class LoginManagementActivity : AppBaseActivity() {
                             SharedPrefUtils().setValue(PARKING_OWNER_ID, parking_owner._id)
                             SharedPrefUtils().setValue(MANAGEMENT_ID, "")
                             SharedPrefUtils().setValue(IMAGE_URL, parking_owner.imageUrl)
-                            toast("Login Successfully")
-                            launchActivity<HomeManagementActivity>()
+                            loginStatus=true
+                            break
                         } else {
-                            showProgress(false)
-                            toast("Wrong Phone number or Password")
+                            loginStatus=false
                         }
                     }
-
+                    if(loginStatus){
+                        toast("Login Successfully")
+                        launchActivity<HomeManagementActivity>()
+                        finish()
+                    }else{
+                        showProgress(false)
+                        toast("Wrong Phone number or Password")
+                    }
 
                 } else {
                     showProgress(false)
