@@ -15,6 +15,7 @@ import com.example.parkingmanagementsystem.databinding.ActivityTransactionBindin
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
 import com.example.parkingmanagementsystem.ui.transaction.TransactionActivity
 import com.example.parkingmanagementsystem.utils.Constants
+import com.example.parkingmanagementsystem.utils.SharedPrefUtils
 import com.example.parkingmanagementsystem.utils.extentions.toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -129,6 +130,10 @@ class BookingActivity : AppBaseActivity() {
     }
 
     private fun loadBooking() {
+        Log.d(TAG, "User Id: ${SharedPrefUtils().getStringValue(Constants.SharedPref.USERS_ID)}")
+        Log.d(TAG, "PARKING_OWNER Id: ${SharedPrefUtils().getStringValue(Constants.SharedPref.PARKING_OWNER_ID)}")
+        Log.d(TAG, "MANAGEMENT Id: ${SharedPrefUtils().getStringValue(Constants.SharedPref.MANAGEMENT_ID)}")
+
         db.collection(Constants.FirebaseKeys.KEY_BOOKING_INFO)
             .get().addOnSuccessListener { snapshot ->
                 Log.d(TAG, "loadBooking: ${snapshot.size()}")
@@ -136,7 +141,16 @@ class BookingActivity : AppBaseActivity() {
                     val bookingItem = snapshot1.toObject(BookingInfo::class.java)
                     Log.d(TAG, "loadBooking: $bookingItem")
 
-                    bookingList.add(bookingItem)
+                    if (SharedPrefUtils().getStringValue(Constants.SharedPref.PARKING_OWNER_ID) != "") {
+                        bookingList.add(bookingItem)
+                    }
+                    if(SharedPrefUtils().getStringValue(Constants.SharedPref.MANAGEMENT_ID) != ""){
+                        bookingList.add(bookingItem)
+                    }
+                    if(SharedPrefUtils().getStringValue(Constants.SharedPref.USERS_ID) == bookingItem.userId){
+                        bookingList.add(bookingItem)
+                    }
+
 
                 }
 
@@ -156,6 +170,9 @@ class BookingActivity : AppBaseActivity() {
     }
 
     private fun loadMonthlyBooking() {
+        Log.d(TAG, "User Id: ${SharedPrefUtils().getStringValue(Constants.SharedPref.USERS_ID)}")
+        Log.d(TAG, "PARKING_OWNER Id: ${SharedPrefUtils().getStringValue(Constants.SharedPref.PARKING_OWNER_ID)}")
+        Log.d(TAG, "MANAGEMENT Id: ${SharedPrefUtils().getStringValue(Constants.SharedPref.MANAGEMENT_ID)}")
         db.collection(Constants.FirebaseKeys.KEY_MONTHLY_BOOKING_INFO)
             .get().addOnSuccessListener { snapshot ->
                 Log.d(TAG, "loadBooking: ${snapshot.size()}")
@@ -163,7 +180,19 @@ class BookingActivity : AppBaseActivity() {
                     val bookingItem = snapshot1.toObject(BookingInfo::class.java)
                     Log.d(TAG, "loadBooking: $bookingItem")
 
-                    monthlyBookingList.add(bookingItem)
+
+                    if (SharedPrefUtils().getStringValue(Constants.SharedPref.PARKING_OWNER_ID) != "") {
+                        monthlyBookingList.add(bookingItem)
+
+                    }
+                    if(SharedPrefUtils().getStringValue(Constants.SharedPref.MANAGEMENT_ID) != ""){
+                        monthlyBookingList.add(bookingItem)
+
+                    }
+                    if(SharedPrefUtils().getStringValue(Constants.SharedPref.USERS_ID) == bookingItem.userId){
+                        monthlyBookingList.add(bookingItem)
+
+                    }
 
                 }
                 fillterdBookingList.addAll(monthlyBookingList)
