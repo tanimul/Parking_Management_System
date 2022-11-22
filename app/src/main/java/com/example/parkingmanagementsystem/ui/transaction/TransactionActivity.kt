@@ -13,6 +13,7 @@ import com.example.parkingmanagementsystem.databinding.ActivityAddNewCardBinding
 import com.example.parkingmanagementsystem.databinding.ActivityTransactionBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
 import com.example.parkingmanagementsystem.utils.Constants
+import com.example.parkingmanagementsystem.utils.SharedPrefUtils
 import com.example.parkingmanagementsystem.utils.extentions.toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
@@ -32,7 +33,7 @@ class TransactionActivity : AppBaseActivity() {
     private lateinit var mAuth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityTransactionBinding.inflate(layoutInflater)
+        binding = ActivityTransactionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setToolbar(binding.toolbarLayout.toolbar)
@@ -53,14 +54,24 @@ class TransactionActivity : AppBaseActivity() {
     }
 
     private fun loadTransaction() {
+        Log.d(TAG, "User Id: ${SharedPrefUtils().getStringValue(Constants.SharedPref.USERS_ID)}")
+        Log.d(TAG, "PARKING_OWNER Id: ${SharedPrefUtils().getStringValue(Constants.SharedPref.PARKING_OWNER_ID)}")
+        Log.d(TAG, "MANAGEMENT Id: ${SharedPrefUtils().getStringValue(Constants.SharedPref.MANAGEMENT_ID)}")
         db.collection(Constants.FirebaseKeys.KEY_TRANSACTION_INFO)
             .get().addOnSuccessListener { snapshot ->
                 Log.d(TAG, "loadTransaction: ${snapshot.size()}")
                 for (snapshot1 in snapshot) {
                     val transactionItem = snapshot1.toObject(PaymentInfo::class.java)
                     Log.d(TAG, "loadTransaction: $transactionItem")
-
-                    transactionList.add(transactionItem)
+                    if (SharedPrefUtils().getStringValue(Constants.SharedPref.PARKING_OWNER_ID) == transactionItem.receiverId) {
+                        transactionList.add(transactionItem)
+                    }
+                    if(SharedPrefUtils().getStringValue(Constants.SharedPref.MANAGEMENT_ID) != ""){
+                        transactionList.add(transactionItem)
+                    }
+                    if(SharedPrefUtils().getStringValue(Constants.SharedPref.USERS_ID) == transactionItem.uid){
+                        transactionList.add(transactionItem)
+                    }
 
                 }
 
@@ -74,7 +85,7 @@ class TransactionActivity : AppBaseActivity() {
                 }
             }.addOnFailureListener {
                 Log.d(TAG, "addOnFailureListener: " + it.message)
-               toast("" + it.message)
+                toast("" + it.message)
             }
     }
 
