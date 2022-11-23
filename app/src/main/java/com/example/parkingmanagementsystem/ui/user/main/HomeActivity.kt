@@ -31,6 +31,7 @@ import com.example.parkingmanagementsystem.databinding.NavHeaderLayoutBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
 import com.example.parkingmanagementsystem.ui.admin.booking.BookingActivity
 import com.example.parkingmanagementsystem.ui.profile.ProfileActivity
+import com.example.parkingmanagementsystem.ui.transaction.TransactionActivity
 import com.example.parkingmanagementsystem.ui.user.activities.UsePromoCodeActivity
 import com.example.parkingmanagementsystem.ui.user.booking.AddBookingActivity
 import com.example.parkingmanagementsystem.ui.user.monthly_parking.AddMonthlyBookingActivity
@@ -350,6 +351,9 @@ class HomeActivity : AppBaseActivity(), OnMapReadyCallback,
         when (item.itemId) {
 
             //Navigation Drawer Select
+            R.id.nav_transaction -> {
+                launchActivity<TransactionActivity>()
+            }
 
             R.id.nav_profile -> {
                 launchActivity<ProfileActivity>()
