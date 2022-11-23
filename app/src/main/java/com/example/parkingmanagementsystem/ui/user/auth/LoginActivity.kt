@@ -14,6 +14,8 @@ import com.example.parkingmanagementsystem.ui.AppBaseActivity
 import com.example.parkingmanagementsystem.ui.admin.auth.LoginManagementActivity
 import com.example.parkingmanagementsystem.ui.user.main.HomeActivity
 import com.example.parkingmanagementsystem.utils.Constants.FirebaseKeys.KEY_USERS_COLLECTION
+import com.example.parkingmanagementsystem.utils.Constants.SharedPref.MANAGEMENT_ID
+import com.example.parkingmanagementsystem.utils.Constants.SharedPref.PARKING_OWNER_ID
 import com.example.parkingmanagementsystem.utils.Constants.SharedPref.USERS_ID
 import com.example.parkingmanagementsystem.utils.SharedPrefUtils
 import com.example.parkingmanagementsystem.utils.Variables.user
@@ -201,6 +203,8 @@ class LoginActivity : AppBaseActivity() {
                     //hide progressbar
                     showProgress(false)
                     SharedPrefUtils().setValue(USERS_ID, user._id)
+                    SharedPrefUtils().setValue(MANAGEMENT_ID, "")
+                    SharedPrefUtils().setValue(PARKING_OWNER_ID, "")
                     launchActivity<HomeActivity>()
                     finish()
                 } else {

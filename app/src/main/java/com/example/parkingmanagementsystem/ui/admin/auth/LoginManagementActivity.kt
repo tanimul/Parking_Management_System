@@ -6,6 +6,7 @@ import com.example.parkingmanagementsystem.data.model.response.ParkingOwner
 import com.example.parkingmanagementsystem.databinding.ActivityLoginManagementBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
 import com.example.parkingmanagementsystem.ui.admin.HomeManagementActivity
+import com.example.parkingmanagementsystem.utils.Constants
 import com.example.parkingmanagementsystem.utils.Constants.FirebaseKeys.KEY_MANAGEMENT_COLLECTION
 import com.example.parkingmanagementsystem.utils.Constants.FirebaseKeys.KEY_PARKING_OWNER_COLLECTION
 import com.example.parkingmanagementsystem.utils.Constants.SharedPref.FULL_NAME
@@ -16,6 +17,7 @@ import com.example.parkingmanagementsystem.utils.Constants.SharedPref.MANAGEMENT
 import com.example.parkingmanagementsystem.utils.Constants.SharedPref.PARKING_OWNER_ID
 import com.example.parkingmanagementsystem.utils.Constants.SharedPref.PHONE_NUMBER
 import com.example.parkingmanagementsystem.utils.SharedPrefUtils
+import com.example.parkingmanagementsystem.utils.Variables
 import com.example.parkingmanagementsystem.utils.extentions.launchActivity
 import com.example.parkingmanagementsystem.utils.extentions.toast
 import com.google.firebase.firestore.ktx.firestore
@@ -76,6 +78,7 @@ class LoginManagementActivity : AppBaseActivity() {
                             SharedPrefUtils().setValue(PHONE_NUMBER, parking_owner.phoneNumber)
                             SharedPrefUtils().setValue(MANAGEMENT_ID, parking_owner._id)
                             SharedPrefUtils().setValue(PARKING_OWNER_ID, "")
+                            SharedPrefUtils().setValue(Constants.SharedPref.USERS_ID, "")
                             SharedPrefUtils().setValue(IMAGE_URL, parking_owner.imageUrl)
                             loginStatus=true
                             break
@@ -122,6 +125,7 @@ class LoginManagementActivity : AppBaseActivity() {
                             SharedPrefUtils().setValue(PHONE_NUMBER, parking_owner.phoneNumber)
                             SharedPrefUtils().setValue(PARKING_OWNER_ID, parking_owner._id)
                             SharedPrefUtils().setValue(MANAGEMENT_ID, "")
+                            SharedPrefUtils().setValue(Constants.SharedPref.USERS_ID, "")
                             SharedPrefUtils().setValue(IMAGE_URL, parking_owner.imageUrl)
                             loginStatus=true
                             break
