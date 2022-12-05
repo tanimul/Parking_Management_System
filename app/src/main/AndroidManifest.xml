@@ -18,7 +18,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ParkingManagementSystem">
         <activity
-            android:name=".ui.user.profile.UserProfileActivity"
+            android:name=".ui.admin.parking_owner.ParkingSpaceActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ui.profile.ProfileActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -67,9 +74,6 @@
             android:exported="false" />
         <activity
             android:name=".ui.user.notification.NotificationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.profile.ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".ui.user.activities.UsePromoCodeActivity"

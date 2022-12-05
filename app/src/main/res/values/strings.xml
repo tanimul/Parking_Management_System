@@ -82,6 +82,7 @@
     <string name="previous">Previous</string>
     <string name="ongoing">Ongoing</string>
     <string name="upcoming">Upcoming</string>
+    <string name="parking_space">Parking Space</string>
 
     <string-array name="month">
         <item>Jan</item>
@@ -110,5 +111,11 @@
         <item>06.00 pm - 08.00 pm</item>
         <item>08.00 pm - 10.00 pm</item>
         <item>10.00 pm - 12.00 am</item>
+    </string-array>
+
+    <string-array name="type_mobile">
+        <item>Bkash</item>
+        <item>Nagad</item>
+        <item>Rocket</item>
     </string-array>
 </resources>
