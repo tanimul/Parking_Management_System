@@ -12,6 +12,10 @@
             android:icon="@drawable/ic_booking"
             android:title="@string/bookings" />
         <item
+            android:id="@+id/nav_parking_space"
+            android:icon="@drawable/ic_list"
+            android:title="@string/parking_space" />
+        <item
             android:id="@+id/nav_add_parking_space"
             android:icon="@drawable/ic_add"
             android:title="@string/add_parking_space" />
