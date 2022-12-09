@@ -17,10 +17,12 @@ import com.example.parkingmanagementsystem.data.model.response.BookingInfo
 import com.example.parkingmanagementsystem.data.model.response.CardModel
 import com.example.parkingmanagementsystem.databinding.ActivityPaymentAddBinding
 import com.example.parkingmanagementsystem.ui.AppBaseActivity
+import com.example.parkingmanagementsystem.ui.user.main.HomeActivity
 import com.example.parkingmanagementsystem.utils.Constants
 import com.example.parkingmanagementsystem.utils.Constants.REQUEST_CODE_ADD_CARD
 import com.example.parkingmanagementsystem.utils.SharedPrefUtils
 import com.example.parkingmanagementsystem.utils.Variables
+import com.example.parkingmanagementsystem.utils.extentions.launchActivity
 import com.example.parkingmanagementsystem.utils.extentions.toast
 import com.example.parkingmanagementsystem.viewmodel.CardViewModel
 import com.google.firebase.firestore.ktx.firestore
@@ -213,6 +215,7 @@ class PaymentAddActivity : AppBaseActivity(), CardClickListener {
                 showProgress(false)
                 Log.d(TAG, "Booking Successfully")
                 toast("Booking Successfully")
+                launchActivity<HomeActivity>()
                 finish()
 
             }.addOnFailureListener {
@@ -298,3 +301,4 @@ class PaymentAddActivity : AppBaseActivity(), CardClickListener {
     }
 
 }
+
