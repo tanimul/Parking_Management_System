@@ -18,4 +18,5 @@
     <color name="colorBorder">#E0DFE3</color>
     <color name="colorBoxBorder">#BDBDBD</color>
     <color name="gray">#434343</color>
+    <color name="bottom_bar">#B0BEC5</color>
 </resources>

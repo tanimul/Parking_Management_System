@@ -49,7 +49,7 @@
     <string name="username">User Name</string>
     <string name="password">Password</string>
     <string name="con_password">Confirm Password</string>
-    <string name="need_to_registration_as_a_parking_owner">Need to Registration as a Parking Owner?</string>
+    <string name="need_to_registration_as_a_parking_owner">Registration as a Parking Owner?</string>
     <string name="purpose">Purpose</string>
     <string name="time">Time</string>
     <string name="add_parking_space">Add Parking Space</string>
@@ -60,8 +60,8 @@
     <string name="total_space">Total Parking Space</string>
     <string name="amount">Amount</string>
     <string name="date_time">Date and time</string>
-    <string name="promo_code_title">Do you have promo code? Use Promo Code to get Discount.</string>
-    <string name="promo_code">Promo Code</string>
+    <string name="promo_code_title">Promo code</string>
+    <string name="promo_code">Use Promo Code</string>
     <string name="ok">OK</string>
     <string name="no_item">No resources found.\n Please use the Service first.</string>
     <string name="distance">Distance</string>
@@ -111,6 +111,10 @@
         <item>06.00 pm - 08.00 pm</item>
         <item>08.00 pm - 10.00 pm</item>
         <item>10.00 pm - 12.00 am</item>
+    </string-array>
+    <string-array name="monthly_slot">
+        <item>06.00 pm - 06.00 am</item>
+        <item>06.00 am - 06.00 pm</item>
     </string-array>
 
     <string-array name="type_mobile">
