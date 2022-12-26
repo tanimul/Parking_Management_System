@@ -134,7 +134,7 @@ class MonthlyParkingAddActivity : AppBaseActivity() {
         val slot_types = ArrayAdapter(
             this,
             android.R.layout.simple_spinner_item,
-            resources.getStringArray(R.array.slot)
+            resources.getStringArray(R.array.monthly_slot)
         )
         month_types.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         slot_types.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)

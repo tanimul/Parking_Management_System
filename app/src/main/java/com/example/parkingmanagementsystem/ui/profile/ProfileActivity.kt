@@ -79,8 +79,8 @@ class ProfileActivity : AppBaseActivity() {
 
                 binding.tvName.text = parking_owner?.name
                 binding.tvLocation.text = parking_owner?.address
-                binding.tvEmail.text = parking_owner?.email
-                binding.tvPhoneNumber.text = parking_owner?.phoneNumber
+                binding.tvEmail.text = "Email: "+parking_owner?.email
+                binding.tvPhoneNumber.text = "Phone: "+parking_owner?.phoneNumber
                 binding.tvVehicleNumber.visibility = View.GONE
                 binding.tvVehicleNumber.visibility = View.GONE
                 parking_owner?.let { binding.civUserImage.loadImageFromUrl(it.imageUrl) }
@@ -96,10 +96,10 @@ class ProfileActivity : AppBaseActivity() {
 
                 binding.tvName.text = user_info?.name
                 binding.tvLocation.text = user_info?.address
-                binding.tvEmail.text = user_info?.email
-                binding.tvPhoneNumber.text = user_info?.phoneNumber
-                binding.tvVehicleNumber.text = user_info?.vehicle_number
-                binding.tvNid.text = user_info?.nid_number
+                binding.tvEmail.text = "Email: "+user_info?.email
+                binding.tvPhoneNumber.text = "Phone: "+user_info?.phoneNumber
+                binding.tvVehicleNumber.text = "Vehicle No: "+user_info?.vehicle_number
+                binding.tvNid.text = "Nid: "+user_info?.nid_number
                 binding.tvVehicleNumber.visibility=View.VISIBLE
                 binding.tvNid.visibility=View.VISIBLE
                 user_info?.let { binding.civUserImage.loadImageFromUrl(it.imageUrl) }

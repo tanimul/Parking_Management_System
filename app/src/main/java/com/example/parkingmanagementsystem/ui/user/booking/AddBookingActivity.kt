@@ -51,6 +51,9 @@ class AddBookingActivity : AppBaseActivity(), MonthlyParkingSlotOnClickListener 
         //Spinner
         itemTypes()
 
+        binding.ibBack.setOnClickListener{
+            onBackPressed()
+        }
         binding.ibDropdownSlot.setOnClickListener {
             binding.spinnerSlot.performClick()
         }

@@ -52,7 +52,9 @@ class AddMonthlyBookingActivity : AppBaseActivity(), MonthlyParkingSlotOnClickLi
             setValue()
 
         }
-
+binding.ibBack.setOnClickListener {
+    onBackPressed()
+}
         monthlyParkingSlotAdapter = MonthlyParkingSlotAdapter(
             itemResponse.time,
             itemResponse.ultimateCost,

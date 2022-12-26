@@ -1,5 +1,7 @@
 package com.example.parkingmanagementsystem.ui.admin.booking
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -43,6 +45,7 @@ class BookingActivity : AppBaseActivity() {
 
     var map_month: HashMap<String, Int> = hashMapOf("Jan" to 0, "Feb" to 1, "Mar" to 2, "Apr" to 3, "May" to 4, "Jun" to 5,"Jul" to 6, "Aug" to 7, "Sep" to 8, "Oct" to 9, "Nov" to 10, "Dec" to 11)
 
+    @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBookingBinding.inflate(layoutInflater)
@@ -87,6 +90,10 @@ class BookingActivity : AppBaseActivity() {
             fillterdBookingList.addAll(filteredList2)
 
             binding.rvBooking.adapter = BookingListAdapter(fillterdBookingList)
+
+            binding.btnOngoing.setBackgroundColor(R.color.color_secondary)
+            binding.btnUpcoming.setBackgroundColor(Color.BLUE)
+            binding.btnPrevious.setBackgroundColor(Color.BLUE)
         }
 
         binding.btnPrevious.setOnClickListener {
@@ -107,6 +114,10 @@ class BookingActivity : AppBaseActivity() {
 
             binding.rvBooking.adapter = BookingListAdapter(fillterdBookingList)
 
+            binding.btnOngoing.setBackgroundColor(Color.BLUE)
+            binding.btnUpcoming.setBackgroundColor(Color.BLUE)
+            binding.btnPrevious.setBackgroundColor(R.color.color_secondary)
+
         }
 
         binding.btnUpcoming.setOnClickListener {
@@ -126,6 +137,10 @@ class BookingActivity : AppBaseActivity() {
 
 
             binding.rvBooking.adapter = BookingListAdapter(fillterdBookingList)
+
+            binding.btnOngoing.setBackgroundColor(Color.BLUE)
+            binding.btnUpcoming.setBackgroundColor(R.color.color_secondary)
+            binding.btnPrevious.setBackgroundColor(Color.BLUE)
         }
     }
 

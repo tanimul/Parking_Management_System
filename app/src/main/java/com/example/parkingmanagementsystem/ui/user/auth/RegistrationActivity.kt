@@ -164,6 +164,7 @@ class RegistrationActivity : AppBaseActivity() {
                 || binding.etAddress.text.toString().isNotEmpty()
                 || binding.etVehicleNumber.text.toString().isNotEmpty()
                 || binding.etNid.text.toString().isNotEmpty()
+                || binding.etNid.text.toString().length==13
                 || imageUri != null)
     }
 
