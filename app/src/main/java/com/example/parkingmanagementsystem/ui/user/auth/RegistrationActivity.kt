@@ -148,6 +148,7 @@ class RegistrationActivity : AppBaseActivity() {
                 Log.d(TAG, "Profile updated successfully ")
                 toast("Profile updated successfully")
                 SharedPrefUtils().setValue(Constants.SharedPref.USERS_ID, user._id)
+                SharedPrefUtils().setValue(Constants.SharedPref.VEHICLE_NUMBER, user.vehicle_number)
                 launchActivity<HomeActivity>()
                 finish()
 

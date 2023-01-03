@@ -1,9 +1,15 @@
 package com.example.parkingmanagementsystem.ui.transaction
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Canvas
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
@@ -91,17 +97,19 @@ class PaymentAddActivity : AppBaseActivity(), CardClickListener {
         }
 
         intent.getStringExtra("ultimateCost")?.let {
-            Log.d(TAG, "onCreate: ${it.toInt()}")
-            Log.d(TAG, "onCreate: ${SharedPrefUtils().getStringValue(Constants.SharedPref.PROMO_CODE).toString().length}")
-            if(it.toInt()!=0){
-                if(SharedPrefUtils().getStringValue(Constants.SharedPref.PROMO_CODE).isNotEmpty()){
-                    binding.tvAmount.text = ((itemResponse.totalParkingSpace.toInt() * it.toInt()) - discount ) .toString()
-                }else{
-                    binding.tvAmount.text = ((itemResponse.totalParkingSpace.toInt() * it.toInt()) ) .toString()
+            if (it.toInt() != 0) {
+                if (SharedPrefUtils().getStringValue(Constants.SharedPref.PROMO_CODE)
+                        .isNotEmpty()
+                ) {
+                    binding.tvAmount.text =
+                        ((itemResponse.totalParkingSpace.toInt() * it.toInt()) - discount).toString()
+                } else {
+                    binding.tvAmount.text =
+                        ((itemResponse.totalParkingSpace.toInt() * it.toInt())).toString()
                 }
 
-            }else{
-                binding.tvAmount.text= "0"
+            } else {
+                binding.tvAmount.text = "0"
             }
         }
 
@@ -134,7 +142,7 @@ class PaymentAddActivity : AppBaseActivity(), CardClickListener {
         binding.btnPayment.setOnClickListener {
             if (binding.tvAmount.text.toString().isNotEmpty() && selection) {
 //toast(itemResponse.toString())
-                  setParking()
+                setParking()
 
             } else {
                 toast("Please Select Payment Method and type Amount")
@@ -165,10 +173,10 @@ class PaymentAddActivity : AppBaseActivity(), CardClickListener {
         db.collection(Constants.FirebaseKeys.KEY_TRANSACTION_INFO).document(id)
             .set(Variables.paymentInfo).addOnSuccessListener {
                 showProgress(false)
-                SharedPrefUtils().setValue(Constants.SharedPref.PROMO_CODE,"")
-                if(itemResponse.bookingTime==""){
+                SharedPrefUtils().setValue(Constants.SharedPref.PROMO_CODE, "")
+                if (itemResponse.bookingTime == "") {
                     setMonthlyBooking()
-                }else{
+                } else {
                     setBooking()
                 }
 
@@ -181,13 +189,15 @@ class PaymentAddActivity : AppBaseActivity(), CardClickListener {
 
 
     }
+
     private fun setBooking() {
         db.collection(Constants.FirebaseKeys.KEY_BOOKING_INFO).document(itemResponse.key)
             .set(itemResponse).addOnSuccessListener {
                 showProgress(false)
-                Log.d(TAG, "Booking Successfully")
-                toast("Booking Successfully")
-                finish()
+//                Log.d(TAG, "Booking Successfully")
+//                toast("Booking Successfully")
+//                finish()
+                showConfirmationDialog(itemResponse)
             }.addOnFailureListener {
                 showProgress(false)
                 Log.d(TAG, "${it.localizedMessage!!} ")
@@ -195,6 +205,7 @@ class PaymentAddActivity : AppBaseActivity(), CardClickListener {
             }
 
     }
+
     private fun setMonthlyBooking() {
         db.collection(Constants.FirebaseKeys.KEY_MONTHLY_BOOKING_INFO).document(itemResponse.key)
             .set(itemResponse).addOnSuccessListener {
@@ -216,10 +227,10 @@ class PaymentAddActivity : AppBaseActivity(), CardClickListener {
             .update("totalParkingSpace", availableSpace.toString()).addOnSuccessListener {
                 showProgress(false)
                 Log.d(TAG, "Booking Successfully")
-                toast("Booking Successfully")
-                launchActivity<HomeActivity>()
-                finish()
-
+//                toast("Booking Successfully")
+//                launchActivity<HomeActivity>()
+//                finish()
+                showConfirmationDialog(itemResponse)
             }.addOnFailureListener {
                 showProgress(false)
                 Log.d(TAG, "${it.localizedMessage!!} ")
@@ -302,5 +313,24 @@ class PaymentAddActivity : AppBaseActivity(), CardClickListener {
         selection = true
     }
 
+    private fun showConfirmationDialog(itemResponse: BookingInfo) {
+        val builder: AlertDialog.Builder = android.app.AlertDialog.Builder(this)
+        val viewGroup = findViewById<ViewGroup>(android.R.id.content)
+        val dialogView: View =
+            LayoutInflater.from(applicationContext)
+                .inflate(R.layout.confirmation_dialog, viewGroup, false)
+        builder.setView(dialogView)
+        val alertDialog: AlertDialog = builder.create()
+        var paymentDetails: TextView = dialogView.findViewById(R.id.info_message)
+        var readButton: Button = dialogView.findViewById(R.id.read_btn)
+        paymentDetails.text="Garage Name: ${itemResponse.placeName}\nDate: ${itemResponse.bookingDate}\nTime Slot: ${itemResponse.bookingTime}\nVehicle No: ${SharedPrefUtils().getStringValue(Constants.SharedPref.VEHICLE_NUMBER,)}"
+        readButton.setOnClickListener {
+            alertDialog.cancel()
+            toast("Booking Successfully")
+//            launchActivity<HomeActivity>()
+//            finish()
+        }
+        alertDialog.show()
+    }
 }
 
