@@ -166,7 +166,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Login as Management?"
+                    android:text="@string/login_as_a_parking_owner"
                     android:textColor="@color/colorTextLight"
                     android:textSize="18sp" />
 

@@ -30,7 +30,7 @@ class TransactionListAdapter(
     override fun onBindViewHolder(holder: TransactionListViewHolder, position: Int) {
         with(holder.binding) {
             with(transactionItems[position]) {
-                tvName.text=id
+                tvName.text="Trans. Id:  $id"
                 tvAmount.text= "$amount BDT"
                 tvTime.text=formater.format(time)
 

@@ -91,8 +91,10 @@ class PaymentAddActivity : AppBaseActivity(), CardClickListener {
         }
 
         intent.getStringExtra("ultimateCost")?.let {
+            Log.d(TAG, "onCreate: ${it.toInt()}")
+            Log.d(TAG, "onCreate: ${SharedPrefUtils().getStringValue(Constants.SharedPref.PROMO_CODE).toString().length}")
             if(it.toInt()!=0){
-                if(SharedPrefUtils().getStringValue(Constants.SharedPref.PROMO_CODE)!="" || SharedPrefUtils().getStringValue(Constants.SharedPref.PROMO_CODE)!=null){
+                if(SharedPrefUtils().getStringValue(Constants.SharedPref.PROMO_CODE).isNotEmpty()){
                     binding.tvAmount.text = ((itemResponse.totalParkingSpace.toInt() * it.toInt()) - discount ) .toString()
                 }else{
                     binding.tvAmount.text = ((itemResponse.totalParkingSpace.toInt() * it.toInt()) ) .toString()

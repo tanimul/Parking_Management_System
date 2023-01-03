@@ -78,11 +78,12 @@
     <string name="cvv">CVV</string>
     <string name="add_card">Add Card</string>
     <string name="add_new_card">Add New Card</string>
-    <string name="payment">Payement</string>
+    <string name="payment">Payment</string>
     <string name="previous">Previous</string>
     <string name="ongoing">Ongoing</string>
     <string name="upcoming">Upcoming</string>
-    <string name="parking_space">Parking Space</string>
+    <string name="parking_space">Parking Spaces</string>
+    <string name="login_as_a_parking_owner">Login as a Parking Owner?</string>
 
     <string-array name="month">
         <item>Jan</item>

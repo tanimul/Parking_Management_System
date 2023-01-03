@@ -97,6 +97,7 @@ binding.ibBack.setOnClickListener {
         binding.ivPlace.loadImageFromUrl(itemResponse.placeUrl)
         binding.tvAddress.text = itemResponse.placeAddress
         binding.tvMonth.text = itemResponse.month
+        binding.tvDescription.text = itemResponse.placeName
     }
 
     override fun onItemClick(position: Int) {
