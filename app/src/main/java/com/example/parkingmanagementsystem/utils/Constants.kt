@@ -14,6 +14,7 @@ object Constants {
         const val MANAGEMENT_ID = "managementId"
         const val PROMO_CODE = "promoCode"
         const val USERS_ID = "userId"
+        const val VEHICLE_NUMBER = "vehicleNumber"
     }
     object FirebaseKeys {
         const val KEY_USERS_COLLECTION = "Users"

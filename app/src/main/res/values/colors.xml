@@ -7,6 +7,8 @@
     <color name="ratingbar">#05FF00</color>
     <color name="edittext_color">#66D8BC</color>
     <color name="color_primary">#01579B</color>
+    <color name="dashboard1">#B3E5FC</color>
+    <color name="dashboard2">#FFCDD2</color>
     <color name="color_secondary">#0D47A1</color>
     <color name="colorFooter">#323232</color>
     <color name="colorTextDark">#2C2B2A</color>
@@ -19,4 +21,5 @@
     <color name="colorBoxBorder">#BDBDBD</color>
     <color name="gray">#434343</color>
     <color name="bottom_bar">#B0BEC5</color>
+    <color name="dash_board">#C5CAE9</color>
 </resources>

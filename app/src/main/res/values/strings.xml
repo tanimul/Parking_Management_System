@@ -33,6 +33,9 @@
     <string name="bookings">Bookings</string>
     <string name="use_promo_code">Use Promo Code</string>
     <string name="monthly_parking">Monthly Parking</string>
+    <string name="monthly_parking02">Monthly</string>
+    <string name="daily_parking">Daily Parking</string>
+    <string name="daily_parking01">Daily</string>
     <string name="profile">Profile</string>
     <string name="home">Home</string>
     <string-array name="gender">
@@ -84,7 +87,7 @@
     <string name="upcoming">Upcoming</string>
     <string name="parking_space">Parking Spaces</string>
     <string name="login_as_a_parking_owner">Login as a Parking Owner?</string>
-
+    <string name="total_earning">Total Earning</string>
     <string-array name="month">
         <item>Jan</item>
         <item>Feb</item>
