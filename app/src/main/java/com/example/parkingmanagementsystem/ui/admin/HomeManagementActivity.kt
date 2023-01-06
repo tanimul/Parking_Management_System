@@ -12,12 +12,17 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.view.menu.MenuBuilder
 import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
 import com.example.parkingmanagementsystem.R
+import com.example.parkingmanagementsystem.data.model.response.MonthlyParkingInfo
+import com.example.parkingmanagementsystem.data.model.response.ParkingInfo
+import com.example.parkingmanagementsystem.data.model.response.PaymentInfo
+import com.example.parkingmanagementsystem.data.model.response.SpaceInfo
 
 import com.example.parkingmanagementsystem.databinding.ActivityHomeManagementBinding
 import com.example.parkingmanagementsystem.databinding.NavHeaderLayoutBinding
@@ -29,6 +34,7 @@ import com.example.parkingmanagementsystem.ui.user.notification.NotificationActi
 import com.example.parkingmanagementsystem.ui.parking_add.MonthlyParkingAddActivity
 import com.example.parkingmanagementsystem.ui.parking_add.ParkingAddActivity
 import com.example.parkingmanagementsystem.ui.transaction.TransactionActivity
+import com.example.parkingmanagementsystem.ui.user.monthly_parking.MonthlyParkingActivity
 import com.example.parkingmanagementsystem.utils.Constants
 import com.example.parkingmanagementsystem.utils.Constants.SharedPref.FULL_NAME
 import com.example.parkingmanagementsystem.utils.Constants.SharedPref.IMAGE_URL
@@ -36,6 +42,7 @@ import com.example.parkingmanagementsystem.utils.Constants.SharedPref.PHONE_NUMB
 import com.example.parkingmanagementsystem.utils.SharedPrefUtils
 import com.example.parkingmanagementsystem.utils.extentions.launchActivity
 import com.example.parkingmanagementsystem.utils.extentions.loadImageFromUrl
+import com.example.parkingmanagementsystem.utils.extentions.toast
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -56,8 +63,8 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.util.*
 
-
-class HomeManagementActivity : AppBaseActivity(), OnMapReadyCallback,
+//OnMapReadyCallback,
+class HomeManagementActivity : AppBaseActivity(),
     NavigationView.OnNavigationItemSelectedListener,
     NavigationBarView.OnItemSelectedListener {
     companion object {
@@ -67,17 +74,22 @@ class HomeManagementActivity : AppBaseActivity(), OnMapReadyCallback,
     private lateinit var binding: ActivityHomeManagementBinding
     private lateinit var navHeaderLayoutBinding: NavHeaderLayoutBinding
 
+    private lateinit var transactionList: ArrayList<PaymentInfo>
+
     private lateinit var mAuth: FirebaseAuth
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private val REQUEST_CODE = 101
+//    private lateinit var fusedLocationClient: FusedLocationProviderClient
+//    private val REQUEST_CODE = 101
 
-    lateinit var cur_location: Location
-    private lateinit var mMap: GoogleMap
-
-    private var marker: Marker? = null
+    //    lateinit var cur_location: Location
+//    private lateinit var mMap: GoogleMap
+//
+//    private var marker: Marker? = null
     val db = Firebase.firestore
-    private var addressName: String = "Current Location"
 
+    //    private var addressName: String = "Current Location"
+    var totalEarning = 0
+    var dailyParking = 0
+    var monthlyParking = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeManagementBinding.inflate(layoutInflater)
@@ -90,7 +102,10 @@ class HomeManagementActivity : AppBaseActivity(), OnMapReadyCallback,
         mAuth = FirebaseAuth.getInstance()
 
         //PLaces API Declare
-        initPlacesAPI()
+        //initPlacesAPI()
+
+        transactionList = ArrayList<PaymentInfo>()
+
 
         val actionBarDrawerToggle = ActionBarDrawerToggle(
             this, binding.layoutDrawer,
@@ -107,55 +122,148 @@ class HomeManagementActivity : AppBaseActivity(), OnMapReadyCallback,
 
         setHeaderInformation()
 
+        getTotalEarning()
+        getTotalDailyParking()
+        getTotalMonthlyParking()
+
 
         //current location face
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-        val mapFragment =
-            supportFragmentManager.findFragmentById(R.id.map_fragment_2) as SupportMapFragment?
-        mapFragment?.getMapAsync(this@HomeManagementActivity)
-        fetchLastLocation()
+//        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+//        val mapFragment =
+//            supportFragmentManager.findFragmentById(R.id.map_fragment_2) as SupportMapFragment?
+//        mapFragment?.getMapAsync(this@HomeManagementActivity)
+//        fetchLastLocation()
 
         binding.navBar.setNavigationItemSelectedListener(this)
     }
 
-    private fun fetchLastLocation() {
-        if (ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-                REQUEST_CODE
-            )
-            return
-        }
+    private fun getTotalDailyParking() {
+        Log.d(TAG, "load Parking: ${SharedPrefUtils().getStringValue(Constants.SharedPref.PARKING_OWNER_ID)}")
+        db.collection(Constants.FirebaseKeys.KEY_PARKING_INFO)
+            .get().addOnSuccessListener { snapshot ->
+                Log.d(TAG, "load Parking: ${snapshot.size()}")
+                for (snapshot1 in snapshot) {
+                    val parking_item = snapshot1.toObject(ParkingInfo::class.java)
+                    Log.d(TAG, "load Parking: $parking_item")
+                    Log.d(TAG, "load Parking: ${parking_item.uploaderId}")
 
-        fusedLocationClient.lastLocation
-            .addOnSuccessListener {
-                // Got last known location. In some rare situations this can be null.
-                Log.d(TAG, "onCreate: $it")
-                if (it != null) {
-                    cur_location = it
-                    moveCamera(cur_location)
+                    if(SharedPrefUtils().getStringValue(Constants.SharedPref.PARKING_OWNER_ID)==parking_item.uploaderId || SharedPrefUtils().getStringValue(
+                            Constants.SharedPref.MANAGEMENT_ID
+                        )==parking_item.uploaderId){
+                        dailyParking+=1
+                    }
                 }
+                binding.tvDailyNumber.text = "" +dailyParking
+            }.addOnFailureListener {
+                Log.d(TAG, "addOnFailureListener: " + it.message)
+                toast("" + it.message)
+            }
+
+    }
+
+    private fun getTotalMonthlyParking() {
+        Log.d(TAG, "load Parking: ${SharedPrefUtils().getStringValue(Constants.SharedPref.PARKING_OWNER_ID)}")
+        db.collection(Constants.FirebaseKeys.KEY_MONTHLY_PARKING_INFO)
+            .get().addOnSuccessListener { snapshot ->
+                Log.d(TAG, "load Monthly Parking: ${snapshot.size()}")
+                for (snapshot1 in snapshot) {
+                    val monthlyParking_item = snapshot1.toObject(MonthlyParkingInfo::class.java)
+                    Log.d(TAG, "load Monthly Parking: $monthlyParking_item")
+                    Log.d(TAG, "load Parking: ${monthlyParking_item.uploaderId}")
+                    if(SharedPrefUtils().getStringValue(Constants.SharedPref.PARKING_OWNER_ID)==monthlyParking_item.uploaderId || SharedPrefUtils().getStringValue(
+                            Constants.SharedPref.MANAGEMENT_ID
+                        )==monthlyParking_item.uploaderId){
+                       monthlyParking+=1
+                    }
+                }
+                binding.tvMonthlyNumber.text = "" + monthlyParking
+                showProgress(false)
+                binding.layoutHomeActConst1.visibility = View.VISIBLE
+            }.addOnFailureListener {
+                Log.d(TAG, "addOnFailureListener: " + it.message)
+                toast("" + it.message)
+            }
+
+    }
+
+    private fun getTotalEarning() {
+        showProgress(true)
+        Log.d(TAG, "User Id: ${SharedPrefUtils().getStringValue(Constants.SharedPref.USERS_ID)}")
+        Log.d(
+            TAG,
+            "PARKING_OWNER Id: ${SharedPrefUtils().getStringValue(Constants.SharedPref.PARKING_OWNER_ID)}"
+        )
+        Log.d(
+            TAG,
+            "MANAGEMENT Id: ${SharedPrefUtils().getStringValue(Constants.SharedPref.MANAGEMENT_ID)}"
+        )
+        db.collection(Constants.FirebaseKeys.KEY_TRANSACTION_INFO)
+            .get().addOnSuccessListener { snapshot ->
+                Log.d(TAG, "loadTransaction: ${snapshot.size()}")
+                for (snapshot1 in snapshot) {
+                    val transactionItem = snapshot1.toObject(PaymentInfo::class.java)
+                    Log.d(TAG, "loadTransaction: $transactionItem")
+                    if (SharedPrefUtils().getStringValue(Constants.SharedPref.PARKING_OWNER_ID) == transactionItem.receiverId) {
+                        transactionList.add(transactionItem)
+                        totalEarning += transactionItem.amount.toInt()
+                    }
+                    if (SharedPrefUtils().getStringValue(Constants.SharedPref.MANAGEMENT_ID) != "") {
+                        transactionList.add(transactionItem)
+                        totalEarning += transactionItem.amount.toInt()
+                    }
+                    if (SharedPrefUtils().getStringValue(Constants.SharedPref.USERS_ID) == transactionItem.uid) {
+                        transactionList.add(transactionItem)
+                        totalEarning += transactionItem.amount.toInt()
+                    }
+
+                }
+
+                binding.tvTotalEarningNumber.text = "BDT: $totalEarning Taka"
+
+            }.addOnFailureListener {
+                Log.d(TAG, "addOnFailureListener: " + it.message)
+                toast("" + it.message)
             }
     }
 
-    private fun initPlacesAPI() {
-        Places.initialize(applicationContext, "" + resources.getString(R.string.map_Api_key));
-    }
+//    private fun fetchLastLocation() {
+//        if (ActivityCompat.checkSelfPermission(
+//                this,
+//                Manifest.permission.ACCESS_FINE_LOCATION
+//            ) != PackageManager.PERMISSION_GRANTED
+//        ) {
+//            ActivityCompat.requestPermissions(
+//                this,
+//                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+//                REQUEST_CODE
+//            )
+//            return
+//        }
+//
+//        fusedLocationClient.lastLocation
+//            .addOnSuccessListener {
+//                // Got last known location. In some rare situations this can be null.
+//                Log.d(TAG, "onCreate: $it")
+//                if (it != null) {
+//                    cur_location = it
+//                    moveCamera(cur_location)
+//                }
+//            }
+//    }
 
-    @SuppressLint("RestrictedApi")
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val menuInflater = menuInflater
-        menuInflater.inflate(R.menu.top_menu, menu)
-        if (menu is MenuBuilder) {
-            menu.setOptionalIconsVisible(true)
-        }
-        return true
-    }
+//    private fun initPlacesAPI() {
+//        Places.initialize(applicationContext, "" + resources.getString(R.string.map_Api_key));
+//    }
+
+//    @SuppressLint("RestrictedApi")
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        val menuInflater = menuInflater
+//        menuInflater.inflate(R.menu.top_menu, menu)
+//        if (menu is MenuBuilder) {
+//            menu.setOptionalIconsVisible(true)
+//        }
+//        return true
+//    }
 
     private fun setHeaderInformation() {
 
@@ -189,95 +297,95 @@ class HomeManagementActivity : AppBaseActivity(), OnMapReadyCallback,
 
     }
 
-    override fun onMapReady(googleMap: GoogleMap) {
-        mMap = googleMap
-        mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
+//    override fun onMapReady(googleMap: GoogleMap) {
+//        mMap = googleMap
+//        mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
+//
+//        mMap.setOnMapClickListener {
+//            val latLng = LatLng(it.latitude, it.longitude)
+//            moveCamera(latLng)
+//            val geocoder =
+//                Geocoder(this, Locale.getDefault())
+//            val addressList =
+//                geocoder.getFromLocation(it.latitude, it.longitude, 1)
+//            addressName=addressList[0].getAddressLine(0)
+//
+//        }
+//    }
 
-        mMap.setOnMapClickListener {
-            val latLng = LatLng(it.latitude, it.longitude)
-            moveCamera(latLng)
-            val geocoder =
-                Geocoder(this, Locale.getDefault())
-            val addressList =
-                geocoder.getFromLocation(it.latitude, it.longitude, 1)
-            addressName=addressList[0].getAddressLine(0)
+//    private fun moveCamera(latLng: LatLng) {
+//        marker?.remove()
+//        marker = mMap.addMarker(
+//            MarkerOptions()
+//                .position(latLng)
+//                .title("" + addressName)
+//        )!!
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng))
+//    }
 
-        }
-    }
+//    private fun moveCamera(location: Location) {
+//        val latLng = LatLng(location.latitude, location.longitude)
+//        mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
+//        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+//
+//        marker?.remove()
+//        marker = mMap.addMarker(
+//            MarkerOptions()
+//                .position(latLng)
+//                .title("" + addressName)
+//        )!!
+//
+////        mMap.addCircle(
+////            CircleOptions()
+////                .center(currentLocation)
+////                .radius(10000.0)
+////                .strokeColor(Color.RED)
+////                .fillColor(Color.argb(70, 150, 50, 50))
+////        )
+//    }
 
-    private fun moveCamera(latLng: LatLng) {
-        marker?.remove()
-        marker = mMap.addMarker(
-            MarkerOptions()
-                .position(latLng)
-                .title("" + addressName)
-        )!!
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng))
-    }
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        when (item.itemId) {
+//            R.id.menu_notification -> {
+//                launchActivity<NotificationActivity>()
+//            }
+//            R.id.menu_search -> {
+//                searchPlaces()
+//            }
+//
+//        }
+//        return true
+//    }
 
-    private fun moveCamera(location: Location) {
-        val latLng = LatLng(location.latitude, location.longitude)
-        mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
-        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
-
-        marker?.remove()
-        marker = mMap.addMarker(
-            MarkerOptions()
-                .position(latLng)
-                .title("" + addressName)
-        )!!
-
-//        mMap.addCircle(
-//            CircleOptions()
-//                .center(currentLocation)
-//                .radius(10000.0)
-//                .strokeColor(Color.RED)
-//                .fillColor(Color.argb(70, 150, 50, 50))
+//    private fun searchPlaces() {
+//        val fields: List<Place.Field> = Arrays.asList(
+//            Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG,
+//            Place.Field.TYPES
 //        )
-    }
+//
+//        val intent = Autocomplete.IntentBuilder(
+//            AutocompleteActivityMode.OVERLAY, fields
+//        )
+//            .setCountry("bd")
+//            .setHint("Search for Places")
+//            .build(this@HomeManagementActivity)
+//
+//        activityPlacesResultLauncher.launch(intent)
+//
+//    }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.menu_notification -> {
-                launchActivity<NotificationActivity>()
-            }
-            R.id.menu_search -> {
-                searchPlaces()
-            }
-
-        }
-        return true
-    }
-
-    private fun searchPlaces() {
-        val fields: List<Place.Field> = Arrays.asList(
-            Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG,
-            Place.Field.TYPES
-        )
-
-        val intent = Autocomplete.IntentBuilder(
-            AutocompleteActivityMode.OVERLAY, fields
-        )
-            .setCountry("bd")
-            .setHint("Search for Places")
-            .build(this@HomeManagementActivity)
-
-        activityPlacesResultLauncher.launch(intent)
-
-    }
-
-    var activityPlacesResultLauncher =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                // There are no request codes
-                val data: Intent? = result.data
-                val place: Place = Autocomplete.getPlaceFromIntent(data)
-                Log.d(TAG, "place address: " + place.address)
-                addressName = place.name
-                val latLng = LatLng(place.latLng.latitude, place.latLng.longitude)
-                moveCamera(latLng)
-            }
-        }
+//    var activityPlacesResultLauncher =
+//        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+//            if (result.resultCode == Activity.RESULT_OK) {
+//                // There are no request codes
+//                val data: Intent? = result.data
+//                val place: Place = Autocomplete.getPlaceFromIntent(data)
+//                Log.d(TAG, "place address: " + place.address)
+//                addressName = place.name
+//                val latLng = LatLng(place.latLng.latitude, place.latLng.longitude)
+//                moveCamera(latLng)
+//            }
+//        }
 
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
