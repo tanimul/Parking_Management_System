@@ -16,6 +16,7 @@ import com.example.parkingmanagementsystem.utils.Constants
 import com.example.parkingmanagementsystem.utils.SharedPrefUtils
 import com.example.parkingmanagementsystem.utils.extentions.toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -58,7 +59,7 @@ class TransactionActivity : AppBaseActivity() {
         Log.d(TAG, "PARKING_OWNER Id: ${SharedPrefUtils().getStringValue(Constants.SharedPref.PARKING_OWNER_ID)}")
         Log.d(TAG, "MANAGEMENT Id: ${SharedPrefUtils().getStringValue(Constants.SharedPref.MANAGEMENT_ID)}")
         db.collection(Constants.FirebaseKeys.KEY_TRANSACTION_INFO)
-            .get().addOnSuccessListener { snapshot ->
+            .orderBy("time", Query.Direction.DESCENDING).get().addOnSuccessListener { snapshot ->
                 Log.d(TAG, "loadTransaction: ${snapshot.size()}")
                 for (snapshot1 in snapshot) {
                     val transactionItem = snapshot1.toObject(PaymentInfo::class.java)
